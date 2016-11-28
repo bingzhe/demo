@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>tab</title>
+    <style media="screen">
+      ul,li{
+        margin: 0px;
+        padding: 0px;
+      }
+      li{
+        list-style: none;
+      }
+      .tab{
+        border: 1px solid #ccc;
+        width: 600px;
+        margin: 20px auto;
+        padding: 20px 10px;
+        border-radius: 4px;
+      }
+      .clearfix:after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      #tab-header{
+        border-bottom: 1px solid #ccc;
+      }
+      #tab-header>li{
+        float: left;
+        padding: 10px 20px;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+        border-radius: 4px 4px 0 0;
+        color: rgb(37, 84, 186);
+        cursor: pointer;
+      }
+      #tab-header .active{
+        color: #000;
+        border: 1px solid #ccc;
+        border-bottom-color: #fff;
+        margin-bottom: -1px
+      }
+      #tab-content{
+        padding: 20px 10px;
+      }
+      #tab-content>li{
+        display: none;
+      }
+      #tab-content .active{
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab">
+      <ul id="tab-header" class="clearfix">
+        <li class="active">选项一</li>
+        <li>选项二</li>
+        <li>选项三</li>
+      </ul>
+      <ul id="tab-content">
+        <li class="active">内容一</li>
+        <li>内容二</li>
+        <li>内荣三</li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      var tabHeader = document.querySelector("#tab-header");
+      var tabPanels = document.querySelectorAll("#tab-content>li");
+      tabHeader.addEventListener("click", function(e){
+        if (e.target.tagName.toLowerCase() === "li") {
+          for (var i = 0; i < tabHeader.children.length; i++) {
+            tabHeader.children[i].classList.remove("active");
+          }
+          e.target.classList.add("active");
+          var index = [].indexOf.call(document.querySelectorAll('#tab-header>li'), e.target);
+          for (var i = 0; i < tabPanels.length; i++) {
+            tabPanels[i].classList.remove("active");
+          }
+          tabPanels[index].classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>
