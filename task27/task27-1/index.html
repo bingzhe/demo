@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>轮播</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="carousel">
+      <ul class="img-ct">
+        <li class="active" data-id="0"><a href="#"><img src="images/0.jpg" alt="" /></a></li>
+        <li data-id="1"><a href="#"><img src="images/1.jpg" alt="" /></a></li>
+        <li data-id="2"><a href="#"><img src="images/2.jpg" alt="" /></a></li>
+        <li data-id="3"><a href="#"><img src="images/3.jpg" alt="" /></a></li>
+      </ul>
+      <a class="pre arrow" href="#"><</a>
+      <a class="next arrow" href="#">></a>
+      <ul class="button">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      var $ct = $('.img-ct');
+          $items = $ct.children();
+          $pre = $('.pre');
+          $next = $('.next');
+          $button = $('.button');
+          imgCount = $items.size();
+
+
+    	var idx= 0;
+    	var isAnimate = false;
+      show(0);
+      autoPlay();
+
+
+      $next.on('click', function(){
+        show((idx+1)%imgCount);
+        idx ++;
+      });
+      $pre.on('click', function(){
+        show((imgCount+idx-1)%imgCount);
+        idx --;
+      });
+      $button.find('li').on('click', function(){
+        idx = $(this).index();
+        show(idx);
+      });
+
+      function show(idx){
+          if (isAnimate) {
+            return;
+          }else {
+            isAnimate = true;
+            $items.eq(idx).stop(true,false).fadeIn(500)
+            .siblings().fadeOut(500);
+
+          }
+
+          isAnimate = false;
+        $button.find('li').eq(idx).addClass('active')
+              .siblings().removeClass('active');
+      }
+      function autoPlay(){
+        time = setInterval(function(){
+          show(idx);
+          idx ++;
+          if (idx == imgCount) {
+            idx = 0;
+          }
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
