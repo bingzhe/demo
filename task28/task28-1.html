@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+      #header{height: 80px;background-color: red;line-height: 80px;text-align: center;}
+      #nav{height: 40px;background-color: blue;margin-top: 20px;}
+      #content{background-color: #ccc;min-height: 800px;padding: 10px;overflow: auto;}
+      #content .aside{float: left;background-color: green;width: 100px;min-height: 400px;}
+      #content .main{background-color: #fff;min-height: 800px;overflow: auto;padding-left: 20px;}
+      #footer{background-color: #333;}
+    </style>
+</head>
+<body>
+  <div id="header">header</div>
+  <div id="nav">nav</div>
+  <div id="content">
+    <div class="aside">aside</div>
+    <div class="main">main</div>
+  </div>
+  <div id="footer">footer</div>
+  <script type="text/javascript">
+    var $cur = $('#nav'),
+        curH = $cur.height(),
+        curW = $cur.width(),
+        offsetTop = $cur.offset().top,
+        offsetLeft = $cur.offset().left;
+
+    var $curClone = $cur.clone().css({visibility:'hidden',display:'none'}).insertBefore($cur);
+
+    $(window).on('scroll', function(){
+      var scrollTop = $(this).scrollTop();
+
+      if (scrollTop >= offsetTop) {
+        if (!isFixed()) {
+          setFixed();
+        }
+      } else {
+        if(isFixed()){
+          unsetFixed();
+        }
+      }
+    });
+    function isFixed(){
+      return $cur.data('data-fixed');
+    }
+    function setFixed(){
+      $cur.data('data-fixed', true)
+          .css({
+            'position':'fixed',
+            'top':0,
+            'left':offsetLeft,
+            'width':curW,
+            'margin':0,
+            'index':9999
+          });
+      $curClone.show();
+    }
+    function unsetFixed(){
+      $cur.data('data-fixed', false)
+          .removeAttr('style');
+      $curClone.hide();
+    }
+  </script>
+</body>
+</html>
