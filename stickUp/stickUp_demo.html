@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="stickUp.min.js" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+      body,ul,li,a{padding:0;margin:0;}
+      #header{height:40px;background-color:red;line-height:40px;text-align:center;}
+      #nav{height:40px;background-color:rgb(66,133,244);margin-top:10px;width:900px;line-height:40px;border-radius:4px;}
+      #content{background-color:#ccc;min-height:800px;padding:10px;overflow:auto;}
+      #content .aside{float:left;background-color:green;width:100px;min-height:400px;}
+      #content .main{background-color:#fff;min-height:800px;overflow:auto;float:right;width:780px;}
+      #footer{background-color:#333;}
+      .ct{margin-top:20px;}
+      .wrap{width:900px;margin:0 auto;}
+      .clear:after{content:'';display:block;clear:both;}
+      .menuItem{color:#fff;background-color:rgb(12,108,169);}
+      a{text-decoration:none;}
+      ul,li{list-style:none;}
+      #nav li{float:left;}
+      #nav li a{padding: 1px 20px;color:#fff;}
+      #nav li a:hover{color:blue;}
+    </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="header">header</div>
+    <div id="nav" class="nav">
+      <ul class="clear">
+        <li><a href="#aside1">aside1</a></li>
+        <li><a href="#aside2">aside2</a></li>
+        <li><a href="#aside3">aside3</a></li>
+        <li><a href="#aside4">aside4</a></li>
+        <li><a href="#aside5">aside5</a></li>
+        <li><a href="#aside6">aside6</a></li>
+        <li><a href="#aside7">aside7</a></li>
+      </ul>
+    </div>
+    <div id="content">
+
+        <div class="ct clear">
+          <div id="aside1" class="aside">aside1</div>
+          <div class="main main1">main1</div>
+        </div>
+        <div class="ct clear">
+          <div id="aside2" class="aside">aside2</div>
+          <div class="main main2">main2</div>
+        </div>
+        <div class="ct clear">
+          <div id="aside3" class="aside">aside3</div>
+          <div class="main main3">main3</div>
+        </div>
+        <div class="ct clear">
+          <div id="aside4" class="aside">aside4</div>
+          <div class="main main4">main4</div>
+        </div>
+        <div class="ct clear">
+          <div id="aside5" class="aside">aside5</div>
+          <div class="main main5">main5</div>
+        </div>
+        <div class="ct clear">
+          <div id="aside6" class="aside">aside6</div>
+          <div class="main main6">main6</div>
+        </div>
+        <div class="ct clear">
+          <div id="aside7" class="aside">aside7</div>
+          <div class="main main7">main7</div>
+        </div>
+
+    </div>
+    <div id="footer">footer</div>
+  </div>
+
+  <script type="text/javascript">
+               //initiating jQuery
+jQuery(function($) {
+   $(document).ready( function() {
+   //为 '.navbar-wrapper' class 启用stickUp插件
+     $('#nav').stickUp({
+       parts: {
+       0:'aside1',
+       1:'aside2',
+       2:'aside3',
+       3:'aside4',
+       4:'aside5',
+       5:'aside6',
+       6:'aside7',
+       },
+       itemClass: 'menuItem',
+       itemHover: 'active'
+     });
+   });
+});
+
+  $('#nav a').on('click',function(){
+    $(this).parent('li').addClass('menuItem')
+          .siblings().removeClass('menuItem');
+  })
+  </script>
+</body>
+</html>
