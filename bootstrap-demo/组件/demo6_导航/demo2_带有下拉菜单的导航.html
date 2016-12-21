@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>带有下拉菜单的导航</title>
+<!--Bootstrap css-->
+<link rel="stylesheet" href="../css/bootstrap.min.css" media="screen">
+<!--jquery-->
+<script src="../js/jquery.min.js"></script>
+<!--Bootstrap-->
+<script src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+<p>带有下拉菜单的标签</p>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">SVN</a></li>
+  <li><a href="#">IOS</a></li>
+  <li><a href="#">VB.net</a></li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    Java
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Swing</a></li>
+      <li><a href="#">jMeter</a></li>
+      <li><a href="#">EJB</a></li>
+      <li class="divider"></li>
+      <li><a href="#">分离的链接</a></li>
+    </ul>
+  </li>
+  <li><a href="#">PHP</a></li>
+</ul>
+<p>带有下拉菜单的胶囊</p>
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">SVN</a></li>
+  <li><a href="#">IOS</a></li>
+  <li><a href="#">VB.net</a></li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Java
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Swing</a></li>
+      <li><a href="#">jMeter</a></li>
+      <li><a href="#">EJB</a></li>
+      <li class="divider"></li>
+      <li><a href="#">分离的链接</a></li>
+    </ul>
+  </li>
+  <li><a href="#">PHP</a></li>
+</ul>
+</body>
+</html>
