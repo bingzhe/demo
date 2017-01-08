@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>嵌套移动三列等高</title>
+    <style media="screen">
+      .container{
+        width: 620px;
+        margin: 0 auto;
+      }
+      .wrap{
+        width: 100%;
+        float: right;
+        position: relative;
+      }
+      .right-wrap{
+        overflow: hidden;
+        background: green;
+      }
+      .content-wrap{
+        right: 120px;
+        background: orange;
+      }
+      .left-wrap{
+        right: 300px;
+        background: blue;
+      }
+      .item{
+        float: left;
+        overflow: hidden;
+        position: relative;
+        left: 420px;
+      }
+      .left{
+        width: 200px;
+      }
+      .content{
+        width: 300px;
+      }
+      .right{
+        width: 120px;
+      }
+      /*三层嵌套，右移，作为背景，子元素左移，最高的撑开高度，
+      因为有嵌套做背景，所以看以来一样高*/
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="right-wrap wrap">
+        <div class="content-wrap wrap">
+          <div class="left-wrap wrap">
+            <div class="left item">
+              1 <br>
+              2
+            </div>
+            <div class="content item">
+              aaa
+            </div>
+            <div class="right item">
+              3 <br>
+              2 <br>
+              2 <br>
+              2 <br>
+              2 <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
