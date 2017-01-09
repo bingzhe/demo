@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Examples</title>
+    <style type="text/css" media="screen">
+      h1{
+        color: red;
+      }
+      .box h1{
+        background-color: yellow;
+      }
+      .box>h1{
+        font-size:20px;
+      }
+      .box{
+        border: 1px solid #ccc;
+      }
+      .box   .content{
+        border: 1px solid black;
+      }
+      .button{
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: green;
+        padding: 0 10px;
+        color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      a.button{
+        text-decoration: none;
+      }
+      .button:hover{
+        opacity: 0.7;
+        color: black;
+      }
+      .button:active{
+        opacity: 0.4;
+      }
+      .box > h1:nth-of-type(3){
+        font-size: 40px;
+      }
+    </style>
+</head>
+
+<body>
+  <h1>我是大标题</h1>
+  <div class="box">
+    <h1>我也是大标题</h1>
+    <div class="content">
+      <h1>我也是</h1>
+    </div>
+    <h1>我并没有变</h1>
+    <h1>我并没有变</h1>
+    <h1>我并没有变</h1>
+    <h1>我并没有变</h1>
+  </div>
+ <div class="button">
+   确定
+ </div>
+ <input type="text" style="outline:none;" value="">
+ <a class="button" href="#">确定</a>
+ <a class="button" href="#">ok</a>
+</body>
+
+</html>
