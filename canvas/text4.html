@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="canvas1" width="600" height="400"></canvas>
+
+    <script type="text/javascript">
+    var canvas1 = document.getElementById('canvas1');
+    if (canvas1.getContext) {
+      var ctx1 = canvas1.getContext('2d');
+    }
+
+    var posX = 20,
+        posY = 100,
+        vx = 10,
+        vy = -10,
+        gravity = 1;
+
+    setInterval(function(){
+      ctx1.fillStyle = 'black';
+      ctx1.fillRect(0, 0, canvas1.width, canvas1.height);
+
+      posX += vx;
+      posY += vy;
+      vy += gravity;
+
+      ctx1.beginPath();
+      ctx1.fillStyle = 'white';
+
+      ctx1.arc(posX, posY, 10, 0, Math.PI*2, true);
+      ctx1.closePath();
+      ctx1.fill();
+    }, 30);
+    </script>
+  </body>
+</html>

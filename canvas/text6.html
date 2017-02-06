@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+  var image = new Image();
+
+  image.onload = function(){
+    var canvas = document.createElement('canvas');
+    canvas.width = image.width;
+    canvas.height = image.height;
+    canvas.getContext('2d').drawImage(image, 0, 0);
+    document.body.appendChild(canvas);
+    return canvas;
+  }
+
+  image.src = '7.jpg';
+
+  var canvas = document.getElementsByTagName('canvas');
+  if (canvas.getContext) {
+    var context = canvas.getContext('2d');
+  }
+
+if (canvas.width > 0 && canvas.height > 0) {
+  var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+  grayscale(imageData);
+  context.putImageData(imageData, 0, 0);
+}
+
+//灰度效果
+  grayscale = function(pixels){
+    var d = pixels.data;
+    for (var i = 0; i < d.length; i+=4) {
+      var r = d[i];
+      var g = d[i+1];
+      var b = d[i+2];
+      d[i] = d[i+1] = d[i+2] = (r+g+b)/3;
+    }
+    return pixels;
+  }
+</script>
+</body>
+</html>

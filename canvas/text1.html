@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="200">您的浏览器不支持canvas!</canvas>
+    <canvas id="myCanvas1" width="400" height="200">您的浏览器不支持canvas!</canvas>
+    <canvas id="myCanvas2" width="400" height="200">您的浏览器不支持canvas!</canvas>
+    <canvas id="myCanvas3" width="400" height="200">您的浏览器不支持canvas!</canvas>
+    <canvas id="myCanvas4" width="400" height="200">您的浏览器不支持canvas!</canvas>
+    <script type="text/javascript">
+      var canvas = document.getElementById('myCanvas');
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+      }
+      var canvas1 = document.getElementById('myCanvas1');
+      if (canvas1.getContext) {
+        var ctx1 = canvas1.getContext('2d');
+      }
+      var canvas2 = document.getElementById('myCanvas2');
+      if (canvas2.getContext) {
+        var ctx2 = canvas2.getContext('2d');
+      }
+      var canvas3 = document.getElementById('myCanvas3');
+      if (canvas3.getContext) {
+        var ctx3 = canvas3.getContext('2d');
+      }
+      var canvas4 = document.getElementById('myCanvas4');
+      if (canvas4.getContext) {
+        var ctx4 = canvas4.getContext('2d');
+      }
+      //绘制路径
+      ctx.beginPath();
+      ctx.moveTo(20, 20);
+      ctx.lineTo(200, 20);
+      ctx.lineTo(200, 80);
+      ctx.closePath();
+      ctx.lineWidth = 1.0;
+      ctx.strokeStyle = '#cc0000';
+      ctx.stroke();
+
+      //绘制矩形
+      ctx1.fillStyle = "yellow";
+      ctx1.fillRect(20, 20, 150, 100);
+      //空心矩形
+      ctx1.strokeStyle = "blue";
+      ctx1.strokeRect(200, 20, 150, 100);
+      //清楚某个句型区域
+      ctx1.clearRect(100, 30, 150, 100);
+
+      //绘制文本
+      ctx2.font = 'Bold 20px Arial';
+      ctx2.textAlign = 'left';
+      ctx2.fillStyle = '#008600';
+      ctx2.fillText('hello', 10, 50);
+      ctx2.strokeStyle = 'blue';
+      ctx2.strokeText('hello', 10, 100);
+
+      //绘制扇形和圆形
+      ctx2.beginPath();
+      ctx2.arc(100, 50, 40, 0, Math.PI*2, true);
+      ctx2.lineWidth = 1.0;
+      ctx2.strokeStyle = 'red';
+      ctx2.stroke();
+      ctx2.beginPath();
+      ctx2.arc(200, 50, 40, 0, Math.PI*2, true);
+      ctx2.fillStyle = 'green';
+      ctx2.fill();
+      ctx2.beginPath();
+      ctx2.arc(300, 50, 40, 0, Math.PI*0.5, true);
+      ctx2.fillStyle = 'green';
+      ctx2.fill();
+      ctx2.beginPath();
+      ctx2.arc(350, 50, 40, 0, Math.PI*0.5, false);
+      ctx2.fillStyle = 'green';
+      ctx2.fill();
+
+      //渐变
+      var myGradient = ctx3.createLinearGradient(0, 0, 100, 150);
+      myGradient.addColorStop(0, "red");
+      myGradient.addColorStop(1, "white");
+
+      ctx3.fillStyle = myGradient;
+      ctx3.fillRect(10, 10, 150, 100);
+      //圆渐变
+
+      var grd = ctx3.createRadialGradient(300, 100, 5, 250, 110, 100);
+      grd.addColorStop(0, 'red');
+      grd.addColorStop(1, 'blue');
+
+      ctx3.fillStyle = grd;
+      ctx3.fillRect(210, 50, 200, 100);
+
+      //阴影
+      ctx4.shadowOffsetX = 10;
+      ctx4.shadowOffsetY = 10;
+      ctx4.shadowBlur = 5;
+      ctx4.shadowColor =  "rgba(0, 0, 0, 0.5)";
+
+      ctx4.fillStyle = '#cc0000';
+      ctx4.fillRect(10, 10, 200, 100);
+    </script>
+  </body>
+</html>
