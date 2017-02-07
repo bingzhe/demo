@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>刮刮乐</title>
+<style type="text/css">
+  .mapBox{
+    border: 1px solid #000;
+    width: 400px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    cursor: default;
+    margin: 0 auto;
+  }
+  .mapBox canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+</style>
+</head>
+<body>
+  <div id="mapBox" class="mapBox">
+    <label></label>
+    <canvas id="map" width="400" height="200">您的浏览器不支持canvas!</canvas>
+  </div>
+<script type="text/javascript">
+  var loaded = function(){
+    var canvas = document.getElementById('map');
+    if (canvas.getContext) {
+      var context = canvas.getContext('2d');
+    }
+    var mousedown = false;
+    //底码
+    var code = Math.ceil(Math.random()*2000);
+    //绘制遮罩
+    function drawMask(){
+      context.save();
+      context.fillStyle = "#a3a3a3";
+      context.fillRect(0,0,canvas.width,canvas.height);
+      context.lineWidth = 5;
+      context.strokeStyle = "#fff";
+      context.strokeRect(0,0,canvas.width,canvas.height);
+      context.restore();
+      context.fillStyle = "#fff";
+      context.font = "italic 30px sans-serif";
+      context.textBaseline = 'middle';
+      context.textAlign = 'center';
+      context.fillText("刮刮乐", canvas.width/2, canvas.height/2);
+      context.restore();
+    }
+    //绘制涂抹
+    function drawClip(x, y){
+      context.save();
+      //组合方式
+      context.globalCompositeOperation = "destination-out";
+      context.beginPath();
+      context.fillStyle = 'red';
+      context.arc(x, y, 30, 0, Math.PI*2, false);
+      context.fill();
+      context.restore();
+    }
+    function canvasMouseDown(event){
+      mousedown = true;
+    }
+    function canvasMouseUp(event){
+      mousedown = false;
+    }
+    function canvasMouseMove(event){
+      if (mousedown) {
+        drawClip(event.offsetX, event.offsetY);
+      }
+    }
+    function canvasTouchMove(event){
+      if (event.targetTouches.length == 1) {
+        event.preventDefault();
+        var touch = event.targetTouches[0];
+        //把元素放在手指的位置
+        drawClip(touch.clientX-mapbox.offsetLeft, touch.clientY-mapbox.offsetTop);
+      }
+    }
+    canvas.addEventListener("mousedown", canvasMouseDown, false);
+    canvas.addEventListener("mouseup", canvasMouseUp, false);
+    canvas.addEventListener("mousemove", canvasMouseMove, false);
+    canvas.addEventListener("touchstart", canvasMouseDown, false);
+    canvas.addEventListener("touchend", canvasMouseUp, false);
+    canvas.addEventListener("touchmove", canvasTouchMove, false);
+    drawMask();
+    var mapbox = document.getElementById("mapBox");
+
+    //mapbox.style.color = "#000";
+    mapbox.getElementsByTagName("label")[0].innerText="奖号："+code;
+  };
+  window.addEventListener("load", loaded, false);
+</script>
+</body>
+</html>
