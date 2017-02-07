@@ -5,31 +5,29 @@
   <title></title>
 </head>
 <body>
-
+<canvas id="myCanvas"></canvas>
 <script type="text/javascript">
-  var image = new Image();
-
-  image.onload = function(){
-    var canvas = document.createElement('canvas');
-    canvas.width = image.width;
-    canvas.height = image.height;
-    canvas.getContext('2d').drawImage(image, 0, 0);
-    document.body.appendChild(canvas);
-    return canvas;
+  var canvas = document.getElementById('myCanvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
   }
 
+  var image = new Image();
   image.src = '7.jpg';
 
-  var canvas = document.getElementsByTagName('canvas');
-  if (canvas.getContext) {
-    var context = canvas.getContext('2d');
-  }
 
-if (canvas.width > 0 && canvas.height > 0) {
-  var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-  grayscale(imageData);
-  context.putImageData(imageData, 0, 0);
-}
+  image.onload = function(){
+    canvas.width = image.width;
+    canvas.height = image.height;
+    ctx.drawImage(image, 0, 0);
+
+    if (canvas.width > 0 && canvas.height > 0) {
+      var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      grayscale(imageData);
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+  }
 
 //灰度效果
   grayscale = function(pixels){
