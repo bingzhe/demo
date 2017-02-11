@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>列表渲染</title>
+  <script src="https://unpkg.com/vue/dist/vue.js" charset="utf-8"></script>
+</head>
+<body>
+  <ul id="example-1">
+    <li v-for="item in items">
+      {{ item.message }}
+    </li>
+  </ul>
+
+  <ul id="example-2">
+    <li v-for="(item, index) in items">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+  </ul>
+  <!--<template>标签渲染多个模块-->
+  <ul id="example-3">
+    <template v-for="item in items">
+      <li>{{ item.message}}</li>
+      <li class="divider"></li>
+    </template>
+  </ul>
+  <script type="text/javascript">
+    var example1 = new Vue({
+      el: "#example-1",
+      data: {
+        items: [
+          {message: 'for'},
+          {message: 'bar'}
+        ]
+      }
+    })
+
+    var example2 = new Vue({
+      el: '#example-2',
+      data: {
+        parentMessage: 'parent',
+        items: [
+          {message: 'bar'},
+          {message: 'for'}
+        ]
+
+      }
+
+    })
+
+  </script>
+</body>
+</html>
