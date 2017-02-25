@@ -22,7 +22,7 @@
       <!--标题栏-->
       <div class="title panel-handle">
         <p class="song-name"></p>
-        <p class="songer"></p>
+        <p class="singer"></p>
       </div>
       <!--频道栏-->
       <div class="channels">
@@ -90,14 +90,19 @@
     </div>
   </div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/panelctrl.js"></script>
-
-
+  <script src="js/jquery.min.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/draggabilly.js"></script>
+  <script src="js/panelctrl.js"></script>
+  <script src="js/Progress.js"></script>
 
     <script>
 //      getMusic
         new GetMusic($('.panel'));
+//      拖动
+        new PanelCtrl($('#fm'));
+//      播放进度
+        new Progress($('.progress'));
     </script>
 </body>
 </html>
