@@ -27,7 +27,7 @@ GetMusic.prototype.init = function(){
     this.$lyricBtn = this.$ct.find('.lyric-btn');
     this.channelId = 'pubkic_tuijian_spring';
     this.Song = {};
-    this.currentTimeSec = 0;
+    this.currentTiemSec = 0;
     this.lyricTimeArr = [];
     this.islyricShow = false;
     this.letsPlay = false;
@@ -250,13 +250,18 @@ GetMusic.prototype.lyricReset = function(sidstr){
 GetMusic.prototype.lyricFormat = function(str){
   var html = '';
     var lyricArr = str.split('\n');
+    var pattern = /^\[\d{2}\:\d{2}\.\d{2}\]/;
     for(var i= 0; i<lyricArr.length;i++){
-        var lyric = lyricArr[i].slice(10, 50);
-        if(!lyric){
-            lyric = '-';
+        if(pattern.test(lyricArr[i])){
+            var lyric = lyricArr[i].slice(10, 48);
+
+            if(!lyric){
+                lyric = '-';
+            }
+            // html += '<p class=' + '\"lyric' + i +'\">' + lyric + '</p>';
+            html += '<p class="lyric' + i + '">' + lyric + '</p>';
+            this.lyricTimeFormat(lyricArr[i]);
         }
-        html += '<p class=' + '\"lyric' + i +'\">' + lyric + '</p>';
-        this.lyricTimeFormat(lyricArr[i]);
     }
     this.$lyricBox.append(html);
 };
@@ -270,9 +275,9 @@ GetMusic.prototype.lyricTimeFormat = function(str){
 GetMusic.prototype.timeUpdate = function(){
     var _this = this;
     this.$audio.on('timeupdate', function(){
-        if(_this.currentTimeSec != Math.round(_this.audio.currentTime)){
-            _this.currentTimeSec = Math.round(_this.audio.currentTime);
-            _this.lyricBoxMove(_this.currentTimeSec);
+        if(_this.currentTiemSec != Math.round(_this.audio.currentTime)){
+            _this.currentTiemSec = Math.round(_this.audio.currentTime);
+            _this.lyricBoxMove(_this.currentTiemSec);
         }
     });
 };
