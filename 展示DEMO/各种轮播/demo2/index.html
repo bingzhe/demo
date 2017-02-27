@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>轮播</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../js/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="btn-ct">
+      <h2>多种轮播效果</h2>
+      <button type="button" class="btn">淡入淡出</button>
+      <button type="button" class="btn">滚动轮播</button>
+      <button type="button" class="btn">无缝滚动</button>
+      <button type="button" class="btn">推拉门切换</button>
+    </div>
+    <div class="v_show">
+      <div class="v_caption">
+        <h2 class="cartoon" title="卡通动漫">卡通动漫</h2>
+        <div class="highlight_tip">
+          <span class="current">1</span><span>2</span><span>3</span><span>4</span>
+        </div>
+        <div class="change_btn">
+          <span class="prev">上一页</span>
+          <span class="next">下一页</span>
+        </div>
+        <em><a href="#">更多>></a></em>
+      </div>
+
+      <div class="v_content">
+          <ul class="v_content_list clearfix">
+            <li><ul><li><a href="#"><img src="img/01.jpg" alt="海贼王" /></a></li><li><a href="#">海贼王</a></li><li>播放：<em>28,276</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/01.jpg" alt="海贼王" /></a></li><li><a href="#">海贼王</a></li><li>播放：<em>28,276</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/01.jpg" alt="海贼王" /></a></li><li><a href="#">海贼王</a></li><li>播放：<em>28,276</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/01.jpg" alt="海贼王" /></a></li><li><a href="#">海贼王</a></li><li>播放：<em>28,276</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/02.jpg" alt="哆啦A梦" /></a></li><li><a href="#">哆啦A梦</a></li><li>播放：<em>33,326</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/02.jpg" alt="哆啦A梦" /></a></li><li><a href="#">哆啦A梦</a></li><li>播放：<em>33,326</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/02.jpg" alt="哆啦A梦" /></a></li><li><a href="#">哆啦A梦</a></li><li>播放：<em>33,326</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/02.jpg" alt="哆啦A梦" /></a></li><li><a href="#">哆啦A梦</a></li><li>播放：<em>33,326</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/03.jpg" alt="火影忍者" /></a></li><li><a href="#">火影忍者</a></li><li>播放：<em>55,432</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/03.jpg" alt="火影忍者" /></a></li><li><a href="#">火影忍者</a></li><li>播放：<em>55,432</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/03.jpg" alt="火影忍者" /></a></li><li><a href="#">火影忍者</a></li><li>播放：<em>55,432</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/03.jpg" alt="火影忍者" /></a></li><li><a href="#">火影忍者</a></li><li>播放：<em>55,432</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/04.jpg" alt="七龙珠" /></a></li><li><a href="#">七龙珠</a></li><li>播放：<em>35,264</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/04.jpg" alt="七龙珠" /></a></li><li><a href="#">七龙珠</a></li><li>播放：<em>35,264</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/04.jpg" alt="七龙珠" /></a></li><li><a href="#">七龙珠</a></li><li>播放：<em>35,264</em></li></ul></li>
+            <li><ul><li><a href="#"><img src="img/04.jpg" alt="七龙珠" /></a></li><li><a href="#">七龙珠</a></li><li>播放：<em>35,264</em></li></ul></li>
+          </ul>
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      var page = 1;
+      var i = 4;                                                       //每版4张图片
+      //向后
+      $(".next").on("click", function(){                               //绑定事件
+        var $parent = $(this).parents("div.v_show");                   //根据当前单击的元素找到父元素
+        var $v_show = $parent.find("ul.v_content_list");               //找到图片内容展示区域
+        var $v_content = $v_show.parent("div.v_content");              //找到图片内容展示区域外围的div
+
+        var v_width = $v_content.width();
+        var len = $v_show.children().length;                            //展示图片的个数
+        var page_count = Math.ceil(len/i);                              //不是整数往最大的方向取最小的整数
+
+
+        if (!$v_show.is(":animated")) {                                  //判断是不是处于动画
+          if (page == page_count) {
+
+            $v_show.animate({left:'0px'}, "normal");                      //最后一个版面，跳转到第一个版面
+            page = 1;
+          } else {
+            $v_show.animate({left:'-='+v_width}, "normal");               //动画换版面
+            page++;
+          }
+
+          $parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+
+        }
+
+      })
+      //向前
+      $(".prev").on("click", function(){                               //绑定事件
+        var $parent = $(this).parents("div.v_show");                   //根据当前单击的元素找到父元素
+        var $v_show = $parent.find("ul.v_content_list");               //找到图片内容展示区域
+        var $v_content = $v_show.parent("div.v_content");              //找到图片内容展示区域外围的div
+
+        var v_width = $v_content.width();
+        var len = $v_show.children().length;                            //展示图片的个数
+        var page_count = Math.ceil(len/i);                              //不是整数往最大的方向取最小的整数
+
+
+        if (!$v_show.is(":animated")) {                                  //判断是不是处于动画
+          if (page == 1) {
+
+            $v_show.animate({left:'-='+v_width*(page_count-1)}, "normal");                      //最后一个版面，跳转到第一个版面
+            page = page_count;
+          } else {
+            $v_show.animate({left:'+='+v_width}, "normal");               //动画换版面
+            page--;
+          }
+
+          $parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+
+        }
+
+      })
+      document.getElementsByClassName('btn')[0].addEventListener('click', function(){
+        window.location.href = '../demo1/index.html';
+      }, false);
+      document.getElementsByClassName('btn')[1].addEventListener('click', function(){
+        window.location.href = './index.html';
+      }, false);
+      document.getElementsByClassName('btn')[2].addEventListener('click', function(){
+        window.location.href = '../demo3/index.html';
+      }, false);
+      document.getElementsByClassName('btn')[3].addEventListener('click', function(){
+        window.location.href = '../demo4/index.html';
+      }, false);
+    </script>
+  </body>
+</html>
