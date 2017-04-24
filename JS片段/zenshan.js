@@ -69,3 +69,12 @@ function addTransportNum(obj) {
 function deletTransportNum(obj) {
     $(obj).parent().parent().remove();
 }
+
+/***********/
+function addTransportNum(obj) {
+    if ($("#inlineRadioSupplier").prop("checked")) {
+        addTransportNum1(obj);
+    } else {
+        addTransportNum2(obj);
+    }
+}
