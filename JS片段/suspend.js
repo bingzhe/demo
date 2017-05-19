@@ -55,3 +55,18 @@ function fixedHead(ele, pro) {
         })
     }
 }
+
+
+function skuListFixedHead() {
+    $("#skuListTable").parents('fixed-table-container').css({
+        'position': 'relative'
+    })
+    var $headclone = $("#skuListTable").find('thead').clone();
+    $headclone.css({
+        'position': 'absolute',
+        'top': 0,
+        'left': 0,
+        'width': '100%'
+    })
+    $("#skuListTable").append($headclone);
+}
