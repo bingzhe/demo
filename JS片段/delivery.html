@@ -2,6 +2,10 @@
 <html>
 
 <head>
+<<<<<<< HEAD
+=======
+    <!--部分发货订单-->
+>>>>>>> 6ce73d9714eed57cda028ccf85763cfe3ecebcab
     <style>
         * {
             margin: 0px;
@@ -9,6 +13,7 @@
             font-size: 12px;
             font-family: Arial-Regular, Arial, Helvetica, sans-serif;
         }
+<<<<<<< HEAD
         /*a {
             text-decoration: none;
         }*/
@@ -62,6 +67,114 @@
         /*.sendPeople p:last-child {
             padding-bottom: 34px;
         }*/
+=======
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .information {
+            width: 593px;
+            margin: 0 auto;
+        }
+        
+        .information>div {
+            padding: 31px 20px 20px 20px;
+            line-height: 16px;
+        }
+        
+        .information span {
+            font-weight: bold;
+        }
+        
+        .information p:first-child {
+            padding-bottom: 31px;
+        }
+        
+        .information p:nth-child(2) {
+            padding-bottom: 31px;
+        }
+        
+        .item {
+            width: 593px;
+            margin: 0 auto;
+        }
+        
+        .table tbody td {
+            height: 90px;
+            text-align: center;
+        }
+        
+        .table thead th {
+            width: 90px;
+        }
+        /*.table {
+            border: 1px solid #ccc;
+        }*/
+        
+        .table thead th {
+            padding: 7px 0;
+            color: #fff;
+            background-color: #000;
+        }
+        
+        .table {
+            border-bottom: 1px solid rgb(193, 193, 193);
+        }
+        
+        .table tbody td {
+            border-bottom: 1px solid rgb(193, 193, 193);
+        }
+        /*.totalInfo {
+            border-bottom: 1px solid rgb(193, 193, 193);
+            width: 593px;
+            height: 123px;
+            margin: 0 auto;
+        }*/
+        
+        .totalInfo {
+            margin-left: 454px;
+        }
+        
+        .totalInfo p:first-child {
+            padding-top: 19px;
+        }
+        
+        .totalInfo p:nth-child(2) {
+            padding: 12px 0;
+        }
+        
+        .totalInfo p:last-child {
+            padding: 22px 0;
+            font-weight: bold;
+        }
+        
+        .boxboder {
+            border-bottom: 1px solid rgb(193, 193, 193);
+            width: 593px;
+            margin: 0 auto;
+        }
+        
+        .notice {
+            font-size: 10px;
+            width: 593px;
+            margin: 0 auto;
+        }
+        
+        .notice>div {
+            padding: 23px 20px 37px 20px;
+            line-height: 16.5px;
+        }
+        
+        .notice p:first-child {
+            padding-bottom: 31px;
+        }
+        
+        .notice span {
+            font-weight: bold;
+        }
+>>>>>>> 6ce73d9714eed57cda028ccf85763cfe3ecebcab
     </style>
 </head>
 <title>Password Recover from Bellelily.com</title>
@@ -99,9 +212,85 @@
         </div>
         <!--信件文本-->
         <div class="information">
+<<<<<<< HEAD
             <p>Dear customer:</p>
             <p>Good news, part of your order on Bellelily has been shipped. Rest of the items will be shipped as soon as possible.</p>
             
+=======
+            <div>
+                <p><span>Dear customer:</span></p>
+                <p>Good news, part of your order on Bellelily has been shipped. Rest of the items will be shipped as soon as possible.</p>
+                <p><span>Order Number:</span>{$order.order_sn}</p>
+                <p><span>Shipping Date:</span>{$send_date}</p>
+                <p><span>Status</span>Shipped</p>
+                <p><span>Shipping Method:</span>{$order.shipping_name}</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <table class="table" rules="rows">
+                <thead>
+                    <tr>
+                        <th>Items</th>
+                        <th>Picture</th>
+                        <th>Info</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Faith Over Fear Arrow T-Shirt</td>
+                        <td><img src="" alt=""></td>
+                        <td>
+                            <ul>
+                                <li>Item #: 116546</li>
+                                <li>Size: XL</li>
+                                <li>Color: Burgundy</li>
+                            </ul>
+                        </td>
+                        <td>9.29</td>
+                        <td>1</td>
+                        <td>9.29</td>
+                    </tr>
+                    <tr>
+                        <td>But Did You Die Tank</td>
+                        <td><img src="" alt=""></td>
+                        <td>
+                            <ul>
+                                <li>Item #: 118319</li>
+                                <li>Size: XL</li>
+                                <li>Color: Light Grey</li>
+                            </ul>
+                        </td>
+                        <td>10.59</td>
+                        <td>1</td>
+                        <td>10.59</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--总价信息-->
+        <div class="totalInfo">
+            <p>Subtotal:</p>
+            <p>Shipping Fee:</p>
+            <p>Coupon:</p>
+            <p>Total:</p>
+        </div>
+        <div class="boxboder"></div>
+        <div></div>
+        <div class="notice">
+            <div>
+                <p>
+                    <span>How To Track</span>: Please
+                    <a href="http://www.bellelily.com/track_your_order.htm">click here</a> to see how to track with tracking No.But If you choose the free shipping method, your package can not be tracked with the tracking Number.
+                </p>
+                <p><span>Notice</span>: Tracking info will be updated in 1-3 business days from the shipping date.</p>
+                <p>If there is any question or suggestion, please contact our
+                    <a href="http://www.bellelily.com/user/help/index">customer service</a>, we will reply you soon. This email message was sent from a notification-only email address that cannot accept incoming email.</p>
+            </div>
+>>>>>>> 6ce73d9714eed57cda028ccf85763cfe3ecebcab
         </div>
         <div class="footer" style="width: 100%; background-color:#eaeaea;">
             <div class="cotyright" style="padding: 23px 0 19px 0; text-align:center;">Copyright © 2012-2017 Fairyseason.com. All Rights Reserved.</div>
