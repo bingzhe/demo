@@ -78,3 +78,14 @@ function addTransportNum(obj) {
         addTransportNum2(obj);
     }
 }
+
+/*************** */
+                function commentResponse(result){
+                    if (result.message){
+                        alert(result.message);
+                    }
+                    $("#msgbox .tipB .cancelBtn").one('click', function(){
+                        window.location.reload();
+                    });
+                    
+                }
