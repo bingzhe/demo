@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+    <style>
+        .box {
+            margin: 16px;
+            padding: 4px;
+            background-color: #e7e7e7;
+            width: 104px;
+            height: 104px;
+            box-shadow: inset 0 5px white, inset 0 -5px #bbb, inset 5px 0 #d7d7d7, inset -5px 0 #d7d7d7;
+            border-radius: 10%;
+        }
+
+        .item {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin: 4px;
+            background-color: #333;
+            box-shadow: inset 0 3px #111, inset 0 -3px #555;
+        }
+
+        body {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .box1 {
+            display: flex;
+        }
+
+        .box2 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .box3 {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .box4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box5 {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .box6 {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        .box7 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box8 {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box9 {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box10 {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .box11 {
+            display: flex;
+        }
+
+        .box11 .item:nth-child(2) {
+            align-self: center;
+        }
+
+        .box12 {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box12 .item:nth-child(2) {
+            align-self: flex-end;
+        }
+
+        .box13 {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box13 .item:nth-child(2) {
+            align-self: center;
+        }
+
+        .box13 .item:nth-child(3) {
+            align-self: flex-end;
+        }
+
+        .box14 {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">
+        <span class="item"></span>
+    </div>
+    <div class="box box2">
+        <span class="item"></span>
+    </div>
+    <div class="box box3">
+        <span class="item"></span>
+    </div>
+    <div class="box box4">
+        <span class="item"></span>
+    </div>
+    <div class="box box5">
+        <span class="item"></span>
+    </div>
+    <div class="box box6">
+        <span class="item"></span>
+    </div>
+    <div class="box box7">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box box8">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box box9">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box box10">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box box11">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box box12">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box box13">
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box box14">
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box box15">
+        <div class="cloumn">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="cloumn">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+</body>
+
+</html>
