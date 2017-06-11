@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex 圣杯</title>
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .header,
+        .footer {
+            flex-grow: 1;
+            background-color: rgb(102, 102, 102);
+            flex: 0 1 100px;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .HolyGrail-content {
+            flex-grow: 1;
+        }
+
+        .HolyGrail-nav {
+            flex: 0 0 12em;
+            order: -1;
+            background-color: blue;
+        }
+
+        .HolyGrail-ads {
+            flex: 0 0 12em;
+            background-color: blue;
+        }
+
+        @media (max-width: 768px) {
+            .HolyGrail-body {
+                flex-direction: column;
+                flex: 1;
+            }
+            .HolyGrail-nav,
+            .HolyGrail-ads,
+            .HolyGrail-content {
+                flex: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">#header</div>
+    <div class="HolyGrail-body">
+        <main class="HolyGrail-content">#center</main>
+        <nav class="HolyGrail-nav">#left</nav>
+        <aside class="HolyGrail-ads">#right</aside>
+    </div>
+    <div class="footer">#div</div>
+</body>
+
+</html>

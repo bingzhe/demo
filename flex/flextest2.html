@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex</title>
+    <style>
+        .Grid1 {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        .Grid1 .Grid-cell {
+            border: 1px solid #ccc;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .Grid1 .Grid-cell:nth-child(2) {
+            flex: 2;
+        }
+
+        .Grid2 {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        .Grid2 .Grid-cell {
+            border: 1px solid #ccc;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .Grid2 .Grid-cell:nth-child(2) {
+            flex-shrink: 0;
+        }
+
+        .Grid3 {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        .Grid3 .Grid-cell {
+            border: 1px solid #ccc;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .u-1of {
+            flex: 0 0 50%;
+        }
+
+        .u-1of1 {
+            flex: 0 0 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Grid1">
+        <div class="Grid-cell">11111111111</div>
+        <div class="Grid-cell">1111111111111</div>
+        <div class="Grid-cell">11111111111</div>
+    </div>
+    <div class="Grid2">
+        <div class="Grid-cell">11111111111</div>
+        <div class="Grid-cell">1111111111111</div>
+        <div class="Grid-cell">11111111111</div>
+    </div>
+    <div class="Grid3">
+        <div class="Grid-cell u-1of">11111111111</div>
+        <div class="Grid-cell">1111111111111</div>
+        <div class="Grid-cell">11111111111</div>
+    </div>
+        <div class="Grid3">
+        <div class="Grid-cell u-1of1">11111111111</div>
+        <div class="Grid-cell">1111111111111</div>
+        <div class="Grid-cell">11111111111</div>
+        <div class="Grid-cell u-1of">11111111111</div>
+    </div>
+</body>
+
+</html>
