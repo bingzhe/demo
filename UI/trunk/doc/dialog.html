@@ -1,0 +1,296 @@
+<h1 class="flyer-layout-titleBig">弹框组件文档</h1>
+<div class="flyer-element-tips">
+    <p>模块加载名称：flyer-ui-dialog
+    </p>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>使用说明</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>
+            flyer 弹框组件目前根据分为(1、提示框 2、确认框 3、消息框（轻量级）4、modal框),等稳定后也会收集建议完善并增加更多的出来。
+        </p>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>属性使用说明</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <table class="flyer-table">
+            <colgroup>
+                <col width="140">
+                <col width="140">
+                <col width="180">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>键</th>
+                    <th>默认值</th>
+                    <th>类型</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>空</td>
+                    <td>String</td>
+                    <td>
+                        显示的标题,默认值为"",如果设置值为空则不显示标题部分.
+                    </td>
+                </tr>
+                <tr>
+                    <td>content</td>
+                    <td>空</td>
+                    <td>String / DOM</td>
+                    <td>
+                        显示的内容，可以是文本型的也可以是DOM的加载
+                    </td>
+                </tr>
+                <tr>
+                    <td>isMove</td>
+                    <td>true</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否可以移动
+                    </td>
+                </tr>
+                <tr>
+                    <td>timer</td>
+                    <td>2000</td>
+                    <td>Int</td>
+                    <td>
+                        计时器，这里一般用于定时关闭
+                    </td>
+                </tr>
+                <tr>
+                    <td>offset</td>
+                    <td>auto</td>
+                    <td>String / Array</td>
+                    <td>
+                        弹层的位置定位，可以是文本型，也可以是数据值，数组类型索引值0为X坐标值，索引值1为Y坐标值，多写忽略，也就是只取前两值
+                    </td>
+                </tr>
+                <tr>
+                    <td>timer</td>
+                    <td>4000</td>
+                    <td>Int</td>
+                    <td>
+                        计时器，这里一般用于定时关闭(用于轻量级提示框)
+                    </td>
+                </tr>
+                <tr>
+                    <td>fixed</td>
+                    <td>true</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否固定显示在可视区域
+                    </td>
+                </tr>
+                <tr>
+                    <td>skin</td>
+                    <td>空</td>
+                    <td>String</td>
+                    <td>
+                        个性皮肤样式
+                    </td>
+                </tr>
+                <tr>
+                    <td>area</td>
+                    <td>[]</td>
+                    <td>Array</td>
+                    <td>
+                        宽高,以数组的形式,索引0是宽度，索引1是高度，多写忽略,也就是只取前两个值
+                    </td>
+                </tr>
+                <tr>
+                    <td>btnAlign</td>
+                    <td>c</td>
+                    <td>String</td>
+                    <td>
+                        按钮排列位置,可选值为 l 左对齐，c 居中对齐(默认值), r 右对齐
+                    </td>
+                </tr>
+                <tr>
+                    <td>modalClose</td>
+                    <td>false</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否点击遮罩层关闭
+                    </td>
+                </tr>
+                <tr>
+                    <td>modalClose</td>
+                    <td>false</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否点击遮罩层关闭
+                    </td>
+                </tr>
+                <tr>
+                    <td>isModal</td>
+                    <td>false</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否是对话框模式，如果是的话会增加遮罩层
+                    </td>
+                </tr>
+                <tr>
+                    <td>showCancelBtn</td>
+                    <td>true</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否显示右上角关闭按钮
+                    </td>
+                </tr>
+                <tr>
+                    <td>autoClose</td>
+                    <td>true</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否自动关闭
+                    </td>
+                </tr>
+                <tr>
+                    <td>pageUrl</td>
+                    <td>""</td>
+                    <td>String</td>
+                    <td>
+                        页面引用地址,用于显示在模态框的内容区域（目前只适用于模态框)，优先级高于 conten,
+                    </td>
+                </tr>
+                <tr>
+                    <td>anim</td>
+                    <td>bounceInDown</td>
+                    <td>String</td>
+                    <td>
+                        动画样式名称，需要自写好动画样式
+                    </td>
+                </tr>
+                <tr>
+                    <td>isOutAnim</td>
+                    <td>true/td>
+                        <td>Boolean</td>
+                        <td>
+                            是否输出动画效果
+                        </td>
+                </tr>
+                <tr>
+                    <td>btns</td>
+                    <td>[]</td>
+                    <td>Array</td>
+                    <td>
+                        按钮组,每个元素是一个对象，每个对象的结构由text类型String,显示文本，skin类型String ,按钮皮肤,click类型Function点击事件组成
+                        <pre class="codes">
+btns: [{
+    text: "取消",
+    skin: "",
+    click: function() {
+        this.close();
+    }
+}]
+                        </pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--使用示例-->
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>使用示例</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>
+            提示框
+        </p>
+        <pre class="codes">
+flyer.alert("一个简单的提示框");
+flyer.alert("可以定制属性哦",{
+    title:"标题由我说的算",
+    isModal:true
+});
+        </pre>
+        <p>
+            确认框
+        </p>
+        <pre class="codes">
+flyer.confirm("确定要这样做吗?", function(yes) {
+    flyer.alert(yes);
+});
+flyer.confirm("确定要这样做吗?", function(yes) {
+    flyer.alert(yes);
+}, {
+    title: "询问框",
+    isModal: true
+});
+        </pre>
+        <p>
+            消息框（轻量级)
+        </p>
+        <pre class="codes">
+flyer.msg("你好.");
+flyer.msg("你好呃....", { showCancelBtn: true });
+        </pre>
+        <p>
+            模态框
+        </p>
+        <pre class="codes">
+flyer.open({
+    content: "<div><input type='text' id='txtFault'/></div>",
+    title: "一个展现html结构的模态框"
+});
+flyer.open({
+    pageUrl: "tab.html",
+    isModal: true,
+    offset: [10, 400],
+    area: [400, 500],
+    title: "显示颜色元素"
+});
+        </pre>
+        <p>
+            tip (提示框的一个分支)
+        </p>
+        <pre class="codes">
+flyer.tip("系统发生了未知错误.");
+flyer.tip("系统发生了未知错误.",{skin:"flyer-dialog-msgError"});
+        </pre>
+        <p>
+            全局关闭
+        </p>
+        <pre class="codes">
+flyer.closeAll("confirm");
+flyer.closeAll("alert");
+flyer.closeAll("open");
+flyer.closeAll("tip");
+flyer.closeAll();
+        </pre>
+    </div>
+</div>
+<!--结语-->
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>结语</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>
+            如果你是在熟悉属性配置，合理的使用环境下，会发现这个模块可以被你DIY成很多种弹框出来,同时每个实例返回的都是一个实例对象，可以声明一个变量去接收。
+        </p>
+    </div>
+</div>
+<div class="flyer-element-tips">
+    <p>Flyer - 用心与你沟通</p>
+</div>
+<script type="text/javascript">
+    flyer.codes($(".codes"), {
+        tagName: "div"
+    });
+</script>

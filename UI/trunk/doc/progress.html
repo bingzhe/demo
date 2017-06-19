@@ -1,0 +1,140 @@
+<h1 class="flyer-layout-titleBig">进度条 - 页面元素</h1>
+<div class="flyer-element-tips">
+    <p>进度条可应用于许多业务场景， 如任务完成进度、loading等等，是一种较为直观的表达元素。
+    </p>
+</div>
+<!--主题-->
+<div class="flyer-layout-section">
+    <!--常规用法-->
+    <div class="flyer-layout-title">
+        <span>常规用法</span>
+        <div></div>
+    </div>
+    <div class="flyer-progress-box">
+        <div class="flyer-progress">
+            <div class="flyer-progress-bar" flyer-percent="20%" style="width: 20%;"></div>
+        </div>
+        <div class="flyer-progress ">
+            <div class="flyer-progress-bar flyer-progress-orange" flyer-percent="50%" style="width: 50%;"></div>
+        </div>
+        <div class="flyer-progress  flyer-showPercent=" yes>
+            <div class="flyer-progress-bar flyer-progress-blue" flyer-percent="80%" style="width: 80%;">
+                <span class="flyer-progress-text">80%</span>
+            </div>
+        </div>
+        <div class="flyer-progress flyer-progress-big  flyer-showPercent=" yes>
+            <div class="flyer-progress-bar flyer-progress-black" flyer-percent="30%" style="width: 30%;">
+                <span class="flyer-progress-text">30%</span>
+            </div>
+        </div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>我们进度条提供了两种尺寸及多种颜色的显示风格，其中颜色的选值可参考：背景色公共类。基本元素结构如下</p>
+        <pre class="flyer-codes">
+<div class="flyer-progress">
+    <div class="flyer-progress-bar" flyer-percent="20%" style="width: 20%;"></div>
+</div>
+<div class="flyer-progress ">
+    <div class="flyer-progress-bar flyer-progress-orange" flyer-percent="50%" style="width: 50%;"></div>
+</div>
+<div class="flyer-progress  flyer-showPercent=" yes>
+    <div class="flyer-progress-bar flyer-progress-blue" flyer-percent="80%" style="width: 80%;">
+        <span class="flyer-progress-text">80%</span>
+    </div>
+</div>
+<div class="flyer-progress flyer-progress-big  flyer-showPercent=" yes>
+    <div class="flyer-progress-bar flyer-progress-black" flyer-percent="30%" style="width: 30%;">
+        <span class="flyer-progress-text">30%</span>
+    </div>
+</div>
+</pre>
+    </div>
+    <p>正如上述你见到的，当对元素设置了class为 flyer-progress-big 时，即为大尺寸的进度条风格。默认风格的进度条的百分比如果开启，会在右上角显示，而大号进度条则会在内部显示。</p>
+    <!--显示百分比-->
+    <div class="flyer-layout-title">
+        <span>显示百分比</span>
+        <div></div>
+    </div>
+    <div class="flyer-progress-box">
+        <div class="flyer-progress" flyer-showPercent="yes">
+            <div class="flyer-progress-bar flyer-progress-red" flyer-percent="80%" style="width: 80%;">
+                <span class="flyer-progress-text">80%</span>
+            </div>
+        </div>
+        <div class="flyer-progress flyer-progress-big" flyer-showPercent="yes">
+            <div class="flyer-progress-bar flyer-progress-blueGreen" flyer-percent="30%" style="width: 30%;">
+                <span class="flyer-progress-text">30%</span>
+            </div>
+        </div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>通过对父级元素设置属性 flyer-showPercent="yes" 来开启百分比的文本显示：</p>
+        <pre class="flyer-codes">
+<div class="flyer-progress" flyer-showPercent="yes">
+    <div class="flyer-progress-bar flyer-progress-red" flyer-percent="80%" style="width: 80%;">
+        <span class="flyer-progress-text">80%</span>
+    </div>
+</div>
+<div class="flyer-progress flyer-progress-big" flyer-showPercent="yes">
+    <div class="flyer-progress-bar flyer-progress-blueGreen" flyer-percent="30%" style="width: 30%;">
+        <span class="flyer-progress-text">30%</span>
+    </div>
+</div></pre>
+        <p>注意：默认情况下不会显示百分比文本，如果你想开启，对属性flyer-showPercent设置任意值即可，如：yes。但如果不想显示，千万别设置no或者false，直接剔除该属性即可。</p>
+    </div>
+    <!--大号进度条-->
+    <div class="flyer-layout-title">
+        <span>大号进度条</span>
+        <div></div>
+    </div>
+    <div class="flyer-progress-box">
+        <div class="flyer-progress flyer-progress-big">
+            <div class="flyer-progress-bar flyer-progress-orange" flyer-percent="30%" style="width: 30%;">
+            </div>
+        </div>
+        <div class="flyer-progress flyer-progress-big">
+            <div class="flyer-progress-bar flyer-progress-blue" flyer-percent="30%" style="width: 30%;">
+            </div>
+        </div>
+        <div class="flyer-progress flyer-progress-big" flyer-showPercent="yes">
+            <div class="flyer-progress-bar flyer-progress-blueGreen" flyer-percent="30%" style="width: 30%;">
+                <span class="flyer-progress-text">30%</span>
+            </div>
+        </div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>如果短小细长的它不大适合追求激情与视觉冲击的你，那么你完全可以选择大而粗，尽情地销魂于活塞运动。研究表明：上述尺寸刚刚好。</p>
+        <pre class="flyer-codes">
+<div class="flyer-progress flyer-progress-big">
+    <div class="flyer-progress-bar flyer-progress-orange" flyer-percent="30%" style="width: 30%;">
+    </div>
+</div>
+<div class="flyer-progress flyer-progress-big">
+    <div class="flyer-progress-bar flyer-progress-blue" flyer-percent="30%" style="width: 30%;">
+    </div>
+</div>
+<div class="flyer-progress flyer-progress-big" flyer-showPercent="yes">
+    <div class="flyer-progress-bar flyer-progress-blueGreen" flyer-percent="30%" style="width: 30%;">
+    <span class="flyer-progress-text">30%</span>
+</div>
+</pre>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>结语</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>正如上述你见到的，当对元素设置了class为 flyer-layout-progressBig 时，即为大尺寸的进度条风格。 默认风格的进度条的百分比如果开启，会在右上角显示，而大号进度条则会在内部显示
+        </p>
+    </div>
+</div>
+<div class="flyer-element-tips">
+    <p>Flyer - 用心与你沟通</p>
+</div>
+<script type="text/javascript">
+    flyer.codes($(".flyer-codes"), {
+        tagName: "div"
+    });
+</script>

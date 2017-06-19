@@ -1,0 +1,147 @@
+<h1 class="flyer-layout-titleBig">表格 - 页面元素</h1>
+<div class="flyer-element-tips">
+    <p>在一个容器中设定 class="flyer-table" 来渲染一个表格元素块，通过内置的自定义属性对表格进行风格的多样化设定。</p>
+</div>
+<!--默认Tab选项卡-->
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>默认表格</span>
+        <div></div>
+    </div>
+    <table class="flyer-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>昵称</th>
+                <th>加入时间</th>
+                <th>签名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div>
+        <pre class="flyer-codes">
+&lt;table class="flyer-table"&gt;
+    &lt;colgroup&gt;
+        &lt;col width="150"&gt;
+        &lt;col width="200"&gt;
+        &lt;col&gt;
+    &lt;/colgroup&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;昵称&lt;/th&gt;
+            &lt;th&gt;加入时间&lt;/th&gt;
+            &lt;th&gt;签名&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;贤心&lt;/td&gt;
+            &lt;td&gt;2016-11-29&lt;/td&gt;
+            &lt;td&gt;人生就像是一场修行&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;贤心&lt;/td&gt;
+            &lt;td&gt;2016-11-29&lt;/td&gt;
+            &lt;td&gt;人生就像是一场修行&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+    </div>
+    <div id="table">
+
+    </div>
+</div>
+<!--footer end-->
+<script type="text/javascript">
+    flyer.codes($(".flyer-codes"), {
+        tagName: "div"
+    });
+
+    function test(v) {
+        flyer.alert(v);
+    }
+    var table = flyer.table($("#table"), {
+        columns: [{
+            title: "ID",
+            field: "id",
+            radio: true,
+            styles: {
+                width: 20
+            },
+            titleTooltip: "ID",
+            visible: false
+        }, {
+            title: "ID",
+            field: "id",
+            checkbox: true,
+            styles: {
+                width: 20
+            },
+            titleTooltip: "ID",
+            visible: true
+        }, {
+            title: "ID",
+            field: "id",
+            styles: {
+                width: 20
+            },
+            titleTooltip: "ID"
+        }, {
+            title: "姓名",
+            field: "Name",
+            styles: {
+                width: 200,
+                color: "red"
+            },
+            formatter: function(column) {
+                return "<div onclick='test(2)\'>" + column.Name + "</div>";
+            }
+        }, {
+            title: "年龄",
+            field: "Age"
+        }, {
+            title: "爱好",
+            field: "Like"
+        }],
+        data: [{
+            id: 1,
+            Name: "张三",
+            Age: 24,
+            Like: "打球"
+        }, {
+            id: 2,
+            Name: "李四",
+            Age: 28,
+            Like: "上网"
+        }, {
+            id: 3,
+            Name: "李四2",
+            Age: 22,
+            Like: "看书"
+        }]
+    });
+</script>

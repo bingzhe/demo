@@ -1,0 +1,5 @@
+UI的名字+功能的名字+样式名字
+例如: flyer-btn-sucess
+      flyer-alert-info
+如果样式名字必须要用到两个单词（最多允许两个单词),则如下：
+flyer-alert-maxWidth      

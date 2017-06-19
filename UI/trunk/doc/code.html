@@ -1,0 +1,97 @@
+<h1 class="flyer-layout-titleBig">代码修饰器 - 页面元素</h1>
+<div class="flyer-element-tips">
+    <p>code模块通常针对于程序员，它是layui中一个极其轻量的组成。通俗而言，该模块就是对你的
+        <a>pre</a>元素进行一个修饰，从而保证你展现的代码更具可读性。目前它没有对不同的语言进行颜色高亮（因为目前感觉没有太大必要，后面layui全面稳定后，可能会完善该功能），但这丝毫不会影响它对你带来的便捷。
+    </p>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>使用</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>code模块的使用非常简单，请直接看代码，假设你在页面有这样一段pre标签：</p>
+        <pre class="codes">
+<pre class="codes">
+//代码区域 
+var a = 'hello flyerui';   
+</pre>
+        </pre>
+        <p>那么你只需要经过下面的方式：</p>
+        <pre class="codes">
+flyer.codes($(".codes"));
+        </pre>
+        <p>就可以将那段pre区块显示成你现在看到的这个样子：</p>
+        <pre class="codes">
+ var a = 'hello flyerui';  
+        </pre>
+    </div>
+    <div class="flyer-layout-title">
+        <span>使用</span>
+        <div></div>
+    </div>
+    <p>它接受一个对象参数options，支持以下key的设定</p>
+    <table class="flyer-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>参数</th>
+                <th>类型</th>
+                <th>默认值</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>tagName</td>
+                <td>String</td>
+                <td>pre</td>
+                <td>指定元素的标签种类</td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>String</td>
+                <td>Code</td>
+                <td>代码修饰器的标题</td>
+            </tr>
+            <tr>
+                <td>height</td>
+                <td>String</td>
+                <td>Code</td>
+                <td>设置显示的高度</td>
+            </tr>
+            <tr>
+                <td>encode</td>
+                <td>Boolean</td>
+                <td>true</td>
+                <td>是否转义html标签</td>
+            </tr>
+            <tr>
+                <td>Boolean</td>
+                <td>Boolean</td>
+                <td>true</td>
+                <td>是否显示关于来源</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>结语</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>待定
+        </p>
+    </div>
+</div>
+<div class="flyer-element-tips">
+    <p>Flyer - 用心与你沟通</p>
+</div>
+<script type="text/javascript">
+    flyer.codes($(".codes"));
+</script>

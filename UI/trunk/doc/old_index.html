@@ -1,0 +1,333 @@
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link type="text/css" href="../src/css/flyer.ui.css" rel="stylesheet">
+    <link type="text/css" href="../src/css/font-awesome.css" rel="stylesheet">
+    <style type="text/css">
+        #test {
+            margin: 50px;
+            clear: both;
+        }
+        
+        #test:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <br/>
+    <p>
+        <label class="flyer-checkbox-switch">
+            <input type="checkbox"/>
+            <i></i>
+        </label>
+        <label>
+            
+        </label>
+    </p>
+    <br/>
+    <div id="test">
+    </div>
+    <div style="clear:both;margin:50px;">
+        <a class="flyer-button" id="show-alter0">默认</a>
+        <a class="flyer-button" id="show-alter1">消息框</a>
+        <a class="flyer-button" id="show-alter4">消息框2</a>
+        <a class="flyer-button" id="show-alter2">询问框</a>
+        <a class="flyer-button" id="show-alter3">prompt框</a>
+        <a class="flyer-button" id="show-alter5">prompt框2</a>
+        <a class="flyer-button" id="show-alter6">弹出子窗体</a>
+    </div>
+    <div style="clear:both;margin:50px;">
+        <a class="flyer-button" id="show-alter10">弹出tips左</a>
+        <a class="flyer-button" id="show-alter7">弹出tips上</a>
+        <a class="flyer-button" id="show-alter9">弹出tips下</a>
+        <a class="flyer-button" id="show-alter8">弹出tips右</a>
+    </div>
+
+    <div style="margin:50px; position:relative;display: none;">
+        <div class="flyer-combobox-wrapper">
+            <div class="flyer-combobox-ibox">
+                <div class="flyer-combobox-icontent">
+                    <span>
+                 唐三少
+             </span>
+                </div>
+                <button class="flyer-combobox-btn">
+                <div class="flyer-combobox-btn-arrows"></div>
+            </button>
+                <div class="flyer-combobox-items">
+                    <ul>
+                        <li>
+                            <input type="text" class="flyer-combobox-search">
+                        </li>
+                        <li>
+                            <div>唐四少1</div>
+                        </li>
+                        <li>
+                            <div>唐四少2</div>
+                        </li>
+                        <li>
+                            <div>唐四少3</div>
+                        </li>
+                        <li>
+                            <div>唐四少4</div>
+                        </li>
+                    </ul>
+                </div>
+                <button class="flyer-combobox-clear-btn">
+                X
+            </button>
+            </div>
+        </div>
+    </div>
+    <div style="margin: 20px;display: none;">
+        <div class="flyer-searches">
+            <div class="keywords"><span>唐四少1;<i class="fa fa-close"></i></span><span>唐四少123232;<i class="fa fa-close"></i></span></div><input type="text" class="flyer-seraches-input" id="txtSearch" />
+            <div class="flyer-combobox-items" style="display:block">
+                <ul>
+                    <li>
+                        <div>唐四少1</div>
+                    </li>
+                    <li>
+                        <div>唐四少2</div>
+                    </li>
+                    <li>
+                        <div>唐四少3</div>
+                    </li>
+                    <li>
+                        <div>唐四少4</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><br/>
+    <div style="margin: 20px;display: block;">
+        <div class="search" style="width:200px"></div>
+    </div><br/>
+    <div style="margin: 20px;display: block;">
+        <div class="search"></div>
+    </div><br/>
+    <div id="wrapper" class="bg-gray" style="margin: 20px;display: block;">
+
+        <div style="margin-top:10px;">
+            <input type="text" id="txtSelect" />
+            <button class="flyer-button" onclick='showValue("txtSelect")'>获取值</button>
+            <button class="flyer-button" onclick='showText("txtSelect")'>获取键</button>
+        </div>
+        <div style="margin-top:10px;">
+            <input type="text" id="txtSelect1" />
+            <button class="flyer-button" onclick='showValue("txtSelect1")'>获取值</button>
+            <button class="flyer-button" onclick='showText("txtSelect1")'>获取键</button>
+        </div>
+    </div>
+
+    <div id="tabWrapper" class="bg-gray" style="margin: 20px;display: block;">
+        <div class="flyer-tab">
+            <div class="flyer-tab-title">
+                <ul>
+                    <li data-index="0" class="flyer-tab-active">Tab1</li>
+                    <li data-index="1">Tab2</li>
+                    <li data-index="2">Tab3</li>
+                </ul>
+            </div>
+            <div class="flyer-tab-content">
+                <div class="flyer-tab-item">1</div>
+                <div class="flyer-tab-item">2</div>
+                <div class="flyer-tab-item">3</div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <p>
+        <div id="autoTab" style="margin: 20px;display: block;">
+
+        </div>
+    </p>
+
+</body>
+<script type="text/javascript" src="../src/js/jquery.js"></script>
+<script type="text/javascript" src="../src/js/flyer.js"></script>
+<script type="text/javascript" src="../src/js/flyer.ui.js"></script>
+<script type="text/javascript" src="../src/js/flyer.ui.page.js"></script>
+<script type="text/javascript" src="../src/js/flyer.ui.comboBox.js"></script>
+<script type="text/javascript" src="../src/js/flyer.ui.tab.js"></script>
+<script type="text/javascript" src="../src/js/flyer.ui.searches.js"></script>
+<script type="text/javascript">
+    $("#test").pager({
+        totalNum: 49,
+        pageSum: 5,
+        fnClick: function() {
+            console.log("当前第:" + this.options.curIndex);
+        }
+    });
+
+    flyer.log("加载了外面的.....");
+
+    $(window).load(function() {
+        flyer.log("test.....");
+        //默认
+        $("#show-alter0").click(function() {
+            flyer.alert("你好，我是flyer的消息框");
+        });
+        //消息框
+        $("#show-alter1").click(function() {
+            flyer.alert("简单点，说点啥呢！", {
+                type: "warn",
+                title: "Say Hi"
+            });
+        });
+        //消息框2
+        $("#show-alter4").click(function() {
+            flyer.alert("这是一个多内容不可以拖动的消息框", {
+                title: "flyer-0.03",
+                type: "success",
+                isDarag: false,
+                isModal: false
+            }, function() {
+                flyer.alert("触发了确定后的事件", {
+                    type: "error"
+                });
+            });
+        });
+
+        //询问框
+        $("#show-alter2").click(function() {
+            flyer.confirm("不好吧，你确定要这样吗！", {
+                    type: "question",
+                    title: "来自星星的问候"
+                },
+                function(yes) {
+                    if (yes == true) {
+                        flyer.alert("好吧我跟随你了 -_-", {
+                            type: "weeping",
+                            title: "来自点击确定后的消息"
+                        });
+                    } else {
+                        flyer.alert("多谢公子手下留情 0_0", {
+                            isModal: false,
+                            type: "simle",
+                            title: "来自点击取消后的消息"
+                        });
+                    }
+
+                });
+        });
+        //prompt框
+        $("#show-alter3").click(function() {
+            flyer.prompt("默认值", {
+                title: "在这里输入原因",
+                type: "textarea"
+            }, function(yes, value) {
+                if (yes) {
+                    flyer.alert("你选择了确定.输入的值为:" + value);
+                } else {
+                    flyer.alert("你取消了");
+                }
+            })
+        });
+        //prompt框2
+        $("#show-alter5").click(function() {
+            flyer.prompt("默认值", {
+                title: "请输入口令",
+                type: "password",
+                maxLength: 8
+            }, function(yes, value) {
+                if (yes) {
+                    flyer.alert("你选择了确定.输入的值为:" + value);
+                } else {
+                    flyer.alert("你取消了");
+                }
+            })
+        });
+        //弹出子窗体
+        $("#show-alter6").click(function() {
+            flyer.open({
+                title: "子页面",
+                url: "sub.html?isadd=1",
+                width: 500,
+                height: 500,
+                isModal: true
+            });
+        });
+        //tips上
+        $("#show-alter7").click(function() {
+            flyer.tips(
+                "显示在上面，背影颜色是黑色，字体颜色是白色,显示在上面，背影颜色是黑色，字体颜色是白色显示在上面，背影颜色是黑色，字体颜色是白色显示在上面，背影颜色是黑色，字体颜色是白色显示在上面，背影颜色是黑色，字体颜色是白色",
+                "show-alter7", {
+                    position: "上",
+                    bgColor: "#000",
+                    color: "#fff"
+                });
+        });
+        //tips右
+        $("#show-alter8").click(function() {
+            flyer.tips("显示在上面，背影颜色是橘红，字体颜色是黄色", "show-alter8", {
+                position: "右",
+                bgColor: "#E14343",
+                color: "#FBD243"
+            });
+        });
+        //tips下
+        $("#show-alter9").click(function() {
+            flyer.tips("显示在上面，背影颜色是草绿，字体颜色是白色", "show-alter9", {
+                position: "下",
+                bgColor: "#588E55",
+                color: "#fff"
+            });
+        });
+        //tips左
+        $("#show-alter10").click(function() {
+            flyer.tips("默认的颜色和字体", "show-alter10", {
+                position: "左"
+            });
+        });
+
+        //flyer.alert("test");
+        flyer.comboBox({
+            bindId: "txtSelect",
+            disabled: false,
+            allowSearch: true,
+            data: [{
+                "userName": "淳芸",
+                "shortAccount": "chunyun",
+                "userId": 20001
+            }, {
+                "userName": "orion-01",
+                "shortAccount": "orion-01",
+                "userId": 20000
+            }, {
+                "userName": "穆晓晨",
+                "shortAccount": "muxiaochen",
+                "userId": 20002
+            }],
+            fieldKey: "userId",
+            fieldValue: "userName"
+        });
+        flyer.comboBox({
+            bindId: "txtSelect1",
+            disabled: false,
+            allowSearch: true,
+            url: "../json_data/dropdown.json",
+            fieldKey: "userId",
+            fieldValue: "userName"
+        });
+    });
+
+    function showValue(id) {
+        flyer.alert(flyer.comboBoxManager(id).getValue()); //获得值
+    }
+
+    function showText(id) {
+        flyer.alert(flyer.comboBoxManager(id).getText()); //获得键
+    }
+    $("#autoTab").tab();
+    $("#tabWrapper").tab();
+    var a = $(".search").searches();
+</script>
+
+</html>

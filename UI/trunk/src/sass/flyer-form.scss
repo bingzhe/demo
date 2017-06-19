@@ -1,0 +1,288 @@
+ @import "flyer-base";
+ //by chengyang 2017-05-10
+ /*form*/
+ 
+ .flyer-form {
+     margin-right: 200px;
+     input[type=checkbox],
+     input[type=radio],
+     select {
+         display: none;
+     }
+     &-item {
+         margin-bottom: 15px;
+         clear: both;
+     }
+     &-label {
+         float: left;
+         display: block;
+         padding: 9px 15px;
+         width: 80px;
+         font-weight: 400;
+         text-align: right;
+     }
+     &-item {
+         min-height: 36px;
+         position: relative;
+     }
+     .flyer-input-block {
+         min-height: 36px;
+         position: relative;
+         padding-left: 110px;
+         select {
+             display: none;
+         }
+     }
+     .flyer-layout-label {
+         display: block;
+         padding: 9px 15px;
+         width: 80px;
+         text-align: right;
+         float: left;
+     }
+     .flyer-input-inline {
+         position: relative;
+     }
+     .flyer-input-inline {
+         float: left;
+         width: 190px;
+         margin-right: 10px;
+     }
+     .flyer-input,
+     .flyer-select,
+     .flyer-textarea {
+         height: 38px;
+         line-height: 38px;
+         line-height: 36px;
+         border: 1px solid $color-border-form;
+         background-color: #fff;
+         border-radius: 2px;
+     }
+     .flyer-input {
+         display: block;
+         width: 100%;
+         padding-left: 10px;
+     }
+     .flyer-select {
+         border: none;
+     }
+     &-wordAux {
+         float: left;
+         display: block;
+         margin-right: 10px;
+         font-size: 12px;
+         color: #999;
+         padding: 0 5px;
+         line-height: 38px;
+     }
+     .flyer-btn,
+     .flyer-input,
+     .flyer-select,
+     .flyer-textarea {
+         outline: 0;
+         -webkit-transition: border-color .3s cubic-bezier(.65, .05, .35, .5);
+         transition: border-color .3s cubic-bezier(.65, .05, .35, .5);
+         -webkit-box-sizing: border-box!important;
+         -moz-box-sizing: border-box!important;
+         box-sizing: border-box!important;
+         cursor: pointer;
+     }
+     .flyer-input:focus,
+     .flyer-select:focus,
+     .flyer-textarea:focus {
+         border: 1px solid $color-brand;
+     }
+     &-edge {
+         position: absolute;
+         right: 10px;
+         top: 50%;
+         margin-top: -6px;
+         color: $color-font-sub;
+         cursor: pointer;
+         transition: all .3s;
+         -webkit-transition: all .3s;
+         font-size: 20px;
+     }
+     .flyer-select {
+         .flyer-unselect {
+             pointer-events: none;
+         }
+         dl {
+             display: none;
+             position: absolute;
+             left: 0;
+             top: 42px;
+             padding: 5px 0;
+             z-index: 999;
+             min-width: 100%;
+             border: 1px solid $d2;
+             max-height: 300px;
+             overflow-y: auto;
+             background-color: #fff;
+             border-radius: 2px;
+             box-shadow: 0 2px 4px rgba(0, 0, 0, .12);
+             box-sizing: border-box;
+         }
+         dd {
+             cursor: pointer;
+         }
+         dd,
+         dt {
+             padding: 0 10px;
+             line-height: 36px;
+             white-space: nowrap;
+             overflow: hidden;
+             text-overflow: ellipsis;
+         }
+         dt {
+             font-size: 12px;
+             color: #999;
+         }
+         dd:hover {
+             background-color: $color-brand;
+         }
+         &Group dd {
+             padding-left: 20px;
+         }
+     }
+     .flyer-checkbox {
+         cursor: pointer;
+         position: relative;
+         display: inline-block;
+         input[type="checkbox"] {
+             display: none;
+         }
+         input[type="checkbox"]+i {
+             position: relative;
+             background-color: #ccc;
+             height: 19px;
+             width: 40px;
+             bottom: 0px;
+             border-radius: 10px;
+             display: inline-block;
+             transition: border 0.4s, box-shadow 0.4s, background-color 1.2s;
+         }
+         input[type="checkbox"]:checked+i {
+             background-color: $color-blue;
+         }
+         input[type="checkbox"]+i:after {
+             content: "";
+             position: absolute;
+             background-color: #fafafa;
+             height: 17px;
+             width: 18px;
+             border-radius: 8px;
+             left: 1px;
+             top: 1px;
+             transition: .1s;
+         }
+         input[type="checkbox"]:checked+i:after {
+             content: "";
+             position: absolute;
+             background-color: #fafafa;
+             left: 21px;
+             top: 0.5px;
+         }
+     }
+     .flyer-onswitch {
+         cursor: pointer;
+         position: relative;
+         padding-right: 32px;
+         display: inline-block;
+         input[type="checkbox"] {
+             display: none;
+         }
+         input[type="checkbox"]+i {
+             display: inline-block;
+             padding: 0 10px;
+             height: 28px;
+             line-height: 28px;
+             font-size: 14px;
+             background-color: $d2;
+             color: #fff;
+             position: relative;
+             &:after {
+                 content: "\2714";
+                 position: absolute;
+                 right: -32px;
+                 width: 32px;
+                 height: 28px;
+                 color: $d2;
+                 font-size: 20px;
+                 text-align: center;
+                 box-sizing: border-box;
+                 border: 1px solid $d2;
+             }
+         }
+         input[type="checkbox"]:checked+i {
+             background-color: $color-blue;
+             transition: .1s;
+             &:after {
+                 color: $color-blue;
+                 border: 1px solid $color-blue;
+                 transition: .1s;
+             }
+         }
+     }
+     .flyer-radio {
+         cursor: pointer;
+         position: relative;
+         display: inline-block;
+         input[type="radio"] {
+             display: none;
+         }
+         input[type="radio"]+i {
+             position: relative;
+             display: inline-block;
+             width: 20px;
+             height: 20px;
+             border: 1px solid #c2c2c2;
+             border-radius: 50%;
+             margin-right: 2px;
+             top: 4px;
+             &:after {
+                 content: "";
+                 position: absolute;
+                 display: inline-block;
+                 width: 12px;
+                 top: 4px;
+                 left: 4px;
+                 height: 12px;
+                 border-radius: 50%;
+                 background: #fff;
+             }
+         }
+         input[type="radio"]:checked+i {
+             border: 1px solid $color-blue;
+             &:after {
+                 background: $color-blue;
+             }
+         }
+     }
+     .flyer-textarea {
+         min-height: 100px;
+         height: auto;
+         padding: 6px 10px;
+         resize: vertical;
+         width: 100%;
+     }
+     .flyer-input:hover,
+     .flyer-textarea:hover {
+         border-color: $color-brand!important;
+     }
+     .flyer-disabled,
+     .flyer-disabled:hover {
+         color: $d2!important;
+         cursor: not-allowed!important;
+     }
+ }
+ 
+ .flyer-form-error {
+     border: 1px solid #FF5722 !important;
+ }
+ 
+ .flyer-input-block {
+     .flyer-checkbox {
+         margin-top: 9px;
+     }
+ }
