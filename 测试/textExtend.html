@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<!--引入bootstrap css-->
+<link rel="stylesheet" href="bootstrap.min.css">
+<!--引入bootstrap-table css-->
+<link rel="stylesheet" href="bootstrap-table.min.css">
+<!--引入gridly拖动 css-->
+<link rel="stylesheet" href="jquery.gridly.css">
+<!--引入jquery-->
+<script src="jquery.min.js"></script>
+<!--引入bootstrap-->
+<script src="bootstrap.min.js"></script>
+<!--引入bootstrap-table-->
+<script src="bootstrap-table.min.js"></script>
+<script src="bootstrap-table-zh-CN.min.js"></script>
+<!--引入gridly拖动插件-->
+<script src="jquery.gridly.js"></script>
+
+<head></head>
+<style>
+    .picture {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .picture img {
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+        transition: all 0.6s;
+    }
+
+    .picture img:hover {
+        transform: scale(1.4);
+    }
+</style>
+
+<body>
+    <!--头部开始-->
+    <nav class="navbar  navbar-fixed-top" role="navigation">
+        <div class="container nav-pc">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="__ROOT__/"><img src="__TMPL__Public/assets/images/logo.png" onmouseover="this.src='/themes/iczi-e/Public/assets/images/logo_act.png'"
+                        onmouseout="this.src='/themes/iczi-e/Public/assets/images/logo.png'" /></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <?php
+                $effected_id="nav";
+                $filetpl="<a href='\$href' target='\$target'>\$label</a>";
+                $child_li_content="<a href='\$href' target='\$target'><div><img src='\$pic'></div><p>\$label</p></a>";
+                $child_li_content_nopic="<a href='\$href' target='\$target'><p>\$label</p></a>";
+                $foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' aria-expanded='false' data-toggle='dropdown'>\$label <span class='caret'></span></a>";
+                $ul_class="dropdown-menu" ;
+                $li_class="dropdown" ;
+                $style="nav navbar-nav";
+                $showlevel=6;
+                $dropdown='';
+                $child_li_style='col-lg-2   col-md-2  col-sm-2   col-xs-4';
+                echo sp_get_menu("main",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown,$child_li_style,$child_li_content,$child_li_content_nopic);
+            ?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="inputbox">
+                            <form method="post" class="form-inline" action="{:U('Product/Search/index')}">
+                                <input type="text" class="form-control input-sm inline-block" id="sea" name="keyword" value="{:I('get.keyword')}">
+                                <span class="search">
+                            <i class="icon-search"></i>
+                        </span>
+                            </form>
+                        </li>
+                    </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--mobile-->
+        <div class="container nav-mobile">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="__ROOT__/"><img src="__TMPL__Public/assets/images/logo-phone.png" /></a>
+            </div>
+            <div id="navbar-mobile" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" target="">Charger</a>
+                        </li>
+                        <li>
+                            <a href="#" target="">Type-C</a>
+                        </li>
+                        <li>
+                            <a href="#" target="">Audio & Video </a>
+                        </li>
+                        <li>
+                            <a href="#" target="">Cables</a>
+                        </li>
+                        <li>
+                            <a href="#" target="">Hub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <!--头部结束-->
+    <script>
+        $('.gridly').gridly({
+            base: 60, // px 
+            gutter: 20, // px
+            columns: 12
+        });
+
+        /*******************************/
+        $(function () {
+            var imgCount = $("#click-slider-box li").length;
+            var liWidth = $("#click-slider-box li:first").width();
+            liWidth = parseFloat(liWidth); //一次点击移动距离+margin
+            $("#click-slider-box ul").css({
+                width: imgCount * liWidth
+            });
+            var liWidthFive = liWidth * 5; //
+            var clickCount = imgCount - 5;
+            var isClick = clickCount; //按钮是否可以点击参数 以此参数设left
+            var setLeft = function () { //设置 ul的 left
+                var leftC = $("#click-slider-box ul").width();
+                var left = -liWidthFive;
+                // var left = -(clickCount - isClick) * liWidth;
+                $("#click-slider-box ul").css({
+                    "left": left - liWidthFive
+                });
+            };
+
+            var setRight = function () {
+                if(!$("#click-slider-box ul").css("left") === "0px"){
+                    var left = 
+                }
+            }
+            
+            $(".c-btn-right").on('click', function(){
+                var $ul = $("#click-slider-box ul");
+                if( !$ul.css("left") === "0px"){
+
+                }
+            })
+
+
+
+            //点击左移动
+            $(".c-btn-left").click(function () {
+                isClick--;
+                if (0 <= isClick && isClick <= clickCount) {
+                    setLeft()
+                } else {
+                    isClick++;
+                    return;
+                };
+            });
+            //点击右移
+            $(".c-btn-right").click(function () {
+                isClick++;
+                if (isClick <= clickCount) {
+                    setLeft();
+                } else {
+                    isClick--
+                };
+            });
+        });
+
+
+        // ****
+    $(function() {
+        var imgCount = $("#click-slider-box li").length;
+        var liWidth = $("#click-slider-box li:first").width();
+        liWidth = parseFloat(liWidth); //一次点击移动距离+margin
+        $("#click-slider-box ul").css({
+          width: imgCount * liWidth
+        });
+
+        if(imgCount%5 === 0){
+            clickCount = imgCount/5-1;
+        } else {
+            clickCount = parseInt(imgCount/5) + 1;
+        }
+
+        //var clickCount = imgCount - 5;
+        var isClick = clickCount; //按钮是否可以点击参数 以此参数设left
+        var setLeft = function() { //设置 ul的 left
+          var left = -(clickCount - isClick) * (liWidth*5);
+          $("#click-slider-box ul").css({
+            "left": left
+          });
+        };
+        //点击左移动
+        $(".c-btn-right").click(function() {
+          isClick--;
+          if (0 <= isClick && isClick <= clickCount) {
+            setLeft()
+          } else {
+            isClick++;
+            return;
+          };
+        });
+        //点击右移
+        $(".c-btn-left").click(function() {
+          isClick++;
+          if (isClick <= clickCount) {
+            setLeft();
+          } else {
+            isClick--
+          };
+        });
+      });
+    </script>
+
+</body>
+
+</html>

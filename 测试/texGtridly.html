@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<!--引入bootstrap css-->
+<link rel="stylesheet" href="bootstrap.min.css">
+<!--引入bootstrap-table css-->
+<link rel="stylesheet" href="bootstrap-table.min.css">
+<!--引入gridly拖动 css-->
+<link rel="stylesheet" href="jquery.gridly.css">
+<!--引入jquery-->
+<script src="jquery.min.js"></script>
+<!--引入bootstrap-->
+<script src="bootstrap.min.js"></script>
+<!--引入bootstrap-table-->
+<script src="bootstrap-table.min.js"></script>
+<script src="bootstrap-table-zh-CN.min.js"></script>
+<!--引入gridly拖动插件-->
+<script src="jquery.gridly.js"></script>
+
+<head></head>
+<style>
+    .gridly {
+        position: relative;
+        width: 960px;
+    }
+    
+    .brick.small {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .brick.large {
+        width: 300px;
+        height: 300px;
+    }
+    .sq{
+        border-left: 100px;
+        border-right: 100px;
+    }
+</style>
+
+<body>
+    <div class="gridly">
+        <div style="background-color:aqua;" class="brick small"></div>
+        <div style="background-color:blue" class="brick small"></div>
+        <div style="background-color:antiquewhite;" class="brick large"></div>
+        <div style="background-color:bisque" class="brick small"></div>
+        <div style="background-color:whitesmoke" class="brick small"></div>
+        <div style="background-color:yellow" class="brick large"></div>
+    </div>
+    <div class="sq"></div>
+    <script>
+        $('.gridly').gridly({
+            base: 60, // px 
+            gutter: 20, // px
+            columns: 12
+        });
+    </script>
+</body>
+
+</html>

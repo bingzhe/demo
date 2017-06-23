@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<!--引入bootstrap css-->
+<link rel="stylesheet" href="bootstrap.min.css">
+<!--引入bootstrap-table css-->
+<link rel="stylesheet" href="bootstrap-table.min.css">
+<!--引入gridly拖动 css-->
+<link rel="stylesheet" href="jquery.gridly.css">
+<!--引入jquery-->
+<script src="jquery.min.js"></script>
+<!--引入bootstrap-->
+<script src="bootstrap.min.js"></script>
+<!--引入bootstrap-table-->
+<script src="bootstrap-table.min.js"></script>
+<script src="bootstrap-table-zh-CN.min.js"></script>
+<!--引入gridly拖动插件-->
+<script src="jquery.gridly.js"></script>
+<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+
+<head></head>
+<style>
+    /*.gridly {
+        position: relative;
+        width: 960px;
+    }
+    
+    .brick.small {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .brick.large {
+        width: 300px;
+        height: 300px;
+    }*/
+
+    .sq {
+        width: 140px;
+        height: 140px;
+        background: #F90;
+        border-radius: 10px;
+    }
+
+    .sq.is-pointer-down {
+        background: #09F;
+    }
+
+    .sq.is-dragging {
+        opacity: 0.7;
+    }
+
+    .container {
+        padding: 10px;
+        border: 2px solid #F90;
+        height: 200px;
+    }
+
+    .handle {
+        background: #555;
+        background: hsla(0, 0%, 0%, 0.4);
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="sq">
+            <div class="handle"></div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var $sq = $('.sq').draggabilly({
+            // axis: 'x',
+            // containment: '.container'
+            // grid: [ 40, 40 ]
+            // handle: '.handle'
+        });
+        console.log($sq)
+        console.log(draggabilly)
+        if ($sq instanceof jQuery) {
+            console.log("这是一个jQuery对象");
+        } else {
+            console.log("这是一个其它对象")
+        }
+    </script>
+</body>
+
+</html>
