@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>{{ number }}</p>
+        <input type="text" name="btnSetNumber" v-model="number" />
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                number: 1
+            },
+            beforeCreate: function () {
+                console.log('beforeCreate 钩子执行..........................')
+                console.log('el:     ' + this.$el)
+                console.log('data:   ' + this.$data)
+                console.log('number:   ' + this.number)
+            },
+            created: function () {
+                console.log('created 钩子执行...........................')
+                console.log('el:     ' + this.$el)
+                console.log('data:   ' + this.$data)
+                console.log('number:   ' + this.number)
+            },
+            beforeMount: function () {
+                console.log('beforeMount 钩子执行...........................')
+                console.log('el:     ' + this.$el)
+                console.log('data:   ' + this.$data)
+                console.log('number:   ' + this.number)
+            },
+            mounted: function () {
+                console.log('mounted 钩子执行...........................')
+                console.log('el:     ' + this.$el)
+                console.log('data:   ' + this.$data)
+                console.log('number:   ' + this.number)
+            },
+            beforeUpdate: function () {
+                console.log('beforeUpdate 钩子执行..........................')
+                console.log('el:     ' + this.$el)
+                console.log('data:   ' + this.$data)
+                console.log('number:   ' + this.number)
+            },
+            updated: function () {
+                console.log('updated 钩子执行...........................')
+                console.log('el:     ' + this.$el)
+                console.log('data:   ' + this.$data)
+                console.log('number:   ' + this.number)
+            },
+            beforeDestroy: function () {
+                console.log('beforeDestroy 钩子执行........................')
+                console.log('el:     ' + this.$el)
+                console.log('data:   ' + this.$data)
+                console.log('number:   ' + this.number)
+            },
+            destroyed: function () {
+                console.log('destroyed 钩子执行........................')
+                console.log('el:     ' + this.el)
+                console.log('data:   ' + this.data)
+                console.log('number:   ' + this.number)
+            }
+
+
+
+        })
+    </script>
+</body>
+
+</html>
