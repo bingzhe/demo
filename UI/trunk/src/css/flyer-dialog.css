@@ -1,7 +1,6 @@
 /*** Parameters ***/
 .flyer-dialog {
   position: absolute;
-  border: 1px solid #eeeeee;
   z-index: 10001;
   margin: 0px auto;
   box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
@@ -90,10 +89,12 @@
   word-break: break-word;
   border-radius: 2px; }
   .flyer-dialog-msg .flyer-dialog-content {
-    padding-right: 20px; }
+    padding-right: 10px; }
   .flyer-dialog-msg .flyer-dialog-toolbar {
     color: #fff;
-    opacity: .8; }
+    opacity: .8;
+    top: 2px;
+    right: 0px; }
 
 .flyer-dialog-tip {
   max-width: inherit;
@@ -109,11 +110,13 @@
   right: 0px;
   left: 0px;
   top: 0px; }
+  .flyer-dialog-msgError .flyer-dialog-toolbar {
+    color: #fff; }
 
 .flyer-dialog-alert {
-  width: 300px; }
+  min-width: 300px; }
 
 .flyer-dialog-open {
-  width: 400px; }
+  min-width: 400px; }
 
 /*# sourceMappingURL=flyer-dialog.css.map */

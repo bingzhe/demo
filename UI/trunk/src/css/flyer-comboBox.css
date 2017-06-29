@@ -51,7 +51,8 @@
       background-color: #fff;
       display: inline-block;
       width: 20px;
-      text-align: center; }
+      text-align: center;
+      top: 0px; }
     .flyer-combobox-contents .filter-options {
       border: 0px;
       padding: 0px 10px;
@@ -114,7 +115,6 @@
   display: none;
   position: absolute;
   background-color: #fff;
-  border: 1px solid #eee;
   min-width: 100%;
   z-index: 99;
   border-top: 0px;
@@ -138,6 +138,10 @@
     right: 5px;
     position: absolute;
     top: 8px; }
+
+.flyer-combobox-items > ul {
+  border: 1px solid #dedede;
+  border-top: 0px; }
 
 .flyer-combobox-items > ul > li {
   width: 100%;

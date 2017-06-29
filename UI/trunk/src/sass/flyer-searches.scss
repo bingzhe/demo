@@ -9,12 +9,13 @@
     }
     div.keywords>span {
         display: inline-block;
-        line-height: 29px;
-        height: 29px;
+        line-height: 28px;
+        height: 28px;
         color: #424242;
         padding: 0px 10px;
         font-size: 14px;
         position: relative;
+        box-sizing: border-box;
     }
     div.keywords>span i {
         position: absolute;
@@ -28,12 +29,13 @@
         text-align: center;
     }
     div.keywords>span i:hover {
-        background-color: #FF5722;
+        background-color: #F7B824;
         color: #fff;
     }
     div.keywords>span:hover {
         background-color: #dedede;
         cursor: pointer;
+        opacity: .5;
     }
     div.keywords>span:hover>i {
         display: inherit;
@@ -48,6 +50,7 @@
     vertical-align: super;
     padding: 0px 10px;
     outline: none;
+    box-sizing: border-box;
     input[type='text'] {
         border: 0px;
         padding: 0px 10px;
@@ -65,7 +68,6 @@
     display: none;
     position: absolute;
     background-color: #fff;
-    border: 1px solid #eee;
     min-width: 100%;
     z-index: 99;
     border-top: 0px;
@@ -113,7 +115,8 @@
     border-radius: 0;
 }
 
-.flyer-combobox-items>ul>li>div:hover {
+.flyer-combobox-items>ul>li>div:hover,
+.hover {
     background-color: #4ab8f9;
     color: #fff;
 }

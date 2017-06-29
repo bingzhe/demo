@@ -57,10 +57,10 @@
         pageSize: 5,
 
         //类型:String ,上一页显示的内容
-        prevText: "",
+        prevText: "<i class='fa fa-caret-left'></i>",
 
         //类型:String ,下一页显示的内容
-        nextText: "",
+        nextText: "<i class='fa fa-caret-right'></i>",
 
         //类型:Int ,数据总记录
         totalNum: 0,

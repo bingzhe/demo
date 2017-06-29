@@ -65,40 +65,38 @@
 
 .flyer-tab-default,
 .flyer-tab-simple {
-    .flyer-tab {
-        text-align: left!important;
-        border: none;
-        &-title {
-            position: relative;
-            left: 0;
-            height: 40px;
-            white-space: nowrap;
-            font-size: 0;
-            border-bottom: 1px solid $e2;
-            transition: all .2s;
-            -webkit-transition: all .2s;
-            background: #fff;
-            ul li {
-                border: none;
-            }
-        }
-        &-active {
+    text-align: left!important;
+    border: none;
+    .flyer-tab-title {
+        position: relative;
+        left: 0;
+        height: 40px;
+        white-space: nowrap;
+        font-size: 0;
+        border-bottom: 1px solid $e2;
+        transition: all .2s;
+        -webkit-transition: all .2s;
+        background: #fff;
+        ul li {
             border: none;
-            &:after {
-                position: absolute;
-                left: 0;
-                top: 0;
-                content: '';
-                width: 100%;
-                height: 41px;
-                border: 1px solid $e2;
-                border-bottom-color: #fff;
-                border-radius: 2px 2px 0 0;
-                -webkit-box-sizing: border-box!important;
-                -moz-box-sizing: border-box!important;
-                box-sizing: border-box!important;
-                pointer-events: none;
-            }
+        }
+    }
+    .flyer-tab-active {
+        border: none;
+        &:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 100%;
+            height: 41px;
+            border: 1px solid $e2;
+            border-bottom-color: #fff;
+            border-radius: 2px 2px 0 0;
+            -webkit-box-sizing: border-box!important;
+            -moz-box-sizing: border-box!important;
+            box-sizing: border-box!important;
+            pointer-events: none;
         }
     }
 }

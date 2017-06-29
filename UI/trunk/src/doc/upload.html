@@ -1,0 +1,114 @@
+<h1 class="flyer-layout-titleBig">上传控件 </h1>
+<div class="flyer-element-tips">
+    <p>待定</p>
+</div>
+
+<div class="flyer-layout-title">
+    <span>全部参数</span>
+    <div></div>
+</div>
+<p>语法：flyerui.pager(settings)</p>
+<table class="flyer-table">
+    <colgroup>
+        <col width="140">
+        <col width="140">
+        <col width="180">
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>键</th>
+            <th>默认值</th>
+            <th>类型</th>
+            <th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>elem</td>
+            <td>flyer-upload-file</td>
+            <td>String</td>
+            <td>指定元素的选择器，默认直接查找class为layui-upload-file的元素</td>
+        </tr>
+
+        <tr>
+            <td>text</td>
+            <td>空字符串</td>
+            <td>String</td>
+            <td>按钮显示的文本</td>
+        </tr>
+        <tr>
+            <td>url</td>
+            <td>空字符串</td>
+            <td>String</td>
+            <td>上传文件的地址</td>
+        </tr>
+        <tr>
+            <td>method</td>
+            <td>post</td>
+            <td>String</td>
+            <td>设置http类型，如：post、get</td>
+        </tr>
+        <tr>
+            <td>enctype</td>
+            <td>avatar</td>
+            <td>String</td>
+            <td>上传控件的名称</td>
+        </tr>
+        <tr>
+            <td>success</td>
+            <td>function() { return false; }
+            </td>
+            <td>Function</td>
+            <td>上传成功后的事件</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>使用案例</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>待定
+        </p>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <input type="file" class="flyer-upload-file" />
+</div>
+<pre class="flyer-codes">
+var upload = flyer.upload($(".flyer-upload-file"), {
+    text: "上传图片",
+    success: function(res, input) {
+        console.log(res);
+        console.info(input);
+    }
+});
+</pre>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>结语</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>待定
+        </p>
+    </div>
+</div>
+<div class="flyer-element-tips">
+    <p>Flyer - 用心与你沟通</p>
+</div>
+<script type="text/javascript">
+    var upload = flyer.upload($(".flyer-upload-file"), {
+        text: "上传图片",
+        success: function(res, input) {
+            console.log(res);
+            console.info(input);
+        }
+    });
+    flyer.codes($(".flyer-codes"), {
+        tagName: "div"
+    });
+</script>

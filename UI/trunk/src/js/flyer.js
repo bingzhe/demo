@@ -65,6 +65,17 @@
             return true;
         },
 
+        //得到当前函数的名称
+        getFnName: function(fn) {
+            return (/^[\s\(]*function(?:\s+([\w$_][\w\d$_]*))?\(/).exec(fn.toString())[1] || '';
+        },
+
+        //判断是否是无效的空值
+        isEmpty: function(value) {
+            var comparable = [null, "undefined", undefined, "N/A", "0", 0, "null", false, "false"];
+            return comparable.indexOf(value) > 0 ? false : true;
+        },
+
         //在控制台输入信息，可自定义打印消息类型
         log: function(type, msg) {
             if (typeof console) {

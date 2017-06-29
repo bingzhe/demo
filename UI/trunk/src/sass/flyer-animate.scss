@@ -69,3 +69,33 @@
 .bounceInDown {
     animation-duration: .75s;
 }
+
+@-webkit-keyframes changehovertree {
+    0% {
+        -webkit-transform: rotate(0)
+    }
+    50% {
+        -webkit-transform: rotate(180deg)
+    }
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@keyframes changehovertree {
+    0% {
+        transform: rotate(0)
+    }
+    50% {
+        transform: rotate(180deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.changehovertree {
+    position: absolute;
+    top: 10px;
+    animation: changehovertree 2s linear infinite;
+}

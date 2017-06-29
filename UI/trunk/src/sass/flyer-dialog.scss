@@ -1,7 +1,6 @@
 @import "flyer-base";
 .flyer-dialog {
     position: absolute;
-    border: $border;
     z-index: 10001;
     margin: 0px auto;
     box-shadow: $box-shadow;
@@ -102,11 +101,13 @@
     word-break: break-word;
     border-radius: $borderRadius;
     .flyer-dialog-content {
-        padding-right: 20px;
+        padding-right: 10px;
     }
     .flyer-dialog-toolbar {
         color: #fff;
         opacity: .8;
+        top: 2px;
+        right: 0px;
     }
 }
 
@@ -125,12 +126,15 @@
     right: 0px;
     left: 0px;
     top: 0px;
+    .flyer-dialog-toolbar {
+        color: #fff;
+    }
 }
 
 .flyer-dialog-alert {
-    width: 300px;
+    min-width: 300px;
 }
 
 .flyer-dialog-open {
-    width: 400px;
+    min-width: 400px;
 }

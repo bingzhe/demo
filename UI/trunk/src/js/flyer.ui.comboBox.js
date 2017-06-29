@@ -24,30 +24,11 @@
 
 })(typeof window !== "undefined" ? window : this, jQuery, function(window, $, noGlobal) {
 
-    // <div class="flyer-combobox">
-    //     <div class="flyer-combobox-contents"><span class="filter-options"></span><i class="fa fa-angle-down"></i></div>
-    //     <div class="flyer-combobox-items" style="display:block;">
-    //         <div class="flyer-combobox-search">
-    //             <input placeholder="在这里可以输入" type="text"><i class="fa fa-search"></i>
-    //         </div>
-    //         <ul>
-    //             <li>
-    //                 <div>唐四少1</div>
-    //             </li>
-    //             <li>
-    //                 <div>唐四少2</div>
-    //             </li>
-    //             <li>
-    //                 <div>唐四少3</div>
-    //             </li>
-    //             <li>
-    //                 <div>唐四少4</div>
-    //             </li>
-    //         </ul>
-    //     </div>
-    // </div>
+    /*
+     *   功能说明：1、单选 2、多选 3、添加值 4、获取值
+     */
     //定义一个样式数组集合
-    var styles = ["flyer-combobox", "flyer-combobox-contents", "filter-options", "fa-angle-down", "flyer-combobox-items", "flyer-combobox-search", "fa-search", "selected", "open"],
+    var styles = ["flyer-combobox", "flyer-combobox-contents", "filter-options", "fa-angle-down", "flyer-combobox-items", "flyer-combobox-search", "fa-search", "selected", "open", "fa-angle-down", "fa-angle-up"],
         body = document.body,
         doc = document,
         loca = location,
@@ -152,7 +133,7 @@
                 '<div class="flyer-combobox-items">',
                 opts.allowSearch ? '<div class="flyer-combobox-search"><input placeholder="' + opts.searchPlaceholder + '" type="text"><i class="fa fa-search"></i></div>' : "",
                 '<ul>',
-                opts.selectAll ? "<li data-index='-1' data-key='-1' data-value='全部'><div>全部</div></li>" : "",
+                opts.selectAll && opts.isMulti ? "<li data-index='-1' data-key='-1' data-value='全部'><div>全部</div></li>" : "",
                 _this.readerItems(),
                 '</ul>',
                 '</div>',
@@ -212,6 +193,7 @@
                     _this.hideItems.call(_this);
                 } else {
                     _this.$itemContainer.addClass(styles[8]);
+                    _this.$contents.find("i").removeClass(styles[9]).addClass(styles[10]);
                 }
                 _this.stop(e);
             });
@@ -227,17 +209,10 @@
                         fieldValue: $this.data("value")
                     }
                     if (item.fieldKey == "-1" && item.fieldValue == "全部") {
-                        if (opts.allowSelectAll) {
-                            _this.selectAllItems(this);
-                            return false;
-                        }
-
-                        _this.$items.removeClass(styles[7]);
                         _this.empty();
-
+                    } else {
+                        _this.unselectAll();
                     }
-
-                    _this.unselectAll();
 
                     _this.showSelectedItem(item, del);
 
@@ -253,13 +228,15 @@
                     } else {
                         $this.addClass(styles[7]);
                     }
+                    _this.checkSelectAll();
                     _this.stop(e);
 
                 });
             });
 
             $(document).on("click", function(e) {
-                $("." + styles[4]).removeClass(styles[8]);
+                //$("." + styles[4]).removeClass(styles[8]);
+                _this.hideItems();
                 _this.stop(e);
             });
 
@@ -340,9 +317,20 @@
             }
         },
 
+        //检测是否是全部选中了
+        checkSelectAll: function() {
+            var selectedLength = this.$itemContainer.find("." + styles[7]).length,
+                $all = this.$itemContainer.find("[data-index='-1']");
+            if (selectedLength == this.options.data.length) {
+                this.empty();
+                $all.click();
+            }
+        },
+
         //隐藏下拉框
         hideItems: function() {
             this.$itemContainer.removeClass(styles[8]);
+            this.$contents.find("i").removeClass(styles[10]).addClass(styles[9]);
         },
 
         //快捷检索出需要的数据

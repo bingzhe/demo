@@ -54,8 +54,8 @@
 .flyer-tab-content div.active {
   display: block; }
 
-.flyer-tab-default .flyer-tab,
-.flyer-tab-simple .flyer-tab {
+.flyer-tab-default,
+.flyer-tab-simple {
   text-align: left !important;
   border: none; }
   .flyer-tab-default .flyer-tab-title,

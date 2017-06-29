@@ -1,0 +1,63 @@
+<h1 class="flyer-layout-titleBig">导航相关 - 页面元素</h1><div class="flyer-element-tips"><p>导航一般指页面引导性频道集合，多以菜单的形式呈现，可应用于头部和侧边，是整个网页画龙点晴般的存在。面包屑结构简单，支持自定义分隔符.</p></div><div class="flyer-layout-section"><div class="flyer-layout-title"><span>水平导航</span><div></div></div><div class="flyer-layout-text"><ul class="flyer-nav"><li class="flyer-nav-item flyer-nav-itemd"><a href="#">文档</a></li><li class="flyer-nav-item"><a href="#">示例</a></li><li class="flyer-nav-item"><a href="#">下拉框 <i class="fa fa-sort-desc"></i></a><dl class="flyer-nav-child"><dd><a href="">移动模块</a></dd><dd><a href="">后台模版</a></dd><dd><a href="">电商平台</a></dd></dl></li></ul></div><div class="flyer-layout-text"><pre class="flyer-codes">
+&lt;ul class="flyer-layout-nav"&gt;
+     &lt;li class="flyer-layout-item flyer-layout-itemd"&gt;
+          &lt;a href="#"&gt;文档&lt;/a&gt;
+     &lt;/li&gt;
+     &lt;li class="flyer-layout-item"&gt;
+          &lt;a href="#"&gt;示例&lt;/a&gt;
+     &lt;/li&gt;
+     &lt;li class="flyer-layout-item"&gt;
+       &lt;a href="#"&gt;下拉框
+          &lt;i class="fa fa-sort-desc"&gt;&lt;/i&gt;
+       &lt;/a&gt;
+        &lt;dl class="flyer-layout-navChild"&gt;
+            
+            &lt;dd&gt;&lt;a href=""&gt;移动模块&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=""&gt;后台模版&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=""&gt;电商平台&lt;/a&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/li&gt;
+ &lt;/ul&gt;</pre></div><p>设定flyer-layout-itemd来指向当前页面分类</p><div class="flyer-layout-title"><span>垂直/侧边导航</span><div></div></div><div class="flyer-layout-text"><ul class="flyer-nav flyer-nav-tree"><li class="flyer-nav-item flyer-nav-itemed"><a href="javascript:;">默认展开<i class="fa fa-sort-desc"></i></a><dl class="flyer-nav-child"><dd><a href="javascript:;">选项1</a></dd><dd><a href="javascript:;">选项2</a></dd><dd><a href="">跳转项</a></dd></dl></li><li class="flyer-nav-item"><a href="javascript:;">解决方案<i class="fa fa-sort-desc"></i></a><dl class="flyer-nav-child"><dd><a href="">移动模块</a></dd><dd><a href="">后台模版</a></dd><dd><a href="">电商平台</a></dd></dl></li><li class="flyer-nav-item"><a href="">产品</a></li><li class="flyer-nav-item"><a href="">大数据</a></li><span class="flyer-nav-bar"></span></ul></div></div><p><button class="flyer-btn flyer-btn-blue flyer-btn-big flyer-layout-showBtn flyer-layout-marginTop10">显示侧边导航示例</button></p><ul class="flyer-nav flyer-nav-tree flyer-nav-side"><li class="flyer-nav-item flyer-nav-itemed"><a href="javascript:;">默认展开<i class="fa fa-sort-desc"></i></a><dl class="flyer-nav-child"><dd><a href="javascript:;">选项1</a></dd><dd><a href="javascript:;">选项2</a></dd><dd><a href="">跳转项</a></dd></dl></li><li class="flyer-nav-item"><a href="javascript:;">解决方案<i class="fa fa-sort-desc"></i></a><dl class="flyer-nav-child"><dd><a href="">移动模块</a></dd><dd><a href="">后台模版</a></dd><dd><a href="">电商平台</a></dd></dl></li><li class="flyer-nav-item"><a href="">产品</a></li><li class="flyer-nav-item"><a href="">大数据</a></li><span class="flyer-nav-bar"></span></ul><div class="flyer-layout-text"><pre class="flyer-codes">
+&lt;ul class="flyer-nav flyer-nav-tree"&gt;
+    &lt;li class="flyer-nav-item flyer-nav-itemed"&gt;
+        &lt;a href="javascript:;"&gt;默认展开&lt;i class="fa fa-sort-desc"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;dl class="flyer-nav-child"&gt;
+            &lt;dd&gt;&lt;a href="javascript:;"&gt;选项1&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href="javascript:;"&gt;选项2&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=""&gt;跳转项&lt;/a&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/li&gt;
+    &lt;li class="flyer-nav-item"&gt;
+        &lt;a href="javascript:;"&gt;解决方案&lt;i class="fa fa-sort-desc"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;dl class="flyer-nav-child"&gt;
+            &lt;dd&gt;&lt;a href=""&gt;移动模块&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=""&gt;后台模版&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href=""&gt;电商平台&lt;/a&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/li&gt;
+    &lt;li class="flyer-nav-item"&gt;
+        &lt;a href=""&gt;产品&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="flyer-nav-item"&gt;&lt;a href=""&gt;大数据&lt;/a&gt;&lt;/li&gt;
+    &lt;span class="flyer-nav-bar"&gt;&lt;/span&gt;
+&lt;/ul&gt; </pre></div><p>水平、垂直、侧边三个导航的HTML结构是完全一样的，不同的是：</p><div class="flyer-element-tips"><p>垂直导航需要追加class：flyer-nav-tree</p><p>侧边导航需要追加class：flyer-nav-tree flyer-nav-side</p></div><div class="flyer-layout-title"><span>面包屑</span><div></div></div><p><span class="flyer-breadcrumb"><a href="">首页</a> <a href="">国际新闻</a> <a href="">亚太地区</a> <a><cite>正文</cite></a></span></p><div class="flyer-layout-text"><pre class="flyer-codes">
+&lt;span class="flyer-breadcrumb"&gt;
+    &lt;a href=""&gt;首页&lt;/a&gt;
+    &lt;a href=""&gt;国际新闻&lt;/a&gt;
+    &lt;a href=""&gt;亚太地区&lt;/a&gt;
+    &lt;a&gt;&lt;cite&gt;正文&lt;/cite&gt;&lt;/a&gt;
+&lt;/span&gt;</pre></div><p>你还可以通过设置class名称flyer-separator-line来自定义分隔符。如：</p><p><span class="flyer-breadcrumb flyer-separator-line"><a href="">首页</a> <a href="">国际新闻</a> <a href="">亚太地区</a> <a><cite>正文</cite></a></span></p><div class="flyer-layout-text"><pre class="flyer-codes">
+&lt;span class="flyer-breadcrumb flyer-separator-line"&gt;
+    &lt;a href=""&gt;首页&lt;/a&gt;
+    &lt;a href=""&gt;国际新闻&lt;/a&gt;
+    &lt;a href=""&gt;亚太地区&lt;/a&gt;
+    &lt;a&gt;&lt;cite&gt;正文&lt;/cite&gt;&lt;/a&gt;
+&lt;/span&gt;</pre></div><div class="flyer-element-tips"><p>当然，你还可以作为小导航来用，如：</p></div><p><span class="flyer-breadcrumb flyer-separator-verticalLine"><a href="">首页</a> <a href="">国际新闻</a> <a href="">亚太地区</a> <a><cite>正文</cite></a></span></p><div class="flyer-layout-text"><pre class="flyer-codes">
+&lt;span class="flyer-breadcrumb .flyer-separator-verticalLine"&gt;
+    &lt;a href=""&gt;首页&lt;/a&gt;
+    &lt;a href=""&gt;国际新闻&lt;/a&gt;
+    &lt;a href=""&gt;亚太地区&lt;/a&gt;
+    &lt;a&gt;&lt;cite&gt;正文&lt;/cite&gt;&lt;/a&gt;
+&lt;/span&gt;</pre></div><script type="text/javascript">flyer.codes($(".flyer-codes"), {
+        tagName: "div"
+    });</script>

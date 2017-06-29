@@ -8,12 +8,13 @@
     -webkit-text-size-adjust: none; }
   .flyer-searches div.keywords > span {
     display: inline-block;
-    line-height: 29px;
-    height: 29px;
+    line-height: 28px;
+    height: 28px;
     color: #424242;
     padding: 0px 10px;
     font-size: 14px;
-    position: relative; }
+    position: relative;
+    box-sizing: border-box; }
   .flyer-searches div.keywords > span i {
     position: absolute;
     z-index: 1;
@@ -25,11 +26,12 @@
     display: none;
     text-align: center; }
   .flyer-searches div.keywords > span i:hover {
-    background-color: #FF5722;
+    background-color: #F7B824;
     color: #fff; }
   .flyer-searches div.keywords > span:hover {
     background-color: #dedede;
-    cursor: pointer; }
+    cursor: pointer;
+    opacity: .5; }
   .flyer-searches div.keywords > span:hover > i {
     display: inherit; }
 
@@ -40,7 +42,8 @@
   width: 100%;
   vertical-align: super;
   padding: 0px 10px;
-  outline: none; }
+  outline: none;
+  box-sizing: border-box; }
   .flyer-seraches-input input[type='text'] {
     border: 0px;
     padding: 0px 10px;
@@ -56,7 +59,6 @@
   display: none;
   position: absolute;
   background-color: #fff;
-  border: 1px solid #eee;
   min-width: 100%;
   z-index: 99;
   border-top: 0px;
@@ -98,7 +100,8 @@
   line-height: normal;
   border-radius: 0; }
 
-.flyer-combobox-items > ul > li > div:hover {
+.flyer-combobox-items > ul > li > div:hover,
+.hover {
   background-color: #4ab8f9;
   color: #fff; }
 

@@ -1,0 +1,196 @@
+<h1 class="flyer-layout-titleBig">检索框组件文档</h1>
+<div class="flyer-element-tips">
+    <p>模块加载名称：flyer-ui-searches
+    </p>
+</div>
+<div class="flyer-layout-section">
+
+</div>
+<!--ccccccccccccccccccccccccccc star-->
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>属性使用说明</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <table class="flyer-table">
+            <colgroup>
+                <col width="140">
+                <col width="140">
+                <col width="180">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>键</th>
+                    <th>默认值</th>
+                    <th>类型</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>isMulti</td>
+                    <td>true</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否允许多个关键词查询，默认是允许的
+                    </td>
+                </tr>
+                <tr>
+                    <td>url</td>
+                    <td>空</td>
+                    <td>String</td>
+                    <td>
+                        请求数据的地址
+                    </td>
+                </tr>
+                <tr>
+                    <td>searchName</td>
+                    <td>空</td>
+                    <td>String</td>
+                    <td>
+                        对应的 Search Name名字
+                    </td>
+                </tr>
+                <tr>
+                    <td>fieldValue</td>
+                    <td>空</td>
+                    <td>String</td>
+                    <td>
+                        对应的数据主键值
+                    </td>
+                </tr>
+                <tr>
+                    <td>fieldName</td>
+                    <td>空</td>
+                    <td>String</td>
+                    <td>
+                        显示的文本值
+                    </td>
+                </tr>
+                <tr>
+                    <td>requestData</td>
+                    <td>[]</td>
+                    <td>Array</td>
+                    <td>
+                        开放请求数据的方法
+                    </td>
+                </tr>
+                <tr>
+                    <td>spaceTime</td>
+                    <td>1000</td>
+                    <td>Int</td>
+                    <td>
+                        事件响应的间隔时间,默认1秒(设置值为毫秒)
+                    </td>
+                </tr>
+                <tr>
+                    <td>separtor</td>
+                    <td>;</td>
+                    <td>String</td>
+                    <td>
+                        分隔符,默认;
+                    </td>
+                </tr>
+                <tr>
+                    <td>distinck</td>
+                    <td>true</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否去重
+                    </td>
+                </tr>
+                <tr>
+                    <td>emptyMsg</td>
+                    <td>未检索到相关的数据..</td>
+                    <td>String</td>
+                    <td>
+                        数据为空时的提示语句
+                    </td>
+                </tr>
+                <tr>
+                    <td>fnDistinckTips</td>
+                    <td>
+                        function() { console.log("该项已经选中...."); }
+                    </td>
+                    <td>Function</td>
+                    <td>
+                        是否去重相关的提示方法
+                    </td>
+                </tr>
+                <tr>
+                    <td>fnDataProcessing</td>
+                    <td>
+                        function() { this._data = this._data.rows; }
+                    </td>
+                    <td>Function </td>
+                    <td>
+                        开放一个数据结构处理的方法
+                    </td>
+                </tr>
+                <tr>
+                    <td>fnSelected</td>
+                    <td>
+                        function() { return false; }
+
+                    </td>
+                    <td>Function</td>
+                    <td>
+                        选中之后的方法
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="flyer-layout-title">
+        <span>内置方法使用说明</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <table class="flyer-table">
+            <colgroup>
+                <col width="140">
+                <col width="140">
+                <col width="180">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>方法名</th>
+                    <th>参数</th>
+                    <th>返回值</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>getSelectedData</td>
+                    <td>空</td>
+                    <td>JSON</td>
+                    <td>
+                        获取选中的值,返回的数据格式为:[ { fieldValue: "", fieldName: "" },{...}]
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>结语</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>你是否发现，主题、尺寸、图标、圆角的交叉组合，可以形成难以计算的按钮种类。 另外，你可能最关注的是配色，flyer内置的六种主题的按钮颜色都是业界常用的标准配色，如果他们仍然无法与你的网站契合， 那么请先允许我“噗”一声。。。然后你就大胆地自撸一个颜色吧！比如：粉红色或者菊花色（一个有味道的颜色）
+        </p>
+    </div>
+</div>
+<div class="flyer-element-tips">
+    <p>Flyer - 用心与你沟通</p>
+</div>
+<!--cccccccccccccccccccccccccccccc end-->
+<!--footer end-->
+<script type="text/javascript">
+    flyer.codes($(".codes"));
+</script>

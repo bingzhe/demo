@@ -74,6 +74,9 @@
         //类型: Int ,默认选中的页签
         defaultIndex: 0,
 
+        //类型:String ,个性皮肤样式,默认值为"flyer-tab-default",内置了三种风格:["flyer-tab-default","flyer-tab-simple","flyer-tab-card""]
+        skin: "flyer-tab-default",
+
         //类型: Function ,点击之前事件
         beforeClick: function() {
             return false;
@@ -141,7 +144,11 @@
 
         //tab 的html模版
         template: function() {
-            var tmplHtml = ['<div class="' + styles[0] + '">',
+            var
+                opts = this.options,
+                arryTitleHtml = [],
+                arryContentHtml = [],
+                tmplHtml = ['<div class="' + styles[0] + (opts.skin.length > 0 ? (" " + opts.skin) : "") + '">',
                     '<div class="' + styles[1] + '">',
                     '<ul>',
                     '</ul>',
@@ -150,9 +157,6 @@
                     '</div>',
                     '</div>'
                 ],
-                opts = this.options,
-                arryTitleHtml = [],
-                arryContentHtml = [],
                 strHtml = "";
             for (var i = 0, len = opts.tabs.length, tabs = opts.tabs; i < len; i++) {
                 arryTitleHtml.push("<li data-index='" + i + "'>" + tabs[i].title + "</li>");
@@ -184,7 +188,9 @@
                 } else {
                     _this.showContent(index);
                 }
-            })
+
+                _opts.click.call(_this, this);
+            });
         },
 
         //填充内容
@@ -239,4 +245,4 @@
         return new Tab(selector, options);
     });
 
-})
+});

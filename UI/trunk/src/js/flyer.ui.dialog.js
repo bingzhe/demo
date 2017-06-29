@@ -54,6 +54,9 @@
     //定制属性
     dialog.DEFAULTS = {
 
+        //类型:String ,要挂载的容器对象。
+        container: "body",
+
         //类型:String ,显示的标题,默认值为"",如果为空则不显示标题部分.
         title: "",
 
@@ -126,6 +129,9 @@
 
             //内置一些属性，用于补漏
             this.options = $.extend(true, {}, dialog.DEFAULTS, options);
+
+            //实例好要挂载的容器
+            this.$container = $(this.options.container);
             this.template();
             this.bindEvents();
         },
@@ -154,8 +160,11 @@
             })
             for (var i = 0, optsBtns = opts.btns, btns = _this.$btns, len = this.$btns.length; i < len; i++) {
                 (function(elm, evnt) {
-                    $(elm).on(evnt.click.name, function() {
-                        evnt.click.call(_this);
+
+                    //修复IE浏览器得不到function.name的bug
+                    //$(elm).on(evnt.click.name, function() {
+                    $(elm).on("click", function() {
+                        evnt.click.call(_this, elm);
                     });
                 })(btns[i], optsBtns[i]);
             };
@@ -193,7 +202,7 @@
                 arryHtmls.splice(0, 1);
             }
 
-            $(body).append(arryHtmls.join(""));
+            this.$container.append(arryHtmls.join(""));
 
             this.$el = $("#" + this.selector);
             this.$title = this.$el.find("." + styles[2]);
@@ -318,8 +327,8 @@
                     {
                         var xy = this.getOffset(_this.$el.get(0));
                         _this.$el.css({
-                            "top": String(xy.y),
-                            "left": String(xy.x)
+                            "top": String(xy.y) + "px",
+                            "left": String(xy.x) + "px"
                         })
                     }
                     break;
@@ -362,7 +371,7 @@
             options = options || {};
             options.content = text;
             options.title = options.title || "提示";
-            options.skin = "flyer-dialog-alert";
+            options.skin = options.skin || "flyer-dialog-alert";
             var o = new dialog(options);
             //o.$el.addClass("flyer-dialog-alert");
             return o;
@@ -374,27 +383,27 @@
                 btns: [{
                         text: "确定",
                         skin: "flyer-btn-blue",
-                        click: function() {
+                        click: function(elm) {
                             this.close();
                             if (typeof callback === "function") {
-                                callback.call(this, true);
+                                callback.call(this, elm, true);
                             }
                         }
                     },
                     {
                         text: "取消",
                         skin: "",
-                        click: function() {
+                        click: function(elm) {
                             this.close();
                             if (typeof callback === "function") {
-                                callback.call(this, false);
+                                callback.call(this, elm, false);
                             }
                         }
                     }
                 ]
             }, options);
             options.content = text;
-            options.skin = "flyer-dialog-confirm";
+            options.skin = options.skin || "flyer-dialog-confirm";
             var o = new dialog(options);
             //o.$el.addClass("flyer-dialog-confirm");
             return o;
@@ -402,7 +411,7 @@
 
         //打开一个模态框
         open: function(options) {
-            options.skin = "flyer-dialog-open";
+            options.skin = options.skin || "flyer-dialog-open";
             var o = new dialog(options);
             //o.$el.addClass("flyer-dialog-open");
 
@@ -430,7 +439,7 @@
             options.showCancelBtn = typeof options.showCancelBtn !== "undefined" ? options.showCancelBtn : false;
             options.autoClose = typeof options.autoClose !== "undefined" ? options.autoClose : true;
             options.anim = options.anim || "bounceIn";
-            options.skin = "flyer-dialog-msg";
+            options.skin = options.skin || "flyer-dialog-msg";
             var o = new dialog(options);
             //o.$el.addClass("flyer-dialog-msg");
             o.$title.remove();

@@ -86,8 +86,9 @@
         emptyMsg: "未检索到相关的数据..",
 
         //类型:Function ,是否去重相关的提示方法
-        fnDistinckTips: function() {
-            console.log("该项已经选中....");
+        fnDistinckTips: function(key, that) {
+            flyer.closeAll("msg");
+            flyer.msg("你已经选择了[ " + $(that).text() + " ]");
         },
 
         //类型:Function ,开放一个数据结构处理的方法
@@ -172,8 +173,6 @@
             //文本框输入响应事件    
             _this.$input.on("keyup", function(e) {
 
-                console.log(e);
-
                 if (timer) {
                     clearInterval(timer);
                 }
@@ -184,7 +183,6 @@
                     case 13:
                         {
                             var itemsStatus = _this.$items.parent().css("display");
-                            console.log(_this.$items.parent().css("display"));
                             if (keyword.length > 0 && itemsStatus == "none") {
                                 _this.requestData(keyword);
                             } else {
@@ -201,7 +199,7 @@
                                     setTimeout(function() { _this.$keywords.find("span>i").last().click(); }, 100);
                                 } else {
                                     this.setAttribute("del", "del");
-                                    _this.$keywords.find("span").last().css("border", "1px solid red");
+                                    _this.$keywords.find("span").last().css("border", "1px solid #F7B824");
                                 }
                             } else {
                                 return false;
@@ -282,6 +280,9 @@
 
                 //修正输入焦点位置
                 setTimeout(function() { _this.$input.css("padding-left", _this.$keywords.get(0).offsetWidth + 10) }, 10);
+
+                //初始化上下键的索引值
+                _this.keyIndex = 0;
             })
 
         },
@@ -390,4 +391,4 @@
         return new Searches(selector, options);
     })
 
-})
+});

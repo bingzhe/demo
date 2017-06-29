@@ -1,0 +1,188 @@
+<h1 class="flyer-layout-titleBig">分页组件文档</h1>
+<div class="flyer-element-tips">
+    <p>模块加载名称：flyer-ui-page
+    </p>
+</div>
+<!--默认Tab选项卡-->
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>全部参数</span>
+        <div></div>
+    </div>
+    <p>语法：flyerui.pager(settings)</p>
+    <table class="flyer-table">
+        <colgroup>
+            <col width="270">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>参数</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>settings</td>
+                <td>部分必填，部分可选。用于配置flyerpage的键值对集合</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="flyer-table">
+        <colgroup>
+            <col width="140">
+            <col width="140">
+            <col width="180">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>键</th>
+                <th>默认值</th>
+                <th>类型</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ajax</td>
+                <td>弃用</td>
+                <td>Object</td>
+                <td>调用 API 的数据接口</td>
+            </tr>
+
+            <tr>
+                <td>data</td>
+                <td>null</td>
+                <td>Object</td>
+                <td>要传入的 JSON DATA</td>
+            </tr>
+            <tr>
+                <td>curIndex</td>
+                <td>1</td>
+                <td>Number</td>
+                <td>当前页</td>
+            </tr>
+            <tr>
+                <td>pageIndex</td>
+                <td>1</td>
+                <td>Number</td>
+                <td>起始页</td>
+            </tr>
+            <tr>
+                <td>pageSize</td>
+                <td>5</td>
+                <td>Number</td>
+                <td>每页显示的大小</td>
+            </tr>
+            <tr>
+                <td>prevText</td>
+                <td>空</td>
+                <td>String</td>
+                <td>上一页显示的内容</td>
+            </tr>
+            <tr>
+                <td>nextText</td>
+                <td>空</td>
+                <td>String</td>
+                <td>下一页显示的内容 </td>
+            </tr>
+            <tr>
+                <td>totalNumt</td>
+                <td>0</td>
+                <td>Number</td>
+                <td>数据总记录</td>
+            </tr>
+            <tr>
+                <td>pagerLen</td>
+                <td>5</td>
+                <td>Number</td>
+                <td>显示的长度</td>
+            </tr>
+            <tr>
+                <td>pageSum</td>
+                <td>0</td>
+                <td>Number</td>
+                <td>总页数值</td>
+            </tr>
+            <tr>
+                <td>isReload</td>
+                <td>false</td>
+                <td>Boolean</td>
+                <td>是否重新渲染分页</td>
+            </tr>
+            <tr>
+                <td>fnBeforeClick</td>
+                <td>function() { return false; }</td>
+                <td>Function</td>
+                <td>点击翻页之前事件</td>
+            </tr>
+            <tr>
+                <td>fnClick</td>
+                <td>function() { return false; }</td>
+                <td>Function</td>
+                <td>点击翻页事件</td>
+            </tr>
+            <tr>
+                <td>fnAfterClick</td>
+                <td>function() { return false; }</td>
+                <td>Function</td>
+                <td>点击翻页之后事件</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>使用案例</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>待定
+        </p>
+    </div>
+</div>
+</p>
+<div id="test">
+</div>
+<p>
+    <pre class="flyer-codes">
+<div id="test">
+</div>
+<script type="text/javascript">
+$("#test").pager({
+    totalNum: 49,
+    pageSum: 5,
+    fnClick: function() {
+        console.log("当前第:" + this.options.curIndex);
+    }
+});
+</script>
+</pre>
+    <br/>
+    <div class="flyer-layout-section">
+        <div class="flyer-layout-title">
+            <span>结语</span>
+            <div></div>
+        </div>
+        <div class="flyer-layout-text">
+            <p>待定
+            </p>
+        </div>
+    </div>
+    <div class="flyer-element-tips">
+        <p>Flyer - 用心与你沟通</p>
+    </div>
+    <!--footer end-->
+    <script type="text/javascript">
+        $("#test").pager({
+            totalNum: 49,
+            pageSum: 5,
+            fnClick: function() {
+                console.log("当前第:" + this.options.curIndex);
+            }
+        });
+        flyer.codes($(".flyer-codes"), {
+            tagName: "div"
+        });
+    </script>

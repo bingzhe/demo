@@ -1,0 +1,146 @@
+<h1 class="flyer-layout-titleBig">树形菜单组件文档</h1><div class="flyer-element-tips"><p>模块加载名称：flyertree</p></div><div class="flyer-layout-title"><span>全部参数</span><div></div></div><p>语法：flyerui.tree(settings)</p><table class="flyer-table"><colgroup><col width="270"><col></colgroup><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td>settings</td><td>部分必填，部分可选。用于配置flyerpage的键值对集合</td></tr></tbody></table><table class="flyer-table"><colgroup><col width="140"><col width="140"><col width="180"><col></colgroup><thead><tr><th>键</th><th>默认值</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>name</td><td>Tree</td><td>String</td><td>树形菜单节点显示的文本</td></tr><tr><td>spread</td><td>false</td><td>Object</td><td>树形菜单节点显示的文本</td></tr><tr><td>href</td><td>null</td><td>String</td><td>树形菜单节点要跳转的链接地址</td></tr><tr><td>target</td><td>_blank</td><td>String</td><td>树形菜单节点跳转地址的方式,等同于A标签的target设置</td></tr><tr><td>childrens</td><td>null</td><td>Array</td><td>同data节点，可无限延伸</td></tr></tbody></table><div class="flyer-layout-section"><div class="flyer-layout-title"><span>使用案例</span><div></div></div><div id="tree"></div></div><p><pre class="flyer-codes">
+/*html部分*/
+<div id="tree">
+</div>
+/*js部分*/
+var tree = flyer.tree($("#tree"), {
+    data: [{
+        name: "tree1",
+        spread: true,
+        childrens: [{
+            name: "tree1.1",
+            spread: false
+        }, {
+            name: "tree1.2",
+            spread: false
+        }, {
+            name: "tree1.3",
+            spread: false
+        }, {
+            name: "tree1.4",
+            spread: false
+        }]
+    }, {
+        name: "tree2",
+        spread: false,
+        childrens: [{
+            name: "tree2.1",
+            spread: false
+        }, {
+            name: "tree2.2",
+            spread: false
+        }, {
+            name: "tree2.3",
+            spread: false
+        }, {
+            name: "tree2.4",
+            spread: false
+        }, {
+            name: "tree2.5",
+            childrens: [{
+                name: "tree2.5.1",
+                spread: false,
+                childrens: [{
+                    name: "tree2.5.1.1",
+                    spread: false
+                }, {
+                    name: "tree2.5.1.2",
+                    spread: false
+                }, {
+                    name: "tree2.5.1.3",
+                    spread: false
+                }, {
+                    name: "tree2.5.1.4",
+                    spread: false
+                }, {
+                    name: "tree2.5.1.5"
+                }]
+            }]
+        }]
+    }, {
+        name: "tree3"
+    }, {
+        name: "tree4"
+    }, {
+        name: "百度",
+        href: "http://www.baidu.com"
+    }],
+    click: function(elm, item) {
+        flyer.closeAll("msg");
+        flyer.msg(JSON.stringify(item), {
+            autoClose: false
+        });
+    }
+});
+</pre></p><div class="flyer-layout-section"><div class="flyer-layout-title"><span>结语</span><div></div></div><div class="flyer-element-tips"><p>Flyer - 用心与你沟通</p></div><script type="text/javascript">var tree = flyer.tree($("#tree"), {
+            data: [{
+                name: "tree1",
+                spread: true,
+                childrens: [{
+                    name: "tree1.1",
+                    spread: false
+                }, {
+                    name: "tree1.2",
+                    spread: false
+                }, {
+                    name: "tree1.3",
+                    spread: false
+                }, {
+                    name: "tree1.4",
+                    spread: false
+                }]
+            }, {
+                name: "tree2",
+                spread: false,
+                childrens: [{
+                    name: "tree2.1",
+                    spread: false
+                }, {
+                    name: "tree2.2",
+                    spread: false
+                }, {
+                    name: "tree2.3",
+                    spread: false
+                }, {
+                    name: "tree2.4",
+                    spread: false
+                }, {
+                    name: "tree2.5",
+                    childrens: [{
+                        name: "tree2.5.1",
+                        spread: false,
+                        childrens: [{
+                            name: "tree2.5.1.1",
+                            spread: false
+                        }, {
+                            name: "tree2.5.1.2",
+                            spread: false
+                        }, {
+                            name: "tree2.5.1.3",
+                            spread: false
+                        }, {
+                            name: "tree2.5.1.4",
+                            spread: false
+                        }, {
+                            name: "tree2.5.1.5"
+                        }]
+                    }]
+                }]
+            }, {
+                name: "tree3"
+            }, {
+                name: "tree4"
+            }, {
+                name: "百度",
+                href: "http://www.baidu.com"
+            }],
+            click: function(elm, item) {
+                flyer.closeAll("msg");
+                flyer.msg(JSON.stringify(item), {
+                    autoClose: false
+                });
+            }
+        });
+        flyer.codes($(".flyer-codes"), {
+            tagName: "div"
+        });</script></div>

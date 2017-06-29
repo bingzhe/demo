@@ -1,0 +1,57 @@
+<h1 class="flyer-layout-titleBig">简单辅助元素 - 页面元素</h1><div class="flyer-element-tips"><p>本篇主要集中罗列页面中的一些简单辅助元素，如：引用块、字段集区块、横线等等，这些元素都无需依赖任何模块</p></div><div class="flyer-layout-section"><div class="flyer-layout-title"><span>引用区块</span><div></div></div><div class="flyer-element-tips"><p>考虑到与各式各样的网站不那么违和，Flyerui遵循的色值都是业界比较常用的</p></div><p>目前内置了上述一种风格</p><div class="flyer-layout-title"><span>字段集区块</span><div></div></div><div class="flyer-layout-text"><p>通过对内容元素设置class为flyer-layout-show来选择性初始展开某一个面板</p><pre class="flyer-codes">
+<pre class="flyer-codes"></pre></pre></div><div class="flyer-layout-title"><span>横线</span><div></div></div><p>即直接写hr标签，无需定义class</p><p>华丽的</p><hr><div class="flyer-layout-text"><p>分割线</p><pre class="flyer-codes">
+华丽的
+ <hr>
+分割线</pre>
+    </div>
+    
+    <div class="flyer-layout-title">
+        <span>警告框</span>
+        <div></div>
+    </div>
+    <p>错误或危险</p>
+    <div class="flyer-element-alert flyer-element-alertError">
+        <button class="flyer-btn-blue flyer-btn-close"><i class="fa fa-close"></i></button>
+        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+    </div>
+    <div>
+        <pre class="flyer-codes">
+<div class="flyer-element-alert flyer-element-alertError">
+    <button class="flyer-btn-blue flyer-btn-close"><i class="fa fa-close"></i></button>
+    <strong>Warning!</strong> Best check yo self, you're not looking too good.
+</div>
+</pre>
+    </div>
+    <p>成功</p>
+    <div class="flyer-element-alert flyer-element-alertSuccess">
+        <button class="flyer-btn-blue flyer-btn-close"><i class="fa fa-close"></i></button>
+        <strong>Well done!</strong>You successfully read this important alert message.
+    </div>
+    <div>
+        <pre class="flyer-codes">
+<div class="flyer-element-alert flyer-element-alertSuccess">
+        <button class="flyer-btn-blue flyer-btn-close"><i class="fa fa-close"></i></button>
+        <strong>Well done!</strong>You successfully read this important alert message.
+</div></pre>
+    </div>
+    <p>信息</p>
+    <div class="flyer-element-alert flyer-element-alertInfo">
+        <button class="flyer-btn-blue flyer-btn-close"><i class="fa fa-close"></i></button>
+        <strong>Heads up!</strong>This alert needs your attention, but it's not super important.
+    </div>
+    <div>
+        <pre class="flyer-codes">
+<div class="flyer-element-alert flyer-element-alertInfo">
+        <button class="flyer-btn-blue flyer-btn-close"><i class="fa fa-close"></i></button>
+        <strong>Heads up!</strong>This alert needs your attention, but it's not super important.
+</div>
+</pre>
+    </div>
+</div>
+<div class="flyer-element-tips">
+    <p>Flyer - 用心与你沟通</p>
+</div>
+<script type="text/javascript">
+    flyer.codes($(".flyer-codes"), {
+        tagName: "div"
+    });</script>

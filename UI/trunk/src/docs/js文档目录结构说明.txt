@@ -1,0 +1,8 @@
+1、flyer.js 用于基类库，类似jquery
+2、flyer.ui.comboBox.js 用于下拉框
+3、flyer.ui.js 该文件是旧文件，后期会被废弃
+4、flyer.ui.page.js 该文件用于分页控件
+5、flyer.ui.searches.js 该文件用于检索框
+6、flyer.ui.tab.js 该文件用于 tab 选项卡
+7、juqery.js jquery源码
+8、jquery.min.js juqery运行代码

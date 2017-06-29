@@ -1,0 +1,360 @@
+<h1 class="flyer-layout-titleBig">Tab选项卡 - 页面元素</h1>
+<div class="flyer-element-tips">
+    <p>模块加载名称：flyer-ui-comboBox.</p>
+    <p>导航菜单可应用于头部和侧边，Tab选项卡提供多套风格，支持响应式，支持删除选项卡等功能。面包屑结构简单，支持自定义分隔符。</p>
+</div>
+<!--默认Tab选项卡-->
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>默认Tab选项卡</span>
+        <div></div>
+    </div>
+    <p>Tab广泛应用于Web页面，因此我们也对其进行了良好的支持。flyerUi内置多种Tab风格, 这是一个最基本的例子：
+    </p>
+    <div id="tabWrapper">
+        <div class="flyer-tab flyer-tab-default">
+            <div class="flyer-tab-title">
+                <ul>
+                    <li data-index="0" class="flyer-tab-active">Tab1</li>
+                    <li data-index="1">Tab2</li>
+                    <li data-index="2">Tab3</li>
+                </ul>
+            </div>
+            <div class="flyer-tab-content">
+                <div class="flyer-tab-item">1</div>
+                <div class="flyer-tab-item">2</div>
+                <div class="flyer-tab-item">3</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <pre class="flyer-codes">
+<div class="flyer-tab flyer-tab-default">
+    <div class="flyer-tab-title">
+        <ul>
+            <li data-index="0" class="flyer-tab-active">Tab1</li>
+            <li data-index="1">Tab2</li>
+            <li data-index="2">Tab3</li>
+        </ul>
+    </div>
+    <div class="flyer-tab-content">
+        <div class="flyer-tab-item">1</div>
+        <div class="flyer-tab-item">2</div>
+        <div class="flyer-tab-item">3</div>
+    </div>
+</div>
+<script type="text/javascript">
+ $("#tabWrapper").tab();
+</script>
+</pre>
+    </div>
+    <!--Tab简洁风格-->
+    <div class="flyer-layout-title">
+        <span>Tab简洁风格</span>
+        <div></div>
+    </div>
+    <p>
+        <div id="autoTab2"></div>
+    </p>
+    <div>
+        <pre class="flyer-codes">
+<div id="autoTab2"></div>
+<script type="text/javascript">
+flyer.tab($("#autoTab2"), {
+    //tab 页签的标题
+    tabs: [{
+        //单个页签的标题
+        title: "标签一",
+        //单个页签对应的内容
+        content: "这里显示的是内容1",
+        //单个页签对应的请求路径
+        url: null,
+        //是否缓存
+        cache: false
+    }, {
+        //单个页签的标题
+        title: "tab2",
+        //单个页签对应的内容
+        content: "这里显示的是内容2",
+        //单个页签对应的请求路径
+        url: "",
+        //是否缓存
+        cache: false
+    }, {
+        //单个页签的标题
+        title: "tab3",
+        //单个页签对应的内容
+        content: "你好世界",
+        //单个页签对应的请求路径
+        url: "",
+        //是否缓存
+        cache: false
+    }],
+    //默认选中的页签
+    defaultIndex: 1,
+    skin: "flyer-tab-simple"
+});</script></pre>
+        <p>通过追加class：flyer-tab-simple 来设定简洁风格。</p>
+    </div>
+    <!--Tab卡片风格-->
+    <div class="flyer-layout-title">
+        <span>Tab卡片风格</span>
+        <div></div>
+    </div>
+    <p>
+        <div id="autoTab3"></div>
+    </p>
+    <div>
+        <pre class="flyer-codes">
+ <div id="autoTab3"></div>
+<script type="text/javascript">
+flyer.tab($("#autoTab3"), {
+    //tab 页签的标题
+    tabs: [{
+        //单个页签的标题
+        title: "标签一",
+        //单个页签对应的内容
+        content: "这里显示的是内容1",
+        //单个页签对应的请求路径
+        url: null,
+        //是否缓存
+        cache: false
+    }, {
+        //单个页签的标题
+        title: "tab2",
+        //单个页签对应的内容
+        content: "这里显示的是内容2",
+        //单个页签对应的请求路径
+        url: "",
+        //是否缓存
+        cache: false
+    }, {
+        //单个页签的标题
+        title: "tab3",
+        //单个页签对应的内容
+        content: {
+            //单个页签的标题
+            title: "tab2",
+            //单个页签对应的内容
+            content: null,
+            //单个页签对应的请求路径
+            url: "",
+            //是否缓存
+            cache: false
+        },
+        //单个页签对应的请求路径
+        url: "",
+        //是否缓存
+        cache: false
+    }],
+    //默认选中的页签
+    defaultIndex: 1,
+    skin: "flyer-tab-card"
+});
+</script>
+        </pre>
+        <p>通过追加class：flyer-tab-card 来设定卡片风格。</p>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>使用说明</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <div></div>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>属性使用说明</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <table class="flyer-table">
+            <colgroup>
+                <col width="140">
+                <col width="140">
+                <col width="180">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>键</th>
+                    <th>默认值</th>
+                    <th>类型</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>tabs</td>
+                    <td>[](参照下面tabs属性配置)</td>
+                    <td>Array</td>
+                    <td>
+                        tab 页签的标题
+                    </td>
+                </tr>
+                <tr>
+                    <td>skin</td>
+                    <td>flyer-tab-default</td>
+                    <td>String</td>
+                    <td>
+                        默认值为"flyer-tab-default",内置了三种风格:["flyer-tab-default","flyer-tab-simple","flyer-tab-card""]
+                    </td>
+                </tr>
+                <tr>
+                    <td>cache</td>
+                    <td>false</td>
+                    <td>Boolean</td>
+                    <td>
+                        是否缓存,这里的是否缓存区别于单个，该缓存设置是所有的页签都缓存。 单个页签的缓存优先级高于全局的缓存设置
+                    </td>
+                </tr>
+                <tr>
+                    <td>defaultIndex</td>
+                    <td>0</td>
+                    <td>Int</td>
+                    <td>
+                        默认选中的页签
+                    </td>
+                </tr>
+                <tr>
+                    <td>beforeClick</td>
+                    <td>
+                        function() { return false; }
+                    </td>
+                    <td>Function</td>
+                    <td>
+                        点击之前事件
+                    </td>
+                </tr>
+                <tr>
+                    <td>click</td>
+                    <td>
+                        function(elm) { return false; }
+                    </td>
+                    <td>Function</td>
+                    <td>
+                        点击事件,elm参数是当前选中的tab
+                    </td>
+                </tr>
+                <tr>
+                    <td>afetrClick</td>
+                    <td>
+                        function() { return false; }
+                    </td>
+                    <td>Function</td>
+                    <td>
+                        点击之后事件
+                    </td>
+                </tr>
+                <tr>
+                    <td>beforeCreated</td>
+                    <td>
+                        function() { return false; }
+                    </td>
+                    <td>Function</td>
+                    <td>
+                        构建之前
+                    </td>
+                </tr>
+                <tr>
+                    <td>afterCreated</td>
+                    <td>
+                        function() { return false; }
+                    </td>
+                    <td>Function</td>
+                    <td>
+                        构建之后
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>上述属性tabs使用说明,一个标签页对应一个对象配置</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <table class="flyer-table">
+            <colgroup>
+                <col width="140">
+                <col width="140">
+                <col width="180">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>键</th>
+                    <th>默认值</th>
+                    <th>类型</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>tab1</td>
+                    <td>String</td>
+                    <td>
+                        单个页签的标题
+                    </td>
+                </tr>
+                <tr>
+                    <td>content</td>
+                    <td>空</td>
+                    <td>String</td>
+                    <td>
+                        单个页签对应的内容
+                    </td>
+                </tr>
+                <tr>
+                    <td>url</td>
+                    <td>空</td>
+                    <td>String</td>
+                    <td>
+                        单个页签对应的请求路径
+                    </td>
+                </tr>
+                <tr>
+                    <td>cache</td>
+                    <td>
+                        false
+                    </td>
+                    <td>Boolean</td>
+                    <td>
+                        是否缓存
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>使用示例</span>
+        <div></div>
+    </div>
+</div>
+<div class="flyer-layout-section">
+    <div class="flyer-layout-title">
+        <span>结语</span>
+        <div></div>
+    </div>
+    <div class="flyer-layout-text">
+        <p>你是否发现，主题、尺寸、图标、圆角的交叉组合，可以形成难以计算的按钮种类。 另外，你可能最关注的是配色，flyer内置的六种主题的按钮颜色都是业界常用的标准配色，如果他们仍然无法与你的网站契合， 那么请先允许我“噗”一声。。。然后你就大胆地自撸一个颜色吧！比如：粉红色或者菊花色（一个有味道的颜色）
+        </p>
+    </div>
+</div>
+<div class="flyer-element-tips">
+    <p>Flyer - 用心与你沟通</p>
+</div>
+<!--footer end-->
+<script type="text/javascript">
+    flyer.codes($(".flyer-codes"), {
+        tagName: "div"
+    });
+</script>
