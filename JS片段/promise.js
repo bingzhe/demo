@@ -41,3 +41,31 @@ getURL(URL).then(function onFulfilled(value){
 }).catch(function onRejected(error){
     console.log(error);
 })
+
+
+var getServerStuff = function(callback){
+    return ajaxCall(function(json){
+        return callback(json);
+    });
+};
+
+var getServerStuff = ajaxCall;
+
+var minimum = 21;
+var checkAge = function(age){
+    return age >= minimum;
+};
+
+var checkAge = function(age){
+    var minimum = 21;
+    return age>= minimum;
+}
+
+var memoize = function(f) {
+    var cache = {};
+
+    return function(){
+        var arg_str = JSON.stringify(arguments);
+        cache[arg_str] = cache[arg_str] 
+    }
+}

@@ -1,0 +1,36 @@
+**window 
+      window.innerWidth  //浏览器 文档窗口宽度
+      window.innerHeight //浏览器 文档窗口高度 不含 顶部的 菜单及搜索框
+      window.outerWidth //浏览器宽度
+      window.outHeight   //浏览器高度 含顶部菜单及搜索框
+       window.pageXOffset  // 页面 滚动距离 相对 文档窗口左上角  类似scrollTop
+       window.pageYOffset  //
+       window.screnenX      // 浏览器 相对屏幕 偏移位子
+       window.screenY       //
+ **screen
+   screen.availWidth     //屏幕可用  宽度
+   screen.availHeight
+   screen.width            //屏幕整体宽度 
+   screen.height         //屏幕整体高度
+**element 元素
+   element.clientLeft   //只在元素本省参考不考虑margin   从padding左上角 到border左上角距离
+                                      没有 滑动条 其实 就指 border的宽度
+   element.clientTop   //
+    element.clientWidth   // 元素 的padding+width  不含border及margin
+   element.offsetLeft    //从元素本身*border*左上角开始 到最近 定位祖先元素的**padding**左上角距离   
+    element.offsetTop  //
+   element.offsetParent  //获取最近定位 祖先元素 Dom 节点
+   element.offsetWidth  //元素的 border+padding +width
+    element..scrollTop   //元素 滑动垂直距离 
+    element.scrollLeft   //元素  滑动水平距离
+   element.scrollwidth //如果 元素如果有滑动条滑动 则  =clientWidth+scrollTop
+***鼠标位置
+  e.pageX      //鼠标 相对 浏览器文档区的 左上角  不管html body设了什么也是相对显示区的左上角
+  e.pageY  //
+  e.offsetX  //鼠标相对 点击元素 的padding 左上角
+  e.offsetY  //
+  e.screenX  //鼠标相对 屏幕的左上角
+  e.sreenY    //
+  e.clientX   //相对于 窗口左上角 
+
+e.x  e.clientX e.pageX 三者 在chrome测试 参考点是一样的   还没明白 区别
