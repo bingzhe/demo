@@ -19,20 +19,53 @@
 
 <head></head>
 <style>
-    #app{
-        border: 1px solid #ccc;
-        width: 70px;
+    #app {
+        position: absolute;
+        /* 相对定位或绝对定位均可 */
+        width: 500px;
+        height: 300px;
+        top: 50%;
+        left: 50%;
+        margin: -150px 0 0 -250px;
+        /* 外边距为自身宽高的一半 */
+        background-color: pink;
+    }
+    
+    .Center-Container.is-Table {
+        display: table;
+        height: 500px;
+        width: 500px;
+    }
+    
+    .is-Table .Table-Cell {
+        display: table-cell;
+        vertical-align: middle;
+        /*height: 500px;
+        width: 500px;*/
+    }
+    
+    .is-Table .Center-Block {
+        width: 50%;
+        height: 50%;
+        margin: 0 auto;
+        background-color: #ccc;
     }
 </style>
 
 <body>
 
     <div id="app">
-        <a href="www.baidu.com">woshi henchanghenchagn</a>
+
+    </div>
+
+    <div class="Center-Container is-Table">
+        <div class="Table-Cell">
+            <div class="Center-Block">
+                <!-- CONTENT -->
+            </div>
+        </div>
     </div>
     <script>
-
-
     </script>
 </body>
 
