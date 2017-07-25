@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #button {
+            border-radius: .2rem;
+            width: 4rem;
+            height: 2rem;
+            background-color: blue;
+            font-size: 1rem;
+            color: white;
+        }
+    </style>
+</head>
+
+<div id="button">button</div>
+
+<body>
+    <script>
+        (function(doc, win) {
+            var docE1 = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docE1.clientWidth;
+                    if (!clientWidth) return;
+                    docE1.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</body>
+
+</html>
