@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-table :data="list" stripe>
+            <el-table-column type="selection" width="55"></el-table-column>
+            <el-table-column prop="food_sn" label="食品编号"></el-table-column>
+            <el-table-column prop="food_name" label="食品名"></el-table-column>
+        </el-table>
+    </div>
+</body>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>
+    var getData = function(callback) {
+        $.ajax('https://easy-mock.com/mock/59ac2ccae0dc6633419a26ab/sailing/table_get.php').then(function(resp) {
+            window.$data = resp.data.food_list;
+            callback();
+        });
+    };
+
+    var initVue = function() {
+        new Vue({
+            el: '#app',
+            data: function() {
+                return {
+                    visible: false,
+                    list: window.$data
+                }
+            },
+            mounted() {
+                console.log(this.list);
+            }
+        });
+    }
+
+    getData(initVue);
+</script>
+
+</html>
