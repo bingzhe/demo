@@ -12,25 +12,25 @@
 			</div>
 			<div class="main clearfix left">
 				<div class="shopIcon left">
-					<img src="../img/shop_icon.png" alt="" />
+					<img :src="imgbase_url + '/img_get.php?img=1&height=69&width=69&imgname=' + imageUrl "alt="" />
 				</div>
 				<div class="info left">
 					<div class="name">
-						<h3 class="shopName">毛毛快餐</h3>
+						<h3 class="shopName">{{shopinfo.shop_name}}</h3>
 					</div>
 					<div class="content left">
-						<p class="user grey">账号：<span class="black">admin</span><span class="changePassword bl" @click="showPsd">修改密码</span></p>
-						<p class="contactspanerson grey">联系人：<span class="black">slice</span></p>
-						<p class="spanhone grey">电话：<span class="call nobind">(未绑定)</span><span class="unbundling bl" @click='showPhone'>绑定</span></p>
-						<p class="weChat grey">微信：<span class="bund nobind">(未绑定)</span><span class="unbundling bl" @click='showWechat'>绑定</span></p>
+						<p class="user grey">账号：<span class="black">{{shopinfo.username}}</span><span class="changePassword bl rfs" @click="showPsd">修改密码</span></p>
+						<p class="contactspanerson grey">联系人：<span class="black">{{shopinfo.contact}}</span></p>
+						<p class="spanhone grey">电话：<span v-if="shopinfo.telephone" class="call nobind lfs">{{shopinfo.telephone}}</span><span v-else class="call nobind">( 未绑定 )</span><span class="unbundling bl rfs" @click='showPhone' v-if='!shopinfo.telephone'>绑定</span><span v-else class="unbundling bl rfs" @click='showPhone' >解绑</span></p>
+						<p class="weChat grey">微信：<span class="bund nobind lfs" v-if='!shopinfo.is_weixin'>( 未绑定 )</span><span v-else class="bund gr lfs">( 已绑定 )</span><span class="unbundling bl rfs " @click='showWechat' v-if='!shopinfo.is_weixin'>绑定</span><span v-else class="unbundling bl rfs " @click='showWechat'>解绑</span></p>
 					</div>
 				</div>
 			</div>
 			<div class="content left rf">
-					<p class="shopId grey">店铺ID：<span class="black">admin</span></p>
-					<p class="email grey">邮箱：<span class="nobind">(未绑定)</span><span class="unbundling bl" @click='showEmail'>绑定</span> </p>
-					<p class="area grey">面积：<span class="black">13235265965</span></p>
-					<p class="address grey">地址：<span class="black">深圳前海</span></p>
+					<p class="shopId grey">店铺ID：<span class="black">{{shopinfo.shop_id}}</span></p>
+					<p class="email grey">邮箱：<span class="nobind">{{shopinfo.email}}</span><span v-if='!shopinfo.email' class="unbundling bl rfs" @click='showEmail'>绑定</span><span v-else class="unbundling bl rfs" @click='showEmail'>解绑</span> </p>
+					<p class="area grey">面积：<span class="black">{{shopinfo.shop_area}}M²</span></p>
+					<p class="address grey">地址：<span class="black">{{shopinfo.address}}</span></p>
 			</div>
 		</section>
 		<!--基础信息 end-->
@@ -78,26 +78,23 @@
 			</div>
 			<div class="info clearfix">
 				<div class="content left lf">
-					<p class="businessHours grey">营业时间：<span class="black">6:00-14:00</span></p>
+					<p class="businessHours grey">营业时间：<span class="black" v-for='(item,index) in shopsystem.open_time'>{{item}} <i v-if="index < shopsystem.open_time.length - 1">- </i></span></p>
 					<p class="whenThemeal grey">餐时：<span class="black" style="padding: 0 20px;">早市: 6:00-10:00</span><span class="black">午市:10:00-14:00</span></p>
-					<p class="orderSystem grey">点餐系统：<span class="black">启用</span></p>
-					<p class="modeofPayment grey">启用支付方式：<span class="black">微信支付、现金支付</span></p>
-					<p class="timeofPayment"> 付款时机: <span class="black">餐前支付、餐后支付</span></p>
-					<p class="invoice">发票：<span class="black">不提供发票</span></p>
-					<p class="tabMoney">收取餐位费：<span class="black">是</span></p>
+					<p class="orderSystem grey">点餐系统：<span class="black">{{system[shopsystem.suspend]}}</span></p>
+					<p class="modeofPayment grey">启用支付方式：<span class="black" v-for='(item,index) in shopsystem.shop_pay_way'>{{pay[item]}}<i v-if="index < shopsystem.shop_pay_way.length - 1">、</i></span></p>
+					<p class="timeofPayment">付款时机: <span class="black" v-for='(item,index) in shopsystem.pay_time'>{{paytime[item]}}<i v-if="index < shopsystem.pay_time.length - 1">、</i></span></p>
+					<p class="invoice">发票：<span class="black" v-for='item in shopsystem.is_invoice_vat'>{{item}}</span></p>
 				</div>
 				<div class="content left rf">
-					<p class="salesWay grey">销售方式：<span class="black">在店吃、外卖、打包、自提</span></p>
-					<p class="shopLabelling grey">店铺标签：<span class="black">湘菜</span></p>
-					<p class="invoiceRemark grey">发票备注：<span class="black">该商家支持开发票，请在下单时填写好发票抬头</span></p>
+					<p class="salesWay grey">销售方式：<span class="black" v-for='(item,index) in shopsystem.sale_way'>{{sale[item]}}<i v-if="index < shopsystem.sale_way.length - 1">、</i></span></p>
+					<p class="shopLabelling grey">店铺标签：<span class="black" v-for='(item,index) in shopsystem.shop_label'>{{item}}<i v-if="index < shopsystem.shop_label.length - 1">、</i></span></p>
+					<p class="invoiceRemark grey">发票备注：<span class="black">{{shopsystem.invoice_remark}}</span></p>
 					<p class="shopImg grey">店铺图片：</p>
 					<div class="shopPhotos">
 						<ul class="clearfix">
-							<li class="img-list"></li>
-							<li class="img-list"></li>
-							<li class="img-list"></li>
-							<li class="img-list"></li>
-							<li class="img-list"></li>
+							<li class="img-list" v-for='item in shopsystem.img_list'>
+								<!--<img :src="item" alt="商家店铺图" />-->
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -131,13 +128,13 @@
 			</div>
 			<el-form label-width="180px" v-if='showPwd'>
 				<el-form-item  label="原密码">
-					<el-input placeholder='请输入旧密码'></el-input>
+					<el-input placeholder='请输入旧密码' v-model='form.old_password'></el-input>
 				</el-form-item>
 				<el-form-item  label="新密码">
-					<el-input placeholder='请输入新密码'></el-input>
+					<el-input placeholder='请输入新密码' v-model='form.new_password'></el-input>
 				</el-form-item>
 				<el-form-item  label="新密码确定">
-					<el-input placeholder='再次输入新密码'></el-input>
+					<el-input placeholder='再次输入新密码' v-model='form.new_password_again'></el-input>
 				</el-form-item>
 			</el-form>
 			<el-form label-width="180px" v-else-if='showCall'>
@@ -190,6 +187,12 @@
 
 <script>
 	import { getShopinfo } from '../../api';
+	import { Changepassword } from '../../api';
+	import { Startsystem } from '@/config/cfg';
+	import { Payway} from '@/config/cfg';
+	import { Paytime} from '@/config/cfg';
+	import { Saleway} from '@/config/cfg';
+	import { Invoce } from '@/config/cfg'
 	export default {
 		data(){
 			return{
@@ -201,22 +204,64 @@
 				showPwd:false,
 				showWhat:false,
 				showEml:false,
-				shopinfo:{}
+				shopinfo:{},
+				shopsystem:{},
+				system:"",
+				pay:'',
+				paytime:'',
+				sale:'',
+				invos:'',
+				form:{
+					old_password:'',
+					new_password:'',
+					new_password_again:''
+				},
+				imageUrl: '',
+				imgbase_url: imgbase_url 
 			};
 		},
-		mounted(){
-//			getShopinfo(this._initShopinfo);
+		created(){
 			
+			let _this = this;
+			getShopinfo({
+				userid:1,  //临时数据
+				get_shopinfo_base:1
+			},function(resp){
+				_this.shopinfo = resp.data.shopinfo;
+				console.log(_this.shopinfo)
+				_this.imageUrl = _this.shopinfo.shop_logo;
+				
+			});
+			getShopinfo({
+				userid:1, //临时数据
+				get_shopinfo_edit:1
+			},function(resp){
+				_this.shopsystem = resp.data.shopinfo;
+				_this.system = Startsystem.code;
+				_this.pay = Payway.code;
+				_this.paytime = Paytime.code;
+				_this.sale = Saleway.code;
+				_this.invos = Invoce.code;
+			});
+		},
+		computed:{
+			Startsystem(){
+			return Startsystem;
+			},
+			Payway(){
+				return Payway;
+			},
+			Paytime(){
+				return Paytime;
+			},
+			Saleway(){
+				return Saleway;
+			},
+			Invoce() {
+				return Invoce;
+			}
 		},
 		methods:{
-			_initShopinfo(resp){
-				if (resp.ret === 0) {
-				 this.shopinfo=resp.data;
-				 console.log(this.shopinfo);
-			} else {
-				alert('请求失败');
-			}
-			},
 			showPsd(){
 				this.showDialog = true;
 				this.showPwd = true;
@@ -228,9 +273,23 @@
 				this.showOk = false;
 			},
 			show(){
-				this.showOk = true;
-				this.showWindow = false;
-				this.showWhat = false;
+//				this.showWindow = false;
+//				this.showWhat = false;
+				let data = {
+					save_password:1,
+					userid:1, // 临时数据
+					old_password:this.form.old_password,
+					new_password:this.form.new_password,
+					new_password_again:this.form.new_password_again
+				}
+				Changepassword(data,this.showk);
+			},
+			showk(resp){
+				if(resp.ret === 0) {
+					this.showOk = true;
+				} else {
+					alert('保存失败');
+				}
 			},
 			showPhone(){
 				this.showDialog = true;
@@ -261,7 +320,7 @@
 		background:#fff;
 		.nobind{
 						color: $rd;
-						margin-right: 127px;
+					letter-spacing: 0.44px;
 					}
 		.title {
 			@include fc($sizes, $grey);
@@ -310,13 +369,8 @@
 				
 			}
 			.content {
-					.black {
-						margin-right: 140px;
-					}
-					
 					.green {
 						color: $green;
-						margin-right: 138px;
 					}
 					.bl {
 						color: $blue;
@@ -328,6 +382,19 @@
 					width:50%;
 					
 				}
+			.rfs{
+				display:inline-block;
+				width:88px;
+				text-align: right;
+			}
+			.lfs{
+				display: inline-block;
+				width:83px;
+				text-align: left;
+			}
+			.changePassword{
+				width:160px;
+			}
 		}
 		.industrialInformation {
 			text-indent: 14px;
@@ -371,6 +438,11 @@
 						@include wh(100px,100px);
 						background: #e1e1e1;
 						margin:0 10px 15px 15px;
+						img{
+							width:100%;
+							height:100%;
+							display: block;
+						}
 					}
 				}
 			}

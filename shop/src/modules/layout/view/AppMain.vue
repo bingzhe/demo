@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-main{
-  padding: 0 14px;
+  padding: 0 14px 50px 14px;
 }
 </style>
 

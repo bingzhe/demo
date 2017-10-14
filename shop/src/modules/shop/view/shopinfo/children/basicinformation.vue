@@ -12,20 +12,20 @@
 				编辑基础信息
 			</div>
 			<div class="info-warp">
-				<div class="shopTitle">毛毛快餐</div>
+				<div class="shopTitle">{{shopinfo.shop_name}}</div>
 				<div class="shopInfo">
 					<p class="shops">
 						<span class="shopId">店铺ID</span>
-						<span class="shopNumber">1122</span>
+						<span class="shopNumber">{{shopinfo.shop_id}}</span>
 					</p>
 				</div>
 				<el-form ref="form" label-width="90px" :model='form'>
 					<el-form-item label="店铺名称">
-						<el-input v-model='form.shopName'></el-input>
+						<el-input v-model='form.shop_name'></el-input>
 					</el-form-item>
 					<el-form-item label="商户标志">
 						<div class="shopPic left">
-								<img :src="imageUrl" alt="" />
+								<img :src="imgbase_url + '/img_get.php?img=1&height=69&width=69&imgname=' + imageUrl " alt="" />
 						</div>
 						<div class="picInfo left">
 							<el-upload class="upload-demo" action="http://www.ob.com:8080/php/shopinfo_save.php" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
@@ -38,10 +38,11 @@
 						</div>
 					</el-form-item>
 					<el-form-item label="联系人">
-						<el-input v-model='form.contacts'></el-input>
+						<el-input v-model='form.contact'></el-input>
 					</el-form-item>
-					<el-form-item label="店铺面积">
-						<el-input v-model='form.area'></el-input>
+					<el-form-item label="店铺面积" class='area'>
+						<el-input v-model='form.shop_area'></el-input>
+						<span class="pinfan">m²</span>
 					</el-form-item>
 					<el-form-item class='rel' label="地址">
 						<el-input v-model='form.address'></el-input>
@@ -52,8 +53,9 @@
 					</el-form-item>
 					<div class="bottom">
 						<button class="blue" @click='onSubmit'>保存</button>
-						<button class="default">取消</button>
+						<button class="default" @click="goBack">取消</button>
 					</div>
+	
 				</el-form>
 			</div>
 
@@ -70,23 +72,30 @@
 			return {
 				form: {
 					shop_name: '',
-					contacts: '',
+					contact: '',
 					shop_area: '',
 					address: '',
 					address_num: ''
 				},
 				shopinfo: {},
-				imageUrl: ''
+				imageUrl: '',
+				imgbase_url: imgbase_url 
 			};
 		},
 		created(){
+			let _this = this;
 			getShopinfo({
 				userid:1,
 				get_shopinfo_base:1
 			},function(resp){
-//				console.log(resp)
-			})
-				console.log(data)
+				_this.shopinfo = resp.data.shopinfo;
+				_this.form.shop_name = _this.shopinfo.shop_name;
+				_this.form.contact = _this.shopinfo.contact;
+				_this.form.shop_area = _this.shopinfo.shop_area;
+				_this.form.address = _this.shopinfo.address;
+				_this.form.address_num = _this.shopinfo.address_num;
+				_this.imageUrl = _this.shopinfo.shop_logo;
+			});
 			
 		},
 		methods: {
@@ -109,11 +118,10 @@
 
 				let data = {
 					shopinfo_save: 1,
-//					shop_id: '120',
 					userid:1,
 					shop_initname: '毛毛快餐',
 					shop_name: this.form.shop_name,
-					contacts: this.form.contacts,
+					contact: this.form.contact,
 					shop_area: this.form.shop_area,
 					address: this.form.address,
 					address_num: this.form.address_num
@@ -126,6 +134,9 @@
 				} else {
 					alert('保存失败');
 				}
+			},
+			goBack(){
+				this.$router.push({ path: '/shop' });
 			}
 
 		}
@@ -175,6 +186,14 @@
 						.shopNumber {
 							padding-left: 14px;
 						}
+					}
+				}
+				.area{
+					position: relative;
+					.pinfan{
+						position: absolute;
+						left: 290px;
+						top: 0;
 					}
 				}
 				.picInfo {

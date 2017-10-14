@@ -5,6 +5,8 @@ const _import = require('./_import_' + process.env.NODE_ENV);
 
 /*layout */
 import Layout from '@/modules/layout/view/layout';
+import refresh from '@/components/refresh.vue';
+
 
 Vue.use(Router);
 
@@ -41,7 +43,13 @@ export const constantRouterMap = [
 		children: [{
 			path: 'dashboard',
 			component: _import('dashboard/view/index')
-		}]
+		},
+		{
+			path: '/refresh',
+			component: refresh,
+			name: 'refresh'
+		}
+		]
 	},
 	{
 		path: '/shop',
@@ -161,6 +169,20 @@ export const constantRouterMap = [
 			component: _import('merchandise/view/foodEditor/index'),
 			name: '新增菜品编辑'
 		}]
+	},
+	{
+		path: '/table',
+		component: Layout,
+		redirect: '/table/edit',
+		name: '餐桌',
+		hidden: true,
+		children: [
+			{
+				path: 'edit',
+				component: _import('table/view/children/createNewTable'),
+				name: '新建餐桌'
+			}
+		]
 	}
 
 

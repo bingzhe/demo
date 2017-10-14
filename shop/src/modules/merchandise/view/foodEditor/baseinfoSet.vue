@@ -10,7 +10,7 @@
                     <span>商品编号</span>
                 </div>
                 <div class="sn-content food-right left">
-                    <span>12354678</span>
+                    <span>{{ foodinfo.food_sn }}</span>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                     <span>菜品名称</span>
                 </div>
                 <div class="name-content food-right left">
-                    <el-input v-model="food_name" placeholder="请输入菜品名"></el-input>
+                    <el-input v-model="foodinfo.food_name" placeholder="请输入菜品名"></el-input>
                 </div>
             </div>
 
@@ -40,9 +40,9 @@
                 <!-- <<<<<<<<<<<<<<<<<< -->
                 <div class="category-content food-right left">
                     <!-- <el-select v-model="caregoryFirValue" placeholder="请选择">
-                                                                                                                                                                <el-option v-for="item in caregoryFirOption" :key="item.value" :label="item.label" :value="item.value">
-                                                                                                                                                                </el-option>
-                                                                                                                                                            </el-select> -->
+                                                                                                       <el-option v-for="item in caregoryFirOption" :key="item.value" :label="item.label" :value="item.value">
+                                                                                                            </el-option>
+                                                                                                        </el-select> -->
                 </div>
             </div>
 
@@ -91,18 +91,46 @@
             <div class="food-size clearfix">
                 <div class="size-title food-left left">是否有分量大小分类</div>
                 <ul class="size-content food-right left">
-                    <li class="left active" v-for="(item, index) in sizeData" :key="item.value">{{ item.label }}</li>
+                    <li class="left" :class="{active: sizeSelect === item.value}" v-for="(item, index) in sizeData" :key="item.value" @click="changeSizeSelect(item.value)">{{ item.label }}</li>
                 </ul>
+            </div>
+
+            <!-- 价格 -->
+            <div class="food-price clearfix">
+                <div class="price-title food-left left">价格</div>
+                <div class="price-content food-right left">
+                    <div class="tip">
+                        （只能同时选择两个价格在前端显示，且显示顺序规则是原价、促销价、会员价。1.原价：菜品的原始定价，适用于普通用户；2.促销价：菜品促销时使用的价格，适用于普通用户；3.会员价：为会员定制的价格，适用于所有会员；4.节日价：为特定假日制定的价格，适用于特定客户。
+                    </div>
+                    <size-price></size-price>
+                </div>
+            </div>
+
+            <!-- 图片 -->
+            <div class="food-picture clearfix">
+                <div class="picture-title food-left left">图片</div>
+                <div class="picture-content food-right left"></div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import SizePrice from './sizePrice';
+import { Util } from '@/config/util';
+
 export default {
+    props: {
+        foodinfo: {
+            type: Object,
+        }
+    },
+    components: {
+        SizePrice
+    },
     data() {
         return {
-            food_name: "玉米汤排骨汤",
+            foodName: "玉米汤排骨汤",
             caregoryFirValue: "",
             caregoryFirOption: [{
                 label: "菜品分类",
@@ -126,16 +154,74 @@ export default {
             }, {
                 label: "否",
                 value: 1
-            }]
+            }],
+            sizeSelect: 2,
+            saleWay: [{
+                label: "预定在店吃",
+                value: 1
+            }, {
+                label: "非预定在店吃",
+                value: 2
+            }, {
+                label: "预定自提",
+                value: 3
+            }, {
+                label: "外卖",
+                value: 4
+            }, {
+                label: "打包外带",
+                value: 5
+            }],
+            saleWaySelect: 1
         };
     },
+    watch: {
+        foodinfo: {
+            handler: function(newVal, oldVal) {
+                this.initData();
+            },
+            deep: true
+        }
+    },
+    created() {
+        // this.initData();
+    },
+    mounted() {
+        this.initData();
+    },
     methods: {
-        //切换选中规格
         changeUnit(index) {
             this.unitSelect = index;
         },
         showFeatureDialog() {
             this.featureDialogVisible = true;
+        },
+        changeSizeSelect(index) {
+            this.sizeSelect = index;
+        },
+        initUnit() {
+            let unit = this.foodinfo.food_unit;
+            let that = this;
+
+            this.unitData.forEach(function(item, index) {
+                if (item === unit) {
+                    that.unitSelect = index;
+                }
+            });
+        },
+        initData() {
+            let unit = this.foodinfo.food_unit;
+            let that = this;
+
+            this.unitData.forEach(function(item, index) {
+                if (item === unit) {
+                    that.unitSelect = index;
+                }
+            });
+        },
+        text(val, oldVal) {
+            console.log(val);
+            console.log(oldVal);
         }
     }
 };
@@ -145,7 +231,6 @@ export default {
 @import 'src/styles/mixin.scss';
 
 #base-set {
-    height: 1000px;
 
     .content {
         @include fc(14px, #000);
@@ -230,7 +315,9 @@ export default {
         }
 
         li.editor {
+            @include wh(60px, 30px);
             border: 1px solid #4877E7;
+            border-radius: 2px;
             color: #4877E7;
             background-color: #fff;
             cursor: pointer;
@@ -241,6 +328,7 @@ export default {
 .food-size {
     height: 30px;
     line-height: 30px;
+    margin-bottom: 22px;
 
     .size-content {
         li {
@@ -251,11 +339,23 @@ export default {
             color: #333;
             border-radius: 2px;
             margin-right: 10px;
+            cursor: pointer;
         }
         li.active {
             border-color: #4877e7;
             color: #fff;
             background-color: #4877e7;
+        }
+    }
+}
+
+.food-price {
+    padding-bottom: 20px;
+
+    .price-content {
+        .tip {
+            font-size: 12px;
+            color: #9B9B9B;
         }
     }
 }
@@ -389,6 +489,7 @@ export default {
 .food-right {
     @include fc(14px, #666);
     min-width: 1020px;
+    max-width: 1021px;
 }
 
 .featureDial {

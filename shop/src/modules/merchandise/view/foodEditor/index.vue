@@ -18,7 +18,7 @@
     <!-- 导航 end -->
 
     <!-- 基础设置 start -->
-    <base-set></base-set>
+    <base-set :foodinfo="foodinfo"></base-set>
     <!-- 基础设置 end  -->
 
     <!-- 口味设置 start -->
@@ -40,12 +40,22 @@
     <!-- 推广设置 start -->
     <expend-set></expend-set>
     <!-- 推广设置 end  -->
+
+    <div class="btn-content">
+      <div class="btn-group clearfix">
+        <div class="btn-item left">预览</div>
+        <div class="btn-item left">保存草稿</div>
+        <div class="btn-item left">保存</div>
+        <div class="btn-item left">保存并上架</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { getFoodEditor } from '../../api';
 import { GoodList } from '../../index';
+import { Util } from '@/config/util';
 import BaseSet from './baseinfoSet';
 import TasteSet from './tasteinfoSet';
 import PackSet from './packinfoSet';
@@ -84,19 +94,40 @@ export default {
         selector: "#expend-set",
       }],
       activeSelect: 0,
+      foodId: null,
+      foodinfo: {
+        food_sn: "1231231", //菜品编号
+        food_name: "",
+        food_unit: "盘",
+        category: [],
+        feature: ["加量", "不加钱"],
+        composition: ['玉米','大米'],  //食材
+      },
     };
   },
   created() {
-    //<<<<<<<<<<<<<<<<<<<<<<<<<<
-    getFoodEditor(function(resp){
-      console.log(resp);
-    });
+    this.getFoodinfo();
   },
   methods: {
     //锚跳转
     goAnchor(index, selector) {
       this.activeSelect = index;
       GoodList.goAnchor(this.$el, selector);
+    },
+    //拉取编辑信息
+    getFoodinfo() {
+      this.foodId = this.$route.query.foodId;
+
+      if (!Util.isEmpty(this.foodId)) {
+        getFoodEditor(this.foodId, this.getFoodinfoHander);
+      }
+    },
+    getFoodinfoHander(resp) {
+      if (resp.ret === 0) {
+        this.foodinfo = resp.data.info || {};
+      } else {
+        console.log("错误! ");
+      }
     }
   }
 };
@@ -131,6 +162,36 @@ export default {
     }
   }
 }
+
+.btn-content{
+  background-color: #F6F8FC;
+  position: relative;
+  height: 80px;
+  // margin-bottom: 50px;
+
+  .btn-group{
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .btn-item{
+      @include wh(100px, 40px);
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #4877E7;
+      cursor: pointer;
+      border-radius: 4px;
+      color: #4877E7;
+      margin-right: 10px;
+    }
+
+    .btn-item:last-child{
+      margin-right: 10;
+    }
+  }
+}
+
 </style>
 
 <style lang="scss">

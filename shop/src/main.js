@@ -11,7 +11,7 @@ import '@/config/utilPageStore';
 import { Util } from '@/config/util.js';
 
 Vue.use(ElementUI, { locale });
- 
+ window.router = router;
 Vue.config.productionTip = false;
 
 Util.creatKey();

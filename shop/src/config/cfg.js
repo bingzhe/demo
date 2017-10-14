@@ -249,3 +249,88 @@ export const CustomSex = {
         return this.code[code] || '未知[' + code + ']';
     }
 };
+
+//是否开发票
+export const Invoce = {
+	YES:1,
+	NO:0,
+	code:{
+		0:'不提供发票',
+		1:'提供发票',
+	},
+		toString: function (code) {
+        code = parseInt(code || 0);
+        return this.code[code] || '未知[' + code + ']';
+    }
+};
+
+//启用、暂停系统
+
+export const Startsystem = {
+    code: {
+        0: '启用',
+        1: '暂停',
+    },
+    toString: function (code) {
+        code = parseInt(code || 0);
+        return this.code[code] || '未知[' + code + ']';
+    }
+};
+
+
+//支付方式 (店铺端设置)
+export const Payway = {
+    code: {
+        1: '现金支付',
+        2: '刷卡支付',
+        3: '微信支付',
+        4: '支付宝支付',
+    },
+    toString: function (code) {
+        code = parseInt(code || 0);
+        return this.code[code] || '未知[' + code + ']';
+    }
+};
+
+//付款时机(餐前、餐后)
+export const Paytime = {
+    code: {
+        1: '餐前支付',
+        2: '餐后支付',
+    },
+    toString: function (code) {
+        code = parseInt(code || 0);
+        return this.code[code] || '未知[' + code + ']';
+    }
+};
+
+//销售方式
+
+export const Saleway = {
+    code: {
+        1: '在店吃',
+        2: '外卖',
+        3: '打包',
+        4: '自提'
+    },
+    toString: function (code) {
+        code = parseInt(code || 0);
+        return this.code[code] || '未知[' + code + ']';
+    }
+};
+
+
+//商品管理 cfj
+
+export const SaleStatus = {
+    YES: 0,
+    NO: 1,
+    code: {
+        0: "上架",
+        1: "下架"
+    },
+    toString: function (code) {
+        code = parseInt(code || 0);
+        return this.code[code] || '未知[' + code + ']';
+    }
+};

@@ -8,27 +8,27 @@
                 <el-input v-model="searchName" placeholder="名称或者编号" class="left"></el-input>
 
                 <!-- 上下架下拉框选择 -->
-                <el-select class="sale-status left" v-model="saleStatus" placeholder="上/下架状态">
+                <el-select width="180px" class="sale-status left" v-model="saleStatus" placeholder="上/下架状态">
                     <el-option v-for="item in saleStatusItem" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
 
-                <el-button class="left">搜索</el-button>
+                <el-button class="" @click="serchGetList">搜索</el-button>
             </div>
 
             <div class="search-right right">
                 <el-button @click="goGoodEditor">创建</el-button>
                 <el-button>草稿</el-button>
-                <el-button>批量上架</el-button>
-                <el-button>批量下架</el-button>
-                <el-button>删除</el-button>
+                <el-button @click="stateOn">批量上架</el-button>
+                <el-button @click="stateOff">批量下架</el-button>
+                <el-button @click="multipleDeleteFood">删除</el-button>
             </div>
         </div>
         <!-- 表格搜索btn end -->
 
         <!-- table start -->
-        <el-table class="table-list" :data="list" stripe height="600">
-            <el-table-column type="selection" width="38"></el-table-column>
+        <el-table class="table-list" :data="list" stripe height="600" @selection-change="handleSelectionChange">
+            <el-table-column type="selection" align="center" width="38"></el-table-column>
             <el-table-column width="80" align="center" label="编号">
                 <template scope="scope">
                     <span>{{ scope.row.food_sn}}</span>
@@ -109,9 +109,18 @@
                     <img :src="scope.row.code_img" alt="二维码">
                 </template>
             </el-table-column>
-            <el-table-column width="140" align="center" label="操作">
+            <el-table-column min-width="140" align="center" label="操作">
                 <template scope="scope">
-                    <span>{{ scope.row.comment_num}}</span>
+                    <span @click="stateSingleOff(scope.row.food_id)" v-if="scope.row.sale_off === SaleStatusCfg.YES" class="red-text" style="padding-right:10px;padding-bottom:10px;">下架</span>
+                    <span @click="stateSingleOn(scope.row.food_id)" v-else class="blue-text" style="padding-right:10px;padding-bottom:10px;">上架</span>
+                    <span class="blue-text">预览</span>
+                    <br>
+                    <span class="blue-text">
+                        <router-link :to="{path:'/good',query: { foodId:scope.row.food_id}}">
+                            编辑
+                        </router-link>
+                    </span>
+                    <span @click="deleteFood(scope.row.food_id)" class="red-text" style="padding-left:10px;padding-top:10px;">删除</span>
                 </template>
             </el-table-column>
         </el-table>
@@ -127,12 +136,16 @@
 </template>
 
 <script>
-import { getTableList, getTableCategory } from '../api';
+import { SaleStatus } from "@/config/cfg";
+import { getTableList, getTableCategory} from '../api';
+import { GoodList } from '../index.js';
+
 export default {
     data() {
         return {
             searchName: "",  //搜索名称或者编号
-            saleStatus: null,  //上下架状态，0上架, 1下架 ,2全部
+            saleStatus: "",  //上下架状态，0上架, 1下架 ,2全部
+            SaleStatusCfg: SaleStatus,
             saleStatusItem: [{
                 value: 2,
                 label: '全部'
@@ -147,12 +160,13 @@ export default {
             total: null, //分页总条数
             listQuery: {
                 page: 1,
-                limit: 20,
+                limit: 10,
                 importance: undefined,
                 title: undefined,
                 type: undefined,
                 sort: '+id'
             },
+            multipleSelection: [],  //存放多选选中数据
         };
     },
     created() {
@@ -163,7 +177,8 @@ export default {
         //拉取table数据
         getList() {
             let data = {
-                foodlist: 1,                
+                foodlist: 1,
+                page_size: 100
             };
             getTableList(data, this.tableHander);
         },
@@ -171,10 +186,56 @@ export default {
             if (resp.ret === 0) {
                 this.list = resp.data.list || [];
                 this.total = this.list.length;
-                // this.total = resp.data.food_list.length||0;
             } else {
-                console.log("错误！");
+                console.log("错误! ");
             }
+        },
+        //搜索拉取列表
+        serchGetList() {
+            GoodList.searchGetList(this.saleStatus, this.searchName, this.tableHander);
+        },
+        //删除food
+        deleteFood(foodId) {
+            let foodArr = [];
+            foodArr.push(foodId);
+            GoodList.deleteFoodItems(foodArr, this.deleteFoodHander);
+        },
+        deleteFoodHander() {
+            this.getList();
+        },
+        //批量删除
+        multipleDeleteFood() {
+            let foodArr = this.multipleSelection.map(function(item) {
+                return item.food_id;
+            });
+            GoodList.deleteFoodItems(foodArr, this.deleteFoodHander);
+        },
+        //批量更改状态
+        stateSingleOn(foodId) {
+            let foodArr = [];
+            foodArr.push(foodId);
+
+            GoodList.changeStatusOn(foodArr, this.deleteFoodHander);
+        },
+        stateSingleOff(foodId) {
+            let foodArr = [];
+            foodArr.push(foodId);
+
+            GoodList.changeStatusOff(foodArr, this.deleteFoodHander);
+        },
+        stateOn() {
+            let foodArr = this.multipleSelection.map(function(item) {
+                return item.food_id;
+            });
+
+            GoodList.changeStatusOn(foodArr, this.deleteFoodHander);
+        },
+        stateOff() {
+            let foodArr = this.multipleSelection.map(function(item) {
+                return item.food_id;
+            });
+
+            GoodList.changeStatusOff(foodArr, this.deleteFoodHander);
         },
         //拉取分类
         getCategory() {
@@ -197,9 +258,13 @@ export default {
         goGoodEditor() {
             this.$router.push({ path: '/good' });
         },
-
+        //多选
+        handleSelectionChange(val) {
+            this.multipleSelection = val;
+        }
     }
 };
+
 </script>
 
 <style lang="scss" scoped>
@@ -210,7 +275,7 @@ export default {
 }
 
 .table-list {
-    margin: 0 14px;
+    // margin: 0 14px;
 }
 
 .table-title {
@@ -237,6 +302,29 @@ export default {
 
 .pagination-container {
     margin: 50px 0 14px 20%;
+}
+
+.red-text {
+    @include fc(14px, #E7487E);
+    cursor: pointer;
+}
+
+.red-text:nth-child(even) {
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+// .red-text:nth-child(even){
+//     padding-left: 10px;
+//     padding-top: 10px;
+// }
+.blue-text {
+    @include fc(14px, #4877E7);
+    cursor: pointer;
+
+    a {
+        @include fc(14px, #4877E7);
+    }
 }
 </style>
 
@@ -272,6 +360,14 @@ export default {
 
     .el-table {
         width: inherit;
+    }
+
+    .el-table .cell {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .el-select-dropdown {
+        min-width: 181px !important;
     }
 }
 </style>

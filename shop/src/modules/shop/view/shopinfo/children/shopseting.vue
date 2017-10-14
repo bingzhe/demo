@@ -2,9 +2,9 @@
 	<div id="shopSeting" class="warp">
 		<nav class="nvs">
 			<el-breadcrumb separator=">">
- 			 <el-breadcrumb-item :to="{ path: '/shop' }">店铺管理</el-breadcrumb-item>
-  				<el-breadcrumb-item :to="{path:'/shop/shopinfo'}">店铺信息</el-breadcrumb-item>
-  				<el-breadcrumb-item>编辑店铺设置</el-breadcrumb-item>
+				<el-breadcrumb-item :to="{ path: '/shop' }">店铺管理</el-breadcrumb-item>
+				<el-breadcrumb-item :to="{path:'/shop/shopinfo'}">店铺信息</el-breadcrumb-item>
+				<el-breadcrumb-item>编辑店铺设置</el-breadcrumb-item>
 			</el-breadcrumb>
 		</nav>
 		<div class="title">
@@ -14,90 +14,94 @@
 			<div class="setInfo">
 				<el-form label-width='110px'>
 					<el-form-item class='main ' id='top' label="点餐系统">
-						<el-button>启用</el-button>
-						<el-button>暂时</el-button>
+						<button class="start" v-for="(item,index)  in buttons" @click='satrt(index)' :class="{'active':Zindex==index}">{{item}}</button>
 						<p class="injection">注：选暂停时，客人手机上会显示为系统升级维护中</p>
 					</el-form-item>
 					<el-form-item class='main' label='启用支付方式'>
 						<el-checkbox-group v-model="checkboxGroup1">
-							<el-checkbox-button v-for="payment in Payments" :label="payment" :key="payment">{{payment}}</el-checkbox-button>
+							<el-checkbox-button v-for="payment in Payments" :label="payment.idx" :key="payment.text">{{payment.text}}</el-checkbox-button>
 						</el-checkbox-group>
 					</el-form-item>
 					<el-form-item class='main' label='订单付款时间'>
 						<el-checkbox-group v-model="checkboxGroup2">
-							<el-checkbox-button v-for="paytimed in Paytime" :label="paytimed " :key="paytimed ">{{paytimed}}</el-checkbox-button>
+							<el-checkbox-button v-for="paytimed in Paytime" :label="paytimed.idx " :key="paytimed.text ">{{paytimed.text}}</el-checkbox-button>
 						</el-checkbox-group>
 					</el-form-item>
 					<el-form-item class='main' label='销售方式'>
 						<el-checkbox-group v-model="checkboxGroup3">
-							<el-checkbox-button v-for="sells in sell" :label="sells " :key="sells ">{{sells}}</el-checkbox-button>
+							<el-checkbox-button v-for="sells in sell" :label="sells.idx " :key="sells.text ">{{sells.text}}</el-checkbox-button>
 						</el-checkbox-group>
 					</el-form-item>
 					<el-form-item class='main' label='餐厅标签'>
 						<el-checkbox-group v-model="checkboxGroup4">
-							<el-checkbox-button v-for="rastuan in restauran " :label="rastuan " :key="rastuan">{{rastuan}}</el-checkbox-button>
+							<el-checkbox-button v-for="rastuan in restauran " :label="rastuan.text " :key="rastuan.text">{{rastuan.text}}</el-checkbox-button>
 						</el-checkbox-group>
 					</el-form-item>
 					<el-form-item class='businessTime' label="营业时间">
-						<el-select v-model="value" placeholder="请选择">
-							<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-							</el-option>
-						</el-select>
-						<el-select v-model="value" placeholder="请选择">
-							<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-							</el-option>
-						</el-select>
+						<el-time-picker v-model="value2" :picker-options="{
+						      selectableRange: '06:00:00 - 23:59:59'
+						    }">
+						</el-time-picker>
+						<el-time-picker v-model="value3" :picker-options="{
+						      selectableRange: '00:00:00 - 23:59:59'
+						    }">
+						</el-time-picker>
 					</el-form-item>
 					<el-form-item class='dateSet' label="餐时设置">
-						<el-checkbox-group v-model="form.type">
+						<el-checkbox-group v-model="type">
 							<el-checkbox label="早市" name="type"></el-checkbox>
-							<el-select v-model="value" placeholder="请选择">
-								<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-								</el-option>
-							</el-select>
-							<el-select v-model="value" placeholder="请选择">
-								<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-								</el-option>
-							</el-select>
+							<el-time-picker v-model="value4" :picker-options="{
+						      selectableRange: '00:00:00 - 23:59:59'
+						    }">
+							</el-time-picker>
+							<el-time-picker v-model="value5" :picker-options="{
+						      selectableRange: '00:00:00 - 23:59:59'
+						    }">
+							</el-time-picker>
 							<el-checkbox label="午市" name="type"></el-checkbox>
-							<el-select v-model="value" placeholder="请选择">
-								<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-								</el-option>
-							</el-select>
-							<el-select v-model="value" placeholder="请选择">
-								<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-								</el-option>
-							</el-select>
+							<el-time-picker v-model="value6" :picker-options="{
+						      selectableRange: '10:01:00 - 23:59:59'
+						    }">
+							</el-time-picker>
+							<el-time-picker v-model="value7" :picker-options="{
+						      selectableRange: '10:01:00 - 23:59:59'
+						    }">
+							</el-time-picker>
 							<el-checkbox label="晚市" name="type"></el-checkbox>
-							<el-select v-model="value" placeholder="请选择">
-								<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-								</el-option>
-							</el-select>
-							<el-select v-model="value" placeholder="请选择">
-								<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-								</el-option>
-							</el-select>
+							<el-time-picker v-model="value8" :picker-options="{
+						      selectableRange: '16:30:00 - 23:59:59'
+						    }">
+							</el-time-picker>
+							<el-time-picker v-model="value9" :picker-options="{
+						      selectableRange: '16:00:00 - 23:59:59'
+						    }">
+							</el-time-picker>
 							<el-checkbox label="夜宵" name="type"></el-checkbox>
-							<el-select v-model="value" placeholder="请选择">
-								<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-								</el-option>
-							</el-select>
-							<el-select v-model="value" placeholder="请选择">
-								<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-								</el-option>
-							</el-select>
+							<el-time-picker v-model="value10" :picker-options="{
+						      selectableRange: '21:00:00 - 06:00:00'
+						    }">
+							</el-time-picker>
+							<el-time-picker v-model="value11" :picker-options="{
+						      selectableRange: '03:00:00 - 06:00:00'
+						    }">
+							</el-time-picker>
 						</el-checkbox-group>
 					</el-form-item>
-					<el-form-item  class='invoice nomain clearfix' label="发票">
-						<el-button type='text' class='noInvoice left' @click.native='shows'>不提供发票</el-button>
+					<el-form-item class='invoice nomain clearfix' label="发票">
+						<button class='noInvoice left' @click='shows' :class="{'active':show===Invoce.NO}">不提供发票</button>
+						<span class="line"></span>
+						<el-checkbox-group v-model="checkboxGroup5">
+							<el-checkbox-button v-for="invoices in invoice" :label="invoices.idx" :key="invoices.text">{{invoices.text}}</el-checkbox-button>
+						</el-checkbox-group>
 					</el-form-item>
 					<el-form-item class='paperTickets' label="纸票" v-show='show'>
 						<el-checkbox-group v-model="checkboxGroup6">
-							<el-checkbox-button  v-for="papers in paper" :label="papers" :key="papers">{{papers}}</el-checkbox-button>
+							<el-checkbox-button v-for="papers in paper" :label="papers.idx" :key="papers.text">{{papers.text}}</el-checkbox-button>
 						</el-checkbox-group>
+						 
 					</el-form-item>
 					<el-form-item label="发票备注">
-						<el-input type='textarea' placeholder='备注文字总数不得超过120字'>
+						<el-input type='textarea' v-model='remark' placeholder='备注文字总数不得超过120字'>
 
 						</el-input>
 					</el-form-item>
@@ -115,8 +119,8 @@
 						</div>
 					</el-form-item>
 					<div class="bottom">
-						<button class="blue">保存</button>
-						<button class="default">取消</button>
+						<button class="blue" @click="save">保存</button>
+						<button class="default" @click="goBack">取消</button>
 					</div>
 				</el-form>
 			</div>
@@ -125,61 +129,202 @@
 </template>
 
 <script>
-	const PaymentMethod = ['现金支付', '刷卡支付', '支付宝支付', '微信支付'];
-	const PayTime = ['餐前支付', '餐后支付'];
-	const Sell = ['在店吃', '打包', '自提', '外卖'];
-	const Restaurantlabel = ['湘菜', '粤菜', '川菜'];
-	const Invoice = ['纸质发票', '电子发票'];
-	const PaperTickets = ['增值税普通发票', '增值税专用发票'];
+	import { shopSeting } from '../../../api';
+	import { Subtime } from '../../../index';
+	import { Tranobj } from '../../../index';
+	import { getShopinfo } from '../../../api';
+	import { Util } from '@/config/util';
+	import { Invoce } from '@/config/cfg'
 	export default {
 		data() {
 			return {
-				show:true,
-				form: {
-					name: '',
-					region: '',
-					date1: '',
-					date2: '',
-					delivery: false,
-					type: [],
-					resource: '',
-					desc: ''
-				},
-				options: [{
-					value: '选项1',
-					label: '黄金糕'
-				}, {
-					value: '选项2',
-					label: '双皮奶'
-				}, {
-					value: '选项3',
-					label: '蚵仔煎'
-				}, {
-					value: '选项4',
-					label: '龙须面'
-				}, {
-					value: '选项5',
-					label: '北京烤鸭'
-				}],
-				value: '',
-				checkboxGroup1: [''],
-				Payments: PaymentMethod,
-				checkboxGroup2: [''],
-				Paytime: PayTime,
-				checkboxGroup3: [''],
-				sell: Sell,
-				checkboxGroup4: [''],
-				restauran: Restaurantlabel,
-				checkboxGroup5: [''],
-				invoice: Invoice,
-				checkboxGroup6: [''],
-				paper: PaperTickets
+				show: 1,
+				buttons: ['启用', '暂停'],
+				checkboxGroup1: [],
+				Payments: [{
+						text: '现金支付',
+						idx: 1
+					},
+					{
+						text: '刷卡支付',
+						idx: 2
+					},
+					{
+						text: '支付宝支付',
+						idx: 3
+					},
+					{
+						text: '微信支付',
+						idx: 4
+					}
+				],
+				checkboxGroup2: [],
+				Paytime: [{
+						text: '餐前支付',
+						idx: 1
+					},
+					{
+						text: '餐后支付',
+						idx: 2
+					}
+				],
+				checkboxGroup3: [],
+				sell: [{
+						text: '在店吃',
+						idx: 1
+					},
+					{
+						text: '打包',
+						idx: 2
+					},
+					{
+						text: '自提',
+						idx: 3
+					},
+					{
+						text: '外卖',
+						idx: 4
+					}
+				],
+				checkboxGroup4: [],
+				restauran: [{
+						text: '湘菜',
+						idx: 1
+					},
+					{
+						text: '粤菜',
+						idx: 2
+					},
+					{
+						text: '川菜',
+						idx: 3
+					}
+				],
+				checkboxGroup5: [],
+				invoice: [{
+						text: '纸质发票',
+						idx: 1
+					},
+					{
+						text: '电子发票',
+						idx: 2
+					}
+				],
+				checkboxGroup6: [],
+				paper: [{
+						text: '增值税普通发票',
+						idx: 1
+					},
+					{
+						text: '增值税专用发票',
+						idx: 2
+					}
+				],
+				Zindex: 2,
+				shopsystem: {},
+				value2: '',
+				value3: '',
+				value4: '',
+				value5: '',
+				value6: '',
+				value7: '',
+				value8: '',
+				value9: '',
+				value10: '',
+				value11: '',
+				type: [],
+				times: [],
+				remark: '',
+				values: ''
 			};
 		},
-		methods:{
-			shows(){
-				this.show = ! this.show;
+		created() {
+			let _this = this;
+			let t = new Date();
+			let year = t.getFullYear();
+			let mon = t.getMonth()+1;
+			let dats = t.getDate();
+		getShopinfo({
+				userid: 1, //临时数据
+				get_shopinfo_edit: 1
+			}, function(resp) {
+				_this.shopsystem = resp.data.shopinfo;
+				_this.Zindex = _this.shopsystem.suspend;
+				_this.show = _this.shopsystem.is_invoice_vat;
+				_this.checkboxGroup1 = _this.shopsystem.shop_pay_way;
+				_this.checkboxGroup2 = _this.shopsystem.pay_time;
+				_this.checkboxGroup3 = _this.shopsystem.sale_way;
+				_this.checkboxGroup4 = _this.shopsystem.shop_label;
+				_this.times = _this.shopsystem.open_time;
+				_this.remark = _this.shopsystem.invoice_remark;
+				_this.show = _this.shopsystem.is_invoice_vat[0].is_invoice;
+						let arr = Tranobj(_this.times[0]).split(',');
+						 let hour = arr[0];
+						 let min = arr[1];
+						 let second = arr[2];
+				_this.value2 = new Date(year,mon,dats,hour,min,second);
+						let arr2 = Tranobj(_this.times[1]).split(',');
+						 let hours = arr2[0];
+						 let mins = arr2[1];
+						 let secons = arr2[2];
+				_this.value3 = new Date(year,mon,dats,hours,mins,secons);
+			})
+		},
+		mounted() {
+
+		},
+		computed: {
+			Invoce() {
+				return Invoce;
 			}
+		},
+		methods: {
+			shows() {
+				this.show = 0;
+			},
+			satrt(index) {
+				this.Zindex = index;
+			},
+			save() {
+				this.times= [];
+				let time1 = Subtime(this.value2);
+				let time2 = Subtime(this.value3);
+				this.times.push(time1, time2);
+				let data = {
+					shopinfo_save: 1,
+					userid: 1, //临时数据
+					suspend: this.Zindex,
+					is_invoice_vat:[
+									{
+										'is_invoice':this.show,
+										'"invoice_type':[this.show]
+									}
+								],
+					shop_pay_way: this.checkboxGroup1,
+					pay_time: this.checkboxGroup2,
+					sale_way: this.checkboxGroup3,
+					shop_label: this.checkboxGroup4,
+					open_time: this.times,
+					invoice_remark: this.remark
+				};
+				shopSeting(data, this.alts);
+				console.log(this.show)
+			},
+			alts(resp) {
+				if(resp.ret === 0) {
+					this.$router.push({
+						path: '/shop'
+					});
+				} else {
+					alert('保存失败');
+				}
+			},
+			goBack() {
+				this.$router.push({
+					path: '/shop'
+				});
+			},
+
 		}
 	};
 </script>
@@ -187,10 +332,19 @@
 <style lang="scss" scoped>
 	@import 'src/styles/mixin.scss';
 	.warp {
-		.nvs{
-		background:#EFF3FA;
-		height:26px;
-	}
+		button {
+			cursor: pointer;
+			outline: none;
+		}
+		.active {
+			background: #4877E7 !important;
+			color: #fff !important;
+			border-radius: 2px !important;
+		}
+		.nvs {
+			background: #EFF3FA;
+			height: 26px;
+		}
 		background:#fff;
 		.title {
 			text-indent: 14px;
@@ -201,17 +355,28 @@
 		}
 		.shopSeting {
 			margin: 40px 0 0 162px;
-			min-width:760px;
-			max-width:800px;
+			min-width: 760px;
+			max-width: 800px;
 			.injection {
 				@include fc(12px, #9b9b9b);
 			}
+			.start {
+				@include wh(80px, 30px);
+				line-height: 30px;
+				@include fc(14px, #666);
+				border: 1px solid #d8d8d8;
+				background: #fff;
+				&:first-child {
+					margin-right: 10px;
+				}
+			}
 			.line {
+				float: left;
 				display: inline-block;
 				height: 30px;
 				width: 1px;
 				background: #d8d8d8;
-				margin: 4px 20px 0 10px;
+				margin: 4px 20px 0 20px;
 			}
 			.shopPic {
 				@include wh(100px, 100px);
@@ -228,6 +393,14 @@
 			.picInfo {
 				width: 54%;
 				margin-left: 20px;
+			}
+			.noInvoice {
+				@include wh(100px, 30px);
+				line-height: 30px;
+				@include fc(14px, #666);
+				background: #fff;
+				border: 1px solid #d8d8d8;
+				margin-top: 4px;
 			}
 		}
 		.bottom {
@@ -265,6 +438,9 @@
 			@include wh(120px, 34px);
 			margin: 5px;
 		}
+		.el-input__inner {
+			border-radius: 0;
+		}
 		.businessTime .el-input__inner {
 			@include wh(120px, 34px);
 			margin-right: 10px;
@@ -287,6 +463,7 @@
 			line-height: 30px;
 			border-radius: 0;
 			padding: 0;
+			border-color: #4877E7;
 		}
 		.el-button {
 			border: 1px solid #D8D8D8;
@@ -297,111 +474,86 @@
 			padding: 0;
 			@include wh(80px, 30px);
 			line-height: 30px;
-			color: #333333;
+			color: #666;
 			border: 1px solid #d8d8d8;
 			border-radius: 2px;
 		}
-		.main .el-checkbox-button.is-checked .el-checkbox-button__inner {
+		.el-checkbox-button.is-checked .el-checkbox-button__inner {
 			color: #4877E7;
 			background-color: #fff;
 			border-color: #4877E7;
-			background: url(../../img/select.png)no-repeat;
-			background-position-x:66px;
 			box-shadow: none;
+			position: relative;
+			&:after {
+				position: absolute;
+				right: 0;
+				content: '';
+				@include wh(12px, 12px);
+				background: url(../../img/select.png)no-repeat;
+			}
 		}
-		.main .el-checkbox-button,
+		.paperTickets .el-checkbox-button__inner {
+			@include wh(160px, 30px);
+			padding: 0;
+			line-height: 30px;
+			color: #666;
+			border: 1px solid #d8d8d8;
+			border-radius: 2px;
+		}
+		.invoice .invoce{
+			@include wh(160px, 30px);
+			padding: 0;
+			line-height: 30px;
+			color: #666;
+			border: 1px solid #d8d8d8;
+			border-radius: 2px;
+			margin-right:10px;
+		}
+		.nomain .el-checkbox-button__inner {
+			@include wh(100px, 30px);
+			padding: 0;
+			line-height: 30px;
+			color: #666;
+			border: 1px solid #d8d8d8;
+			border-radius: 2px;
+		}
+		.el-breadcrumb__item__inner,
+		.el-breadcrumb__item__inner a {
+			color: #333;
+			font-size: 12px;
+		}
+		.el-breadcrumb__separator {
+			margin: 0 5px;
+			color: #333;
+		}
+		.el-breadcrumb__item:last-child .el-breadcrumb__item__inner,
+		.el-breadcrumb__item:last-child .el-breadcrumb__item__inner a,
+		.el-breadcrumb__item:last-child .el-breadcrumb__item__inner a:hover,
+		.el-breadcrumb__item:last-child .el-breadcrumb__item__inner:hover {
+			color: #4877E7;
+		}
+		.el-date-editor.el-input {
+			width: 120px;
+			margin-right: 8px;
+		}
+		.el-checkbox-group {
+			float: left;
+		}
+		.el-checkbox-button,
 		.el-checkbox-button__inner {
-			margin-right: 10px;
-		}
-		.paperTickets .el-checkbox-button__inner{
-			@include wh(160px,30px);
-			padding: 0;
-			line-height: 30px;
-			color: #333333;
-			border: 1px solid #d8d8d8;
-			border-radius: 2px;
-		}
-		.paperTickets .el-checkbox-button.is-checked .el-checkbox-button__inner {
-			color: #4877E7;
-			background-color: #fff;
-			border-color: #4877E7;
-			background: url(../../img/select.png)no-repeat;
-			background-position-x:146px;
-			box-shadow: none;
-		}
-		.nomain .el-checkbox-button__inner{
-			@include wh(100px,30px);
-			padding: 0;
-			line-height: 30px;
-			color: #333333;
-			border: 1px solid #d8d8d8;
-			border-radius: 2px;
-		}
-		.nomain .noInvoice .el-checkbox-button__inner{
-			background: #4877E7;
-			color: #fff;
-		}
-		.nomain .noInvoice .el-checkbox-button.is-checked .el-checkbox-button__inner{
-			background: #3254A5;
-			color: #fff;
-		}
-		
-		.nomain .el-checkbox-button.is-checked .el-checkbox-button__inner {
-			color: #4877E7;
-			background-color: #fff;
-			border-color: #4877E7;
-			background: url(../../img/select.png)no-repeat;
-			background-position-x:86px;
-			box-shadow: none;
-		}
-		.nomain .el-button{
-			@include wh(100px,30px);
-			margin-top:4px;
-			background: #4877E7;
-			color:#fff;
-			border-radius: 2px;
-		}
-		.main .el-button{
-			@include wh(80px,30px);
 			margin-right: 6px;
-			background: #4877E7;
-			color:#fff;
-			border-radius: 2px;
 		}
-		.main .el-button:active{
+		.el-checkbox {
 			color: #333;
-			background:#fff;
-			border-radius: 2px;
-			border-color:#3254A5;
 		}
-		.main .el-button:focus, .el-button:hover{
-			color: #fff;
-			background:#3254A5;
-			border-radius: 2px;
-			border-color:#3254A5;
+		.el-checkbox__inner::after {
+			border: 2px solid #4877E7;
+			border-left: 0;
+			border-top: 0;
 		}
-		.nomain .el-button:active{
-			color: #333;
-			background:#fff;
-			border-radius: 2px;
-			border-color:#3254A5;
+		.el-checkbox__input.is-checked .el-checkbox__inner {
+			background: #fff;
+			border-color: #4877E7;
 		}
-		.nomain .el-button:focus, .el-button:hover{
-			color: #fff;
-			background:#3254A5;
-			border-radius: 2px;
-			border-color:#3254A5;
-		}
-		.el-breadcrumb__item__inner, .el-breadcrumb__item__inner a{
-		color:#333;
-		font-size: 12px;
-	}
-	.el-breadcrumb__separator{
-		margin: 0 5px;
-		color: #333;
-	}
-	.el-breadcrumb__item:last-child .el-breadcrumb__item__inner, .el-breadcrumb__item:last-child .el-breadcrumb__item__inner a, .el-breadcrumb__item:last-child .el-breadcrumb__item__inner a:hover, .el-breadcrumb__item:last-child .el-breadcrumb__item__inner:hover{
-		color: #4877E7;
-	}
 	}
 </style>
